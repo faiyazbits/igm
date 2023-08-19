@@ -1,0 +1,1141 @@
+{{#if this.session.isAuthenticated}}
+  <h1>Welcome, {{this.session.currentUser.email}}</h1>
+{{else}}
+  <div class="home-page-container">
+    <div id="root" class="root">
+      <div class="l-site l-site--">
+        <div class="l-site-wrapper">
+          <div class="l-site__top">
+            <div class="">
+              <div class="SiteHeader__Wrapper-sc-42wr8z-0 iWaUpE">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div
+                        class="SiteHeader__WidgetsWrapper-sc-42wr8z-1 jnxuln"
+                      >
+                        <div class="c-account-widget"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="SiteHeader__HeaderBuilderWrapper-sc-42wr8z-2 bWxuzw"
+                  >
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div
+                          data-testid="header-logo"
+                          class="Logo__Wrapper-sc-iis4zi-0 dIToXV"
+                        >
+                          {{! template-lint-disable no-empty-headings }}
+                          <h5>
+                            <div
+                              data-testid="header-logo-cta-wrapper"
+                              class="Logo__CTAWrapper-sc-iis4zi-2 eyYsSm"
+                            >
+                              <a href="/" class=""><div
+                                  class="Logo__ImageWrapper-sc-iis4zi-1 kYmwVD"
+                                >
+                                  <img
+                                    src="assets/images/igm-logo-black-2.png"
+                                    alt="IGM | Informa Global Markets"
+                                    class="ImageTag__ImageTagWrapper-sc-1yke8qt-0 ivBXDb no-lazy"
+                                    data-testid="informa-image-tag"
+                                  /></div></a>
+                            </div>
+                          </h5>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4 col-md-4"></div>
+                      <div class="col-xs-12 col-sm-4 col-md-4">
+                        <div
+                          data-testid="header-event-venue"
+                          class="EventVenue__Wrapper-sc-hmgxn6-0 hnDBTS"
+                        >
+                          <div class="EventVenue__Date-sc-hmgxn6-1 hgjylZ">
+                            <span class="formatted-text"><a
+                                href="https://www.linkedin.com/company/informa-global-markets/"
+                                target="new"
+                              >IGM on LinkedIn</a>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="l-site__body">
+            {{! template-lint-disable no-inline-styles }}
+            <div class="l-site__sticky-wrapper" style="min-height: 56px">
+              <div class="" style="transform: translateZ(0px)">
+                <div
+                  class="c-multi-level-nav c-multi-level-nav--top-nav"
+                  style="background: #002244"
+                >
+                  <div
+                    class="c-multi-level-nav-menu c-multi-level-nav-menu--fullscreen"
+                    style="background: #002244"
+                  >
+                    <div class="c-multi-level-nav-menu__desktop">
+                      <div class="c-multi-level-nav-menu__body">
+                        <div class="c-multi-level-nav-menu__body-left">
+                          <div
+                            class="c-multi-level-nav-list c-multi-level-nav-list--level-1 c-multi-level-nav-list--level-1-fullscreen"
+                          >
+                            <ul class="c-multi-level-nav-list__list">
+                              <a
+                                href="/"
+                                class="c-multi-level-nav-home-btn c-multi-level-nav-home-btn--active c-multi-level-nav-home-btn--one-line"
+                                style="border-color: #cc31c2"
+                              ><span
+                                  class="c-multi-level-nav-home-btn__text"
+                                >Home</span><i
+                                  class="material-icons c-multi-level-nav-home-btn__icon"
+                                >home</i></a>
+                              <li class="c-multi-level-nav-list__item">
+                                <div
+                                  class="c-multi-level-nav-item c-multi-level-nav-item--level-1"
+                                >
+                                  <div
+                                    class="c-multi-level-nav-btn c-multi-level-nav-btn--level-1 c-multi-level-nav-btn--one-line"
+                                    style="border-bottom-color: #cc31c2"
+                                  >
+                                    <span class="c-multi-level-nav-btn__body"><a
+                                        href="https://informaconnect.com/igm/about/"
+                                        class="c-multi-level-nav-btn__link"
+                                      ><span
+                                          class="c-multi-level-nav-btn__one-line"
+                                        >About</span></a></span>
+                                  </div>
+                                </div>
+                              </li>
+                              <li class="c-multi-level-nav-list__item">
+                                <div
+                                  class="c-multi-level-nav-item c-multi-level-nav-item--level-1"
+                                >
+                                  <div
+                                    class="c-multi-level-nav-btn c-multi-level-nav-btn--group c-multi-level-nav-btn--level-1 c-multi-level-nav-btn--one-line"
+                                    style="border-bottom-color: #cc31c2"
+                                  >
+                                    <span
+                                      class="c-multi-level-nav-btn__body"
+                                    ><span
+                                        class="c-multi-level-nav-btn__link c-multi-level-nav-btn__link--group-level-1"
+                                      ><span
+                                          class="c-multi-level-nav-btn__one-line"
+                                        >Solutions</span></span></span>
+                                    <div
+                                      class="c-multi-level-nav-item__overlay"
+                                      style="background: #002244"
+                                    >
+                                      <div class="c-multi-level-nav-item__body">
+                                        <div
+                                          class="c-multi-level-nav-list c-multi-level-nav-list--level-2 c-multi-level-nav-list--level-2-fullscreen"
+                                        >
+                                          <ul
+                                            class="c-multi-level-nav-list__list"
+                                          >
+                                            <li
+                                              class="c-multi-level-nav-list__item"
+                                            >
+                                              <div
+                                                class="c-multi-level-nav-item c-multi-level-nav-item--level-2"
+                                              >
+                                                <div
+                                                  class="c-multi-level-nav-btn c-multi-level-nav-btn--level-2 c-multi-level-nav-btn--one-line"
+                                                  style="
+                                                    border-bottom-color: #cc31c2;
+                                                  "
+                                                >
+                                                  <span
+                                                    class="c-multi-level-nav-btn__body"
+                                                  ><a
+                                                      href="https://informaconnect.com/igm/credit/"
+                                                      class="c-multi-level-nav-btn__link"
+                                                    ><span
+                                                        class="c-multi-level-nav-btn__one-line"
+                                                      >IGM Credit</span></a></span>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li
+                                              class="c-multi-level-nav-list__item"
+                                            >
+                                              <div
+                                                class="c-multi-level-nav-item c-multi-level-nav-item--level-2"
+                                              >
+                                                <div
+                                                  class="c-multi-level-nav-btn c-multi-level-nav-btn--level-2 c-multi-level-nav-btn--one-line"
+                                                  style="
+                                                    border-bottom-color: #cc31c2;
+                                                  "
+                                                >
+                                                  <span
+                                                    class="c-multi-level-nav-btn__body"
+                                                  ><a
+                                                      href="https://informaconnect.com/igm/premium-credit/"
+                                                      class="c-multi-level-nav-btn__link"
+                                                    ><span
+                                                        class="c-multi-level-nav-btn__one-line"
+                                                      >IGM Premium Credit</span></a></span>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li
+                                              class="c-multi-level-nav-list__item"
+                                            >
+                                              <div
+                                                class="c-multi-level-nav-item c-multi-level-nav-item--level-2"
+                                              >
+                                                <div
+                                                  class="c-multi-level-nav-btn c-multi-level-nav-btn--level-2 c-multi-level-nav-btn--one-line"
+                                                  style="
+                                                    border-bottom-color: #cc31c2;
+                                                  "
+                                                >
+                                                  <span
+                                                    class="c-multi-level-nav-btn__body"
+                                                  ><a
+                                                      href="https://informaconnect.com/igm/bond-data/"
+                                                      class="c-multi-level-nav-btn__link"
+                                                    ><span
+                                                        class="c-multi-level-nav-btn__one-line"
+                                                      >IGM Deals Data</span></a></span>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li
+                                              class="c-multi-level-nav-list__item"
+                                            >
+                                              <div
+                                                class="c-multi-level-nav-item c-multi-level-nav-item--level-2"
+                                              >
+                                                <div
+                                                  class="c-multi-level-nav-btn c-multi-level-nav-btn--level-2 c-multi-level-nav-btn--one-line"
+                                                  style="
+                                                    border-bottom-color: #cc31c2;
+                                                  "
+                                                >
+                                                  <span
+                                                    class="c-multi-level-nav-btn__body"
+                                                  ><a
+                                                      href="https://informaconnect.com/igm/fx-rates/"
+                                                      class="c-multi-level-nav-btn__link"
+                                                    ><span
+                                                        class="c-multi-level-nav-btn__one-line"
+                                                      >IGM Rates Markets</span></a></span>
+                                                </div>
+                                              </div>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li class="c-multi-level-nav-list__item">
+                                <div
+                                  class="c-multi-level-nav-item c-multi-level-nav-item--level-1"
+                                >
+                                  <div
+                                    class="c-multi-level-nav-btn c-multi-level-nav-btn--level-1 c-multi-level-nav-btn--one-line"
+                                    style="border-bottom-color:#CC31C2"
+                                  ><span class="c-multi-level-nav-btn__body"><a
+                                        href="https://informaconnect.com/igm/insights/"
+                                        class="c-multi-level-nav-btn__link"
+                                      ><span
+                                          class="c-multi-level-nav-btn__one-line"
+                                        >News &amp; Insights</span></a></span></div>
+                                </div>
+                              </li>
+                              <li class="c-multi-level-nav-list__item">
+                                <div
+                                  class="c-multi-level-nav-item c-multi-level-nav-item--level-1"
+                                >
+                                  <div
+                                    class="c-multi-level-nav-btn c-multi-level-nav-btn--level-1 c-multi-level-nav-btn--one-line"
+                                    style="border-bottom-color: #cc31c2"
+                                  >
+                                    <span class="c-multi-level-nav-btn__body"><a
+                                        href="https://informaconnect.com/igm/contact-igm/"
+                                        class="c-multi-level-nav-btn__link"
+                                      ><span
+                                          class="c-multi-level-nav-btn__one-line"
+                                        >Contact</span></a></span>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="c-multi-level-nav-menu__body-right">
+                          <a
+                            href="/login"
+                            class="c-cta c-cta--accent c-cta--medium c-cta--no-wrap c-cta--auto-width-mobile c-multi-level-nav-menu__book-now"
+                            target="_self"
+                          >Client Login</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="c-multi-level-nav-menu__mobile">
+                      <div class="c-multi-level-nav-menu__body">
+                        <div class="c-multi-level-nav-menu__body-left">
+                          <span
+                            class="c-hamburger c-hamburger--left c-hamburger--with-word"
+                          ><span class="c-hamburger__line"></span><span
+                              class="c-hamburger__line"
+                            ></span><span
+                              class="c-hamburger__line"
+                            ></span></span>
+                          <div
+                            role="button"
+                            class="c-hamburger__word"
+                          >Menu</div>
+                        </div>
+                        <div class="c-multi-level-nav-menu__body-right">
+                          <a
+                            href="/login"
+                            class="c-cta c-cta--accent c-cta--medium c-cta--no-wrap c-cta--auto-width-mobile c-multi-level-nav-menu__book-now-mobile"
+                          >Login</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <main class="l-site__content" id="content">
+              <div class="hidden">
+                <div class="SiteHeader__Wrapper-sc-42wr8z-0 iWaUpE">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div
+                          class="SiteHeader__WidgetsWrapper-sc-42wr8z-1 jnxuln"
+                        >
+                          <div class="c-account-widget"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="SiteHeader__HeaderBuilderWrapper-sc-42wr8z-2 bWxuzw"
+                    >
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                          <div
+                            data-testid="header-logo"
+                            class="Logo__Wrapper-sc-iis4zi-0 dIToXV"
+                          >
+                            {{! template-lint-disable no-empty-headings }}
+                            <h5>
+                              <div
+                                data-testid="header-logo-cta-wrapper"
+                                class="Logo__CTAWrapper-sc-iis4zi-2 eyYsSm"
+                              >
+                                <a href="/" class=""><div
+                                    class="Logo__ImageWrapper-sc-iis4zi-1 kYmwVD"
+                                  >
+                                    <img
+                                      src="assets/images/igm-logo-black-2.png"
+                                      alt="IGM | Informa Global Markets"
+                                      class="ImageTag__ImageTagWrapper-sc-1yke8qt-0 ivBXDb no-lazy"
+                                      data-testid="informa-image-tag"
+                                    /></div></a>
+                              </div>
+                            </h5>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4"></div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                          <div
+                            data-testid="header-event-venue"
+                            class="EventVenue__Wrapper-sc-hmgxn6-0 hnDBTS"
+                          >
+                            <div class="EventVenue__Date-sc-hmgxn6-1 hgjylZ">
+                              <span class="formatted-text"><a
+                                  href="https://www.linkedin.com/company/informa-global-markets/"
+                                  target="new"
+                                >IGM on LinkedIn</a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="l-site__fixed-multi-level-nav">
+                <div
+                  class="c-multi-level-nav"
+                  style="background: #002244"
+                ></div>
+              </div>
+              <section
+                id="home-header"
+                class="SiteBuilderModule__Section-sc-18774uk-0 hero-section"
+              >
+                <div
+                  class="ModuleWrapper-sc-1jkhccd-0 yPBPE lazy"
+                  data-testid="hero-module-wrapper"
+                  data-loaded="true"
+                >
+                  <div class="OverlayWrapper-sc-1q4ef0-0 dCsiPe"></div>
+                  <div class="container">
+                    <div class="row">
+                      <div
+                        class="HeroModuleContent-sc-f4dq4u-0 bmmNLs col-xs-12 col-sm-undefined col-sm-offset-undefined"
+                      >
+                        <div class="BodyWrapper-sc-ajvb0q-0 kRoqSI">
+                          <div
+                            data-testid="hero-module-short-text-wrapper"
+                            class="ShortTextWrapper-sc-19u1l3p-0 jWPcCg"
+                          >
+                            <h4
+                              class="HeroModulePreTitle__PreTitle-sc-1he5s0f-0 kziUOx"
+                            >
+                              WELCOME TO IGM
+                            </h4>
+                            <h1
+                              class="HeroModuleTitle__Title-sc-1go63z0-0 bZRzSB formatted-text"
+                            >
+                              The global source for independent, actionable
+                              expertise on the credit, rates and foreign
+                              exchange markets.
+                            </h1>
+                            <h3
+                              class="HeroModuleSubTitle__SubTitle-sc-hdmo9v-0 gZdsxg formatted-text"
+                            >
+                              Insightful Commentary. Intelligent Analysis.
+                              Always Connected.
+                            </h3>
+                          </div>
+                        </div>
+                        <div
+                          data-testid="hero-module-call-to-action-container"
+                          class="CallToActionContainer-sc-1moyv37-0 cMJyJJ"
+                        >
+                          <a
+                            href="https://informaconnect.com/igm/eloqua1/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="c-cta c-cta--accent c-cta--large c-cta--white"
+                          >Request a Demo</a>
+                        </div>
+                      </div>
+                      <div class="col-xs-12" data-testid="hero-image-tag"></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section
+                id="home-intro"
+                class="SiteBuilderModule__Section-sc-18774uk-0 image-section"
+              >
+                <div class="ImageModule__Wrapper-sc-ss0tbj-0 bLrNwu">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6 col-md-7 last-xs first-sm">
+                        <div
+                          class="ImageTag__StyledImageTagWrapper-sc-1yke8qt-1 MYrsV"
+                        >
+                          <img
+                            class="ImageTag__ImageTagWrapper-sc-1yke8qt-0 ivBXDb lazy"
+                            data-testid="informa-image-tag"
+                            alt="'informa-image-tag'"
+                            src="assets/images/we-are-igm.jpg"
+                            data-loaded="true"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-6 col-md-5">
+                        <div
+                          class="Heading__StyledHeadingWrapper-sc-1c32hz0-1 bhAqPf"
+                        >
+                          <h2
+                            class="Heading__HeadingWrapper-sc-1c32hz0-0 fkNJTl"
+                          >
+                            We are IGM
+                          </h2>
+                        </div>
+                        <div class="Underline-sc-1gmui2r-0 qkuCq"></div>
+                        <div
+                          class="Paragraph__StyledParagraphWrapper-sc-acacpb-1 dAJa-DY"
+                        >
+                          <div
+                            data-testid="informa-paragraph"
+                            class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                          >
+                            <p>
+                              IGM is the primary source for live, trusted
+                              syndicated bond data and intelligence, and a
+                              leading provider of insight on market-moving
+                              events in foreign exchange and rates markets.
+                            </p>
+                            <p>
+                              We pride ourselves on speed, accuracy, and
+                              flexibility of delivery to a range of clients
+                              including banks, fund managers, trading platforms,
+                              quant traders and workflow solution providers.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div
+                          class="CallToAction__StyledCallToActionWrapper-sc-1beyos1-0 jPgxyA"
+                        >
+                          <a
+                            href="https://informaconnect.com/igm/eloqua2/"
+                            class="c-cta c-cta--accent c-cta--large"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >Request a Callback</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section
+                id="home-data"
+                class="SiteBuilderModule__Section-sc-18774uk-0 custom-page-section"
+              >
+                <div class="ColumnTextModule__Wrapper-sc-1ud82ko-0 ckNbhz">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12">
+                        <div
+                          class="indexstyle__AlignWrapper-sc-1suzjws-0 gOFZnU"
+                        >
+                          <div
+                            class="Heading__StyledHeadingWrapper-sc-1c32hz0-1 hiAHAH"
+                          >
+                            <h2
+                              class="Heading__HeadingWrapper-sc-1c32hz0-0 fkNJTl"
+                            >
+                              Primary syndicated bond data
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="Underline-sc-1ya2j9k-0 bcEXmY"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-4">
+                        <div class="Card__Wrapper-sc-ysjszp-0 HTrjB">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 uplYs">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 inMpio"
+                              style="min-height: 34px"
+                            >
+                              25 Years+
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 fcCEwL"
+                              style="min-height: 22px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <p>of data history</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4">
+                        <div class="Card__Wrapper-sc-ysjszp-0 HTrjB">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 uplYs">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 inMpio"
+                              style="min-height: 34px"
+                            >
+                              Up to 80
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 fcCEwL"
+                              style="min-height: 22px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <p>verified data points per record</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4">
+                        <div class="Card__Wrapper-sc-ysjszp-0 HTrjB">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 uplYs">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 inMpio"
+                              style="min-height: 34px"
+                            >
+                              Over 130k
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 fcCEwL"
+                              style="min-height: 22px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <p>syndicated corporate bond issues</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="Underline-sc-1ya2j9k-0 bcEXmY"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-4">
+                        <div class="Card__Wrapper-sc-ysjszp-0 HTrjB">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 uplYs">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 inMpio"
+                              style="min-height: 34px"
+                            >
+                              26k+
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 fcCEwL"
+                              style="min-height: 22px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <p>securitisation deals</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4">
+                        <div class="Card__Wrapper-sc-ysjszp-0 HTrjB">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 uplYs">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 inMpio"
+                              style="min-height: 34px"
+                            >
+                              Over 3k
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 fcCEwL"
+                              style="min-height: 22px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <p>ESG/SRI-related bonds</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section
+                id="home-benefits"
+                class="SiteBuilderModule__Section-sc-18774uk-0 custom-page-section"
+              >
+                <div class="ColumnTextModule__Wrapper-sc-1ud82ko-0 hwSpDz">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12">
+                        <div
+                          class="indexstyle__AlignWrapper-sc-1suzjws-0 gOFZnU"
+                        >
+                          <div
+                            class="Heading__StyledHeadingWrapper-sc-1c32hz0-1 fsRCBQ"
+                          >
+                            <h2
+                              class="Heading__HeadingWrapper-sc-1c32hz0-0 fkNJTl"
+                            >
+                              Key benefits
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="Underline-sc-1ya2j9k-0 zUMWu"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-6">
+                        <div class="Card__Wrapper-sc-ysjszp-0 HTrjB">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 uplYs">
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 fcCEwL"
+                              style="min-height: 131px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <ul>
+                                  <li id="isPasted">
+                                    <p>Trusted, verified market intelligence</p>
+                                  </li>
+                                  <li>
+                                    <p>Accurate data updated near real-time</p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      Independent analysis spanning multiple
+                                      markets
+                                    </p>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                        <div class="Card__Wrapper-sc-ysjszp-0 HTrjB">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 uplYs">
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 fcCEwL"
+                              style="min-height: 131px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <ul>
+                                  {{! template-lint-disable no-duplicate-id }}
+                                  <li id="isPasted">
+                                    <p>Market-leading NICs and Books</p>
+                                  </li>
+                                  <li>
+                                    <p>
+                                      Flexible delivery channels, including APIs
+                                    </p>
+                                  </li>
+                                  <li><p>Around the clock, around the globe</p></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div
+                          class="CallToAction__StyledCallToActionWrapper-sc-1beyos1-0 jQResS"
+                        >
+                          <a
+                            href="https://informaconnect.com/igm/eloqua1/"
+                            class="c-cta c-cta--accent c-cta--large"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >Request a Demo</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section
+                id="home-solutions"
+                class="SiteBuilderModule__Section-sc-18774uk-0 custom-page-section"
+              >
+                <div class="ColumnTextModule__Wrapper-sc-1ud82ko-0 jcqNUo">
+                  <div class="SVGEmbed__Wrapper-sc-27phl9-0 hyaKRG">
+                    <div class="c-svg-embed">
+                      <svg
+                        id="Layer_1"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 141.73 141.73"
+                        preserveAspectRatio="xMidYMid slice"
+                      >
+                        <polygon
+                          class="cls-2"
+                          points="0 70.87 0 0 70.87 0 0 70.87"
+                        ></polygon>
+                        <polygon
+                          class="cls-3"
+                          points="70.87 70.87 0 70.87 70.87 0 70.87 70.87"
+                        ></polygon>
+                        <rect
+                          class="cls-3"
+                          x="70.87"
+                          width="70.87"
+                          height="70.87"
+                        ></rect>
+                        <rect
+                          class="cls-1"
+                          y="70.87"
+                          width="70.87"
+                          height="70.87"
+                        ></rect>
+                        <polygon
+                          class="cls-2"
+                          points="141.73 141.73 70.87 141.73 141.73 70.87 141.73 141.73"
+                        ></polygon>
+                        <polygon
+                          class="cls-3"
+                          points="70.86 141.73 70.86 70.86 141.73 70.86 70.86 141.73"
+                        ></polygon>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12">
+                        <div
+                          class="indexstyle__AlignWrapper-sc-1suzjws-0 gOFZnU"
+                        >
+                          <div
+                            class="Heading__StyledHeadingWrapper-sc-1c32hz0-1 hiAHAH"
+                          >
+                            <h2
+                              class="Heading__HeadingWrapper-sc-1c32hz0-0 fkNJTl"
+                            >
+                              Our solutions
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="Underline-sc-1ya2j9k-0 dzXGyi"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="Card__Wrapper-sc-ysjszp-0 hFrWLj">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 kmmkAi">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 kahayy"
+                              style="min-height: 34px"
+                            >
+                              IGM Credit
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 innLXR"
+                              style="min-height: 494px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <h6>
+                                  <strong>Intelligence, Precision, Speed</strong>
+                                </h6>
+                                <p>
+                                  IGM Credit tracks primary syndicated bond
+                                  markets around the globe with live updates
+                                  from mandate, through IPTs/price talk,
+                                  guidance, bookbuild, and final terms and
+                                  conditions.
+                                </p>
+                                <ul>
+                                  <li>
+                                    Independent pre- and post-deal analysis and
+                                    reviews
+                                  </li>
+                                  <li>Contains key relative value metrics</li>
+                                  <li>
+                                    Coverage includes corporates, SSAs,
+                                    financials, covered bonds, securitisation
+                                    and emerging markets
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="Link__Wrapper-sc-1ocyo1r-0 hvKWmE">
+                              <a
+                                href="https://informaconnect.com/igm/credit/"
+                                class=""
+                              >Learn More</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="Card__Wrapper-sc-ysjszp-0 hFrWLj">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 kmmkAi">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 kahayy"
+                              style="min-height: 34px"
+                            >
+                              Premium Credit
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 innLXR"
+                              style="min-height: 494px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <h6>
+                                  <strong>Assess Credible Data. Identify
+                                    Opportunities. Position for Success.</strong>
+                                </h6>
+                                <p>
+                                  Access our extensive deals database for as
+                                  well as IGM Credit’s leading intelligence on
+                                  primary syndicate bond markets around the
+                                  globe.
+                                </p>
+                                <ul>
+                                  <li>
+                                    Up to 80 data points including NICs &amp;
+                                    Books, IPTs to Priced, and distribution
+                                    statistics
+                                  </li>
+                                  <li>
+                                    Pipeline and pricing details sourced and
+                                    verified by a global team of analysts
+                                  </li>
+                                  <li>Up to 25 years of historical data</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="Link__Wrapper-sc-1ocyo1r-0 hvKWmE">
+                              <a
+                                href="https://informaconnect.com/igm/premium-credit/"
+                                class=""
+                              >Learn More</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="Card__Wrapper-sc-ysjszp-0 hFrWLj">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 kmmkAi">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 kahayy"
+                              style="min-height: 34px"
+                            >
+                              Deals Data
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 innLXR"
+                              style="min-height: 494px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <h6>
+                                  <strong>Live, Trusted Primary Market Data</strong>
+                                </h6>
+                                <p>
+                                  Our time-sensitive, accurate bond data enables
+                                  clients to make quick, informed decisions,
+                                  identify market trends, and maintain a
+                                  competitive edge.
+                                </p>
+                                <ul>
+                                  <li>
+                                    Trusted, near real-time primary market data
+                                    available via API and excel add-in
+                                  </li>
+                                  <li>
+                                    Pipeline and pricing details sourced and
+                                    verified by a global team of analysts
+                                  </li>
+                                  <li>
+                                    Up to 80 data points including NICs &amp;
+                                    Books, IPTs to Priced, and distribution
+                                    statistics
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="Link__Wrapper-sc-1ocyo1r-0 hvKWmE">
+                              <a
+                                href="https://informaconnect.com/igm/bond-data/"
+                                class=""
+                              >Learn More</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="Card__Wrapper-sc-ysjszp-0 hFrWLj">
+                          <div class="CardBody__Wrapper-sc-2bau6r-0 kmmkAi">
+                            <h3
+                              class="Title__Wrapper-sc-1u3qk0t-0 kahayy"
+                              style="min-height: 34px"
+                            >
+                              Rates Markets
+                            </h3>
+                            <div
+                              class="Text__Wrapper-sc-1961sqx-0 innLXR"
+                              style="min-height: 494px"
+                            >
+                              <div
+                                data-testid="informa-paragraph"
+                                class="Paragraph__ParagraphWrapper-sc-acacpb-0 kHeLno"
+                              >
+                                <h6>
+                                  <strong>Insightful Commentary. Intelligent
+                                    Analysis. Always Connected.</strong>
+                                </h6>
+                                <p>
+                                  IGM delivers fundamental analysis and
+                                  actionable intelligence on what’s driving
+                                  foreign exchange and government bond markets.
+                                  Additionally, IGM provides technical analysis
+                                  on 50 key instruments spanning:
+                                </p>
+                                <ul>
+                                  <li>G10 and EM FX</li>
+                                  <li>Yields/rates futures</li>
+                                  <li>Equity indices and commodities</li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="Link__Wrapper-sc-1ocyo1r-0 hvKWmE">
+                              <a
+                                href="https://informaconnect.com/igm/fx-rates/"
+                                class=""
+                              >Learn More</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main>
+            <div style="background-color: #002244"></div>
+            <footer class="c-event-footer">
+              <div class="footer-upper" style="background-color: #002244">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="footer-upper-hashtag">
+                        {{! template-lint-disable no-invalid-link-text }}
+                        <a
+                          href="https://twitter.com/hashtag/undefined/"
+                          target="_blank"
+                          class="footer-upper-hashtag__link"
+                          rel="noopener noreferrer"
+                        ></a>
+                      </div>
+                      <div class="footer-upper-contacts">
+                        <ul class="footer-upper-contacts__social-list">
+                          <li class="footer-upper-contacts__social-item">
+                            <a
+                              href="https://www.linkedin.com/company/informa-global-markets/"
+                              target="_blank"
+                              class="footer-upper-contacts__social-link"
+                              rel="noopener noreferrer"
+                            ><i
+                                class="fab fa-linkedin-in footer-upper-contacts__social-icon"
+                                style="color: #002244"
+                              ></i>
+                              {{! }}IGM on LinkedIn</a>
+                          </li>
+                        </ul>
+                        <ul class="footer-upper-contacts__mail-phone-list"></ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-lower" style="background-color: #11a7d9">
+                <div class="container">
+                  <div class="footer-lower__wrapper">
+                    <div class="footer-lower__logo">
+                      <a href="/" class="c-site-lower-footer-logo"><img
+                          src="assets/images/btyb_informa_connect_logo_white.png"
+                          alt="'Informa Connect Logo'"
+                          class="c-site-lower-footer-logo__img no-lazy"
+                          data-testid="informa-image-tag"
+                        /></a>
+                    </div>
+                    <div class="footer-lower__menu">
+                      <ul class="c-site-lower-footer-menu">
+                        <li class="c-site-lower-footer-menu__item">
+                          <a
+                            href="https://informaconnect.com/"
+                            target="_self"
+                            class="c-site-lower-footer-menu__link"
+                          >Home</a>
+                        </li>
+                        <li class="c-site-lower-footer-menu__item">
+                          <a
+                            href="/igm/contact/"
+                            target="_self"
+                            class="c-site-lower-footer-menu__link"
+                          >Contact</a>
+                        </li>
+                        <li class="c-site-lower-footer-menu__item">
+                          <a
+                            href="https://informa.com/privacy-policy/"
+                            target="_blank"
+                            class="c-site-lower-footer-menu__link"
+                            rel="noopener noreferrer"
+                          >Privacy</a>
+                        </li>
+                        <li class="c-site-lower-footer-menu__item">
+                          <a
+                            href="https://informaconnect.com/terms-of-use/"
+                            target="_blank"
+                            class="c-site-lower-footer-menu__link"
+                            rel="noopener noreferrer"
+                          >Terms of Use</a>
+                        </li>
+                        <li class="c-site-lower-footer-menu__item">
+                          <a
+                            href="/igm/terms-and-conditions/"
+                            target="_self"
+                            class="c-site-lower-footer-menu__link"
+                          >Terms &amp; Conditions</a>
+                        </li>
+                        <li class="c-site-lower-footer-menu__item">
+                          <a
+                            href="https://privacyportal-eu-cdn.onetrust.com/dsarwebform/c1f53e84-9f05-4169-a854-85052b63c50b/5f26b553-52cc-4973-a761-295d5634a6b6.html"
+                            target="_blank"
+                            class="c-site-lower-footer-menu__link"
+                            rel="noopener noreferrer"
+                          >CCPA: Do not sell my personal info</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

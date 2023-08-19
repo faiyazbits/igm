@@ -1,0 +1,21 @@
+<h3>Related Stories</h3>
+
+<ul class="list-unstyled">
+  {{#each @deal.relatedStories as |story|}}
+    <li>
+        <span {{on 'click' (fn this.removeLink story)}} class="icon-close clickable"></span>
+        <LinkTo @route="stories.show" @model={{story}} >{{story.headline}}</LinkTo>
+    </li>
+  {{/each}}
+</ul>
+
+<p>
+    <div class="row">
+        <div class="col-md-3">
+            <Input @type='text' @value={{this.newStoryUrl}} class='form-control' />
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-default" type="button" {{on 'click' this.addLink}}>Add Link to Related Story</button>
+        </div>
+    </div>
+</p>

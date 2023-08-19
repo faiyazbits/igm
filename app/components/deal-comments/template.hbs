@@ -1,0 +1,19 @@
+{{#if @urls}}
+  <UiPopoverToggle @toggle={{this.toggle}} @title="Deal Comments">
+    <i class="icon-duplicate"></i>
+  </UiPopoverToggle/>
+
+  <UiPopoverContent
+    @inheritWidth={{true}}
+    @rightPlacement={{true}}
+    @isOpen={{this.isOpen}}
+    @close={{this.toggle}}
+    @title="Deal Comments"
+  >
+    <ul class="list-unstyled">
+      {{#each @urls as |url|}}
+        <li><a href="{{url.[0]}}">{{url.[1]}}</a></li>
+      {{/each}}
+    </ul>
+  </UiPopoverContent>
+{{/if}}

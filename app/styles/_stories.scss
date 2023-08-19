@@ -1,0 +1,114 @@
+.analyst-options {
+  padding-top: calc($grid-gutter-width / 2);
+}
+
+.stories-route {
+  .selectize-dropdown {
+    // need to cover the redactor-toolbar
+    z-index: 1054;
+  }
+}
+
+.story-preview {
+  padding-top: $navbar-height + ($grid-gutter-width * 2);
+  padding-bottom: calc($grid-gutter-width / 2);
+  margin-left: -$grid-gutter-width;
+  margin-right: -$grid-gutter-width;
+  margin-bottom: calc($grid-gutter-width / 2);
+  background-color: #FFFFFF;
+}
+
+.story-preview {
+  .preview-back {
+    padding-top: calc($grid-gutter-width / 2);
+  }
+}
+
+.stories-show-route {
+  background-color: #FFFFFF;
+}
+
+.story-date {
+  margin-left: 25px;
+}
+
+.story-content {
+  margin-top: 40px;
+  color: $black;
+  font-size: $font-size-small;
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: none;
+  }
+
+  td,
+  th {
+    border: 1px solid $black;
+    padding: 0.5rem;
+    text-align: left;
+    font-size: $font-size-xsmall;
+  }
+}
+
+.share-box, .add-feed {
+  position: relative;
+}
+
+.add-feed-form, .share-box-body {
+  position: absolute;
+  top: 67px;
+  right: 46px;
+  width: 295px;
+  z-index: 1;
+}
+
+.share-box-body {
+  right: 15px;
+}
+
+.redactor-editor {
+  vendor {
+    border: 1px solid $gray-light;
+    bloomberg {
+      color: $gray-light;
+      display: inline;
+      font-style: italic;
+    }
+    reuters {
+      color: $gray-light;
+      display: inline;
+      font-style: italic;
+    }
+    divider {
+      display: inline;
+    }
+  }
+  pre {
+    background-color: inherit;
+    border: none;
+  }
+}
+
+pre {
+  background-color: inherit;
+  border: none;
+}
+
+vendor {
+  border: none;
+  bloomberg {
+    display: none;
+  }
+  reuters {
+    display: none;
+  }
+  divider {
+    display: none;
+  }
+}
+
+.re-vendorlinker:before {
+  content: "V\e60b";
+}

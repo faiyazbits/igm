@@ -1,0 +1,120 @@
+.discover-body {
+  .separator {
+    border: 1px solid $gray-lightest;
+  }
+
+  .discover-product-section {
+    margin-bottom: 25px;
+  }
+}
+
+.product-title {
+  // User added
+  margin-top: 10px;
+  padding: 49px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  box-shadow: $default-box-shadow;
+  background-size: cover;
+
+  // Background from mockups
+  border-radius: 2px;
+  opacity: 0.85;
+
+  // Text from mockups
+  font: $primary-font-md-bold;
+  font-size: $font-size-h2;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  &.credit {
+    padding-top: 77px;
+    padding-bottom: 77px;
+    background-image: url('/assets/images/credit-background.png');
+  }
+
+  &.iiia {
+    background-image: url('/assets/images/iiia-background.png');
+  }
+
+  &.fx {
+    background-image: url('/assets/images/fx-background.png');
+  }
+
+  &.rates {
+    background-image: url('/assets/images/rates-background.png');
+  }
+
+  &.quant.insight {
+    background-image: url('/assets/images/quant-insight-background.png');
+    padding-top: 29px;
+    padding-bottom: 29px;
+  }
+
+  .new {
+    font-style: italic;
+  }
+}
+
+.product-link {
+  // User added
+  margin-top: 10px;
+  padding: 10px;
+
+  // Styles from mockups
+  background: #FFFFFF;
+  box-shadow: $default-box-shadow;
+  border-radius: 2px;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-small;
+  color: $gray;
+  text-align: center;
+
+  &.credit {
+    border-left: 10px solid #BCB91A;
+  }
+
+  &.iiia {
+    border-left: 10px solid $red;
+  }
+
+  &.fx {
+    border-left: 10px solid #00ADAA;
+  }
+
+  &.rates {
+    border-left: 10px solid #E22030;
+  }
+
+  &.quant-insight {
+    border-left: 10px solid #d14124;
+  }
+
+  &.disabled {
+    opacity: 0.8;
+  }
+}
+
+.product-link-disabled {
+  background: #000;
+}
+
+.top-feeds, .cls-title {
+  font-family: $alt-font-face;
+  font-size: $font-size-large;
+  color: $gray-light;
+}
+
+.ad-tooltip {
+  padding: 24px 0 24px 12px;
+}
+
+.all-destinations {
+  color: $gray;
+}
+
+.all-and-any-destinations {
+  display: inline-block;
+}

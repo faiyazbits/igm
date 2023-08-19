@@ -1,0 +1,26 @@
+.deal-search-route {
+  .second-field-vertical-align {
+    margin: 20px 0;
+  }
+
+  .deal-search-checkbox {
+    padding: 6.5px 0;
+  }
+
+  .deal-search-checkbox-vertical-align {
+    margin: 0 10px;
+  }
+}
+
+.deal-search-dropdown {
+  min-width: 400px;
+}
+
+.deal-search-result-list-panel {
+  height: 500px;
+  padding-left: 25px;
+
+  table {
+    table-layout: fixed;
+  }
+}

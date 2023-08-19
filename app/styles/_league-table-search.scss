@@ -1,0 +1,43 @@
+.league-table-search-route {
+  .second-field-vertical-align {
+    margin: 20px 0;
+  }
+
+  .league-table-checkbox {
+    padding: 6.5px 0;
+  }
+
+  .league-table-checkbox-vertical-align {
+    margin: 0 10px;
+  }
+}
+
+.league-table-dropdown {
+  min-width: 400px;
+}
+
+.league-table-result-panel {
+  height: 910px;
+}
+
+.league-table-result-list-panel {
+  height: 860px;
+  overflow-y: scroll;
+
+  .league-table {
+    padding-bottom: 0
+  }
+}
+
+.league-table-rank-column {
+  text-align: center;
+  width: 80px;
+}
+
+.league-table-rank-number {
+  text-align: center;
+}
+
+.league-table-owner-column {
+  width: 350px;
+}

@@ -1,0 +1,36 @@
+<div class="ui-popover">
+  <UiPopoverToggle @title="Add Feed" @toggle={{this.toggle}}>
+    {{#if @showPage}}
+      <div class="btn-round-lg center-block">
+        <button class="btn btn-default btn-xs">
+          <i class={{@iconClass}}></i>
+        </button>
+      </div>
+    {{else}}
+      <i class={{@iconClass}}></i>
+    {{/if}}
+  </UiPopoverToggle>
+
+  <UiPopoverContent
+    @title="Add Feed to Board"
+    @isOpen={{this.isOpen}}
+    @close={{this.toggle}}
+    @rightPlacement={{false}}
+  >
+    <IgmForm @for={{@feed}} @submitForm={{this.save}}>
+      <IgmInput
+        @value={{@feed.title}}
+        @errors={{@feed.errors.title}}
+        @label="Title"
+      />
+
+      <p>
+        {{#each @feed.andDestinations as |destination|}}
+          <span class="label label-default">{{destination.displayName}}</span>
+        {{/each}}
+      </p>
+
+      <button type="submit" class="btn btn-success">Add</button>
+    </IgmForm>
+  </UiPopoverContent>
+</div>

@@ -1,0 +1,15 @@
+<div class="form-group {{if @errors 'has-error'}}">
+  <label for={{this.uid}} class="control-label">
+    {{this.labelDisplayName}}
+  </label>
+
+  <DatetimePicker
+    @date={{@date}}
+    @pickTime={{@pickTime}}
+    @onChange={{@onChange}}
+  />
+
+  {{#each @errors as |error|}}
+    <span class="help-block">{{error.message}}</span>
+  {{/each}}
+</div>

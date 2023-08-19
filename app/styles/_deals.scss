@@ -1,0 +1,87 @@
+.select2-container {
+  border: none;
+  padding: 0px;
+}
+
+.deal-landing {
+  box-shadow: none;
+  border-top: 1px solid $table-border-color;
+  height: 340px;
+  margin: 0 25px;
+  table-layout: fixed;
+  width: 90%;
+}
+
+.deal-results-row {
+  th,
+  td {
+    overflow: hidden;
+    padding: 0 10 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.table > tbody,
+.table > thead {
+  .deal-landing-row {
+    th,
+    td {
+      overflow: hidden;
+      padding: 0px 10px 0px 0px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border: 0;
+      outline: 0;
+    }
+
+    th.deal-index-wide-column {
+      width: 16%;
+    }
+
+    th.deal-index-other-column {
+      width: 10%;
+    }
+  }
+}
+
+.deal-results-comments {
+  width: 30px;
+}
+
+.deal-results-currency {
+  width: 40px;
+}
+
+.deal-results-issuer {
+  width: 275px;
+}
+
+.deal-results-spread {
+  width: 75px;
+}
+
+.deal-results-date {
+  width: 110px;
+}
+
+.deal-index-route {
+  background-color: #ffffff;
+
+  h1 {
+    font-size: $font-size-base;
+    font-family: $alt-font-face;
+    color: $gray-light;
+  }
+
+  // everything below 480 should not have a float
+  @media (max-width: $screen-xs-max) {
+    h1.pull-right {
+      float: none !important;
+    }
+  }
+}
+
+.deals-index-route .panel {
+  overflow: auto;
+}

@@ -1,0 +1,41 @@
+<div>
+  <div class="row">
+    <a href="#" style="padding-bottom:10px;padding-right:15px" class="icon-close-sm pull-right" 
+      {{on 'click' this.closeButtonClick}}>
+      <i class="icon-close"></i>
+    </a>
+  </div>
+  {{#each @searches as |search|}}
+    {{! template-lint-disable no-invalid-interactive }}
+    <span
+      {{on "click" (fn this.selectSearch search)}}
+      class="dropdown-item list-group-item saved-search-list-actions"
+    >
+      <div class="row">
+        <div class="col-sm-8">
+          <span>
+            {{search.title}}
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <div class="list-group-item-actions">
+            {{#if this.addToDashboard}}
+              <i
+                {{on "click" (fn this.addToDashboard search)}}
+                class="saved-search-action icon-plus"
+              ></i>
+            {{/if}}
+
+            <button
+              type="button"
+              {{on "click" (fn this.delete search)}}
+              class="btn btn-danger btn-xs saved-search-action"
+            >
+              <i class="icon-delete"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </span>
+  {{/each}}
+</div>

@@ -1,0 +1,10 @@
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  color: $gray-dark;
+  opacity: 1;
+  background-color: transparent;
+  border: 0 solid transparent;
+  border-bottom: 1px solid $gray-lighter;
+  box-shadow: none;
+}

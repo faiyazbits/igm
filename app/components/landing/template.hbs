@@ -1,0 +1,32 @@
+{{#each this.componentsToRender as |component|}}
+  {{#if component.extendLeft}}
+    <div class="row">
+      <div class="col-md-12">
+        <LandingPagePanel
+          @dataType={{component.fullWidthComponent.componentType}}
+          @destinations={{component.fullWidthComponent.destinations}}
+          @period={{component.fullWidthComponent.period}}
+          @title={{component.fullWidthComponent.title}}/>
+      </div>
+    </div>
+  {{else}}
+    <div class="row">
+      <div class="col-md-6">
+        <LandingPagePanel
+          @dataType={{component.leftComponent.componentType}}
+          @destinations={{component.leftComponent.destinations}}
+          @title={{component.leftComponent.title}}/>
+      </div>
+      <div class="col-md-6">
+        <LandingPagePanel
+          @dataType={{component.rightComponent.componentType}}
+          @destinations={{component.rightComponent.destinations}}
+          @title={{component.rightComponent.title}}/>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}
+
+
+
+

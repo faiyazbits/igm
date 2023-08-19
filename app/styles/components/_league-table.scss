@@ -1,0 +1,25 @@
+.league-table {
+  padding: 1%;
+
+  p {
+    color: $gray-light;
+    float: right;
+    margin: 0 0 16px;
+  }
+
+  table {
+    border: none;
+    box-shadow: none;
+
+    thead {
+      border-bottom: 1px solid;
+    }
+  }
+}
+
+.league-table-landing {
+  border-top: 1px solid $table-border-color;
+  .league-table-result-list-panel {
+    overflow-y: hidden;
+  }
+}

@@ -1,0 +1,53 @@
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+      <th>ASSET TYPE</th>
+      <th>STRATEGY / POSITION</th>
+      <th colspan="5">SUPPORT LEVELS</th>
+      <th>SPOT</th>
+      <th colspan="5">RESISTANCE LEVELS</th>
+    </tr>
+  </thead>
+  <thead>
+    <tr class="clear-border-top">
+      <th></th>
+      <th></th>
+      <th>S5</th>
+      <th>S4</th>
+      <th>S3</th>
+      <th>S2</th>
+      <th>S1</th>
+      <th></th>
+      <th>R1</th>
+      <th>R2</th>
+      <th>R3</th>
+      <th>R4</th>
+      <th>R5</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @technicalComposite.technicals as |technical|}}
+      <tr>
+        <td>
+          <LinkTo @route='technicals.show' @model={{technical.id}}>
+            {{#if technical.currency}}
+              {{technical.currency.displayName}}
+            {{else if technical.assetType}}
+              {{technical.assetType.displayName}}
+            {{else}}
+              {{technical.name}}
+            {{/if}}
+          </LinkTo>
+        </td>
+        <td>
+          {{technical.strategy}}
+        </td>
+        {{#each technical.table.reverseDisplayableRows as |row|}}
+          <td>
+            {{{format-technical-string row.valueCell}}}
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

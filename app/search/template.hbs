@@ -1,0 +1,117 @@
+<TopNav>
+  <div class="search-bar">
+    <div class="search-bar-input">
+      <div class="search-bar-icon">
+        <i class="icon-search-solid"></i>
+      </div>
+      <Input
+        @type="text"
+        id="search"
+        placeholder="Enter search query..."
+        @value={{this.queryString}}
+      />
+    </div>
+    <div class="search-bar-actions">
+      {{#if (get (await this.user) "canAccessDealVolumeLeagueSearch")}}
+
+        <LinkTo @route="deal-search" class="btn btn-link"> Deal Search</LinkTo>
+      {{else}}
+        <IgmTooltip
+          @title="Not permissioned for Deal Search"
+          @triggerEvent="click"
+          @delay="0"
+          @side="top"
+        >
+          <div>
+            Deal Search
+          </div>
+        </IgmTooltip>
+      {{/if}}
+
+      {{#if this.searchQuery.isValid}}
+        <IgmTooltip
+          @title="Save your search term to rerun in the future"
+          @triggerEvent="click"
+          @delay="0"
+          @side="left"
+        >
+          <button
+            type="button"
+            {{on "click" this.saveSearch}}
+            class="btn btn-success"
+          >Save</button>
+        </IgmTooltip>
+      {{/if}}
+      {{#if this.searches}}
+        <div class="dropdown">
+          <button
+            class="btn btn-success dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            Saved Searches
+            <span class="caret"></span>
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right search-dropdown"
+            aria-labelledby="dropdownMenu1"
+          >
+            <SavedSearchesList
+              @searches={{this.searches}}
+              @selectSearch={{this.goToSavedSearch}}
+              @addToDashboard={{this.addToDashboard}}
+              @delete={{this.delete}}
+            />
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</TopNav>
+<SearchQuery
+  @setComponentRef={{this.setComponentRef}}
+  @searchQuery={{this.searchQuery}}
+  as |search updateSearchQuery|
+>
+  <div class="search-results">
+    <div class="row">
+      <div class="col-md-8">
+        {{#if search.searchResults}}
+          <SearchResultList
+            @results={{search.searchResults}}
+            @changePage={{this.changePage}}
+            @totalPages={{search.totalPages}}
+            @updateSearchQuery={{updateSearchQuery}}
+          />
+        {{else}}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="text-center">
+                <h2>Search for a story, analyst, or anything</h2>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+
+      <div class="col-md-4">
+        <SearchFilters
+          @typeFilters={{search.resultCountByType}}
+          @productFilters={{search.resultCountByProduct}}
+          @totalCount={{search.totalCount}}
+          @clDestination={{this.clDestination}}
+          @creditDestination={{this.creditDestination}}
+          @fxDestination={{this.fxDestination}}
+          @iiiaDestination={{this.iiiaDestination}}
+          @noDestination={{this.noDestination}}
+          @ratesDestination={{this.ratesDestination}}
+          @g10FxPlaybookDestination={{this.g10FxPlaybookDestination}}
+          @updateSearchQuery={{updateSearchQuery}}
+        />
+
+      </div>
+    </div>
+  </div>
+</SearchQuery>

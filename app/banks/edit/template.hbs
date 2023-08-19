@@ -1,0 +1,9 @@
+<h2>Editing {{this.bank.fullName}}</h2>
+
+<BankForm @bank={{this.bank}} @allBanks={{this.banks}} />
+
+<button
+  type="button"
+  class="btn btn-default"
+  {{on "click" (fn this.delete this.bank)}}
+>Delete</button>

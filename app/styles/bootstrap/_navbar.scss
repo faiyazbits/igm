@@ -1,0 +1,18 @@
+.navbar-default {
+  border-bottom: solid 1px $gray-lightest;
+  text-transform: uppercase;
+}
+
+.navbar-fixed-top {
+  margin-left: $sidebar-width;
+  transition: all 0.4s ease 0s;
+  top: 38px;
+
+  @media (max-width: $screen-sm-max) {
+    margin-left: 0;
+  }
+}
+
+.navbar-nav .back {
+  padding: 24px 0 24px 12px;
+}

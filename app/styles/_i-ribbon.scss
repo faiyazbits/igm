@@ -1,0 +1,130 @@
+/*
+////////////////////////////////////////////////////////////////////////
+///   KC : Supplementary CSS - third-party component overrides       ///
+////////////////////////////////////////////////////////////////////////
+ */
+
+/* Informa top ribbon */
+#iribbon-container nav ul, #iribbon-container nav ul li {
+  list-style: outside none none;
+  margin: 0;
+  padding: 1em 0;
+}
+#iribbon-container ul, #iribbon-container ol {
+  margin: 0 0 20px 20px;
+}
+#iribbon-container {
+  min-height: 38px;
+  position: fixed;
+  top: 75px;
+  z-index: 1031;
+  width: 100%;
+  color: #fff;
+  background-color: #525a5c;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+
+  @media (max-width: $screen-sm-max) {
+    top: 125px;
+  }
+}
+#iribbon-container a {
+  color: #fff;
+}
+#iribbon-title {
+  line-height: 28px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  display: block;
+  left: 50%;
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+  position: absolute;
+  color: #fff;
+  bottom: 5px;
+  font-size: 20px;
+  padding-right: 20px;
+}
+@media not all, not all {
+  #iribbon-title {
+    background: url(data:image/gif;base64,R0lGODlhXAAiAPMAAI2TlLG0tfX29uXm52lwcdXX2MfJyl5lZ52io77BwXyCg1RcXs7Q0VdfYf///1JaXCH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2RkQ0MEY2MTE0MzkxMUU1ODc5RkQxNjM3OEI2ODgzQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2RkQ0MEY2MjE0MzkxMUU1ODc5RkQxNjM3OEI2ODgzQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjZGRDQwRjVGMTQzOTExRTU4NzlGRDE2Mzc4QjY4ODNDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZGRDQwRjYwMTQzOTExRTU4NzlGRDE2Mzc4QjY4ODNDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAADwAsAAAAAFwAIgBABP8wiPSqvfgk4QrAYCiOZGlyznM4znChFcIGVcMKyzWwhOzQFgCLUgmwPpWdg2BpKBAIGIlFrZqu2Kx2i4GtWAWEwsByKRIsAwDQuykWCiXi4WsF2ELH5EkdiNF6OQQKDQ8LPi5cD15lLywVeUBFVVREPpIPeUQPRg5ID0oEByg3BY+KBgUFDw2qBgQSMzkBSgOqc4dKLQg5maoABwgGCgq3xWUEuWkHFQsApmWfXIwtjimZMxYMRxYEjZcXmhadn6E+c6xSV9cV26tX3npMivT1I9SJFVKRFV/57TzABRkyjlsSHq3AiFGyzsoDd1jiCZhnr2JFah3EkKl2Js2aNnr/3sRhMafOgDsE8uwx+eeGIEKGENHDZw1SNhWNLmxbItCmg03kLIRKmHEkuykOaVrYd3MSpZ8xmmKD6rQcj1FVBECjJ2GTCQ0cPFgci0oVK1ewUASYVetWTF1+ej3zEGxYsTDHWiRDoMQAM0PP+kjbolTfKYE2AukIKFVcVaE8mjyJcmpdTX81p0ra+Smei55TgRoExdgBugbqRDx9WugKNDtkY2eB0wvDggOtfXptQiC3lgZ/LeAO0aD3xUdfBJAi+eA1lbUbKTHI4eP1mhuUBugiOFU5FXTTkOfEebgptM7fhuR2/NAg6sggGCoqvOgUP/L/2jvg8yMcd06jhaJC/yyUmLBafSlgtpR9Ny3AgQC+KRFMY/8FddASeRjQmnwGVkYfU/1VoIAbDxAgBx0UUgWgJ5DxBMYBB0RHDwNmtVKAATqZ9cBd4IlYwIMeyPXLBTxagIAqCliQgCrMHDNBMDrKJuWUFVHhGwmvnUTllra9EcJtvrF3QXFXYgFcBmWyYpw91HhXxRzOyRJdFdOh2AEV1+mR3XZUqURKj1oU9sU1PZ3XTXo/rfcfZzWgQNFiRwUqXjULXnOfgtqwwB8m7FlI2hIDLldZCVRUil9m9zmoR4QsTBiibgWxeGFKaWw4qmpPIXiqqZpZMGJIJZ4IWqcBllYAjDIqQuMqNuKojRqORRL5ox5BQjKkr27FgKSSTO5oypNHvsNFBAA7) no-repeat;
+  }
+}
+#iribbon-detail {
+  margin: 0 auto;
+  max-width: 1180px;
+  overflow: hidden;
+  padding-bottom: 2em;
+}
+
+#iribbon-right, #iribbon-left {
+  float: left;
+  margin: 40px 0;
+  max-width: 570px;
+  padding: 0 2%;
+  width: 45%;
+}
+#iribbon-right {
+  border-left: 1px solid #a5acaf;
+  float: right;
+  padding-left: 2%;
+}
+#iribbon-detail p {
+  margin-bottom: 10px;
+}
+#iribbon-detail ul, #iribbon-detail ul li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+#iribbon-detail ul li {
+  line-height: 1em;
+  margin-bottom: 1.25em;
+  padding: 0 15px 0 0;
+}
+#iribbon-detail ul li:last-child {
+  border: 0 none;
+}
+#iribbon-detail ul li a {
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#iribbon-detail ul li.iribbon-mainlink {
+  border: 0 none;
+  padding-left: 0;
+  text-transform: uppercase;
+}
+#iribbon-detail ul li.iribbon-mainlink a {
+  font-weight: bold;
+  text-transform: none;
+}
+
+#iribbon-title::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #fff transparent transparent transparent;
+  margin-left: 8px;
+  position: absolute;
+  top: 14px;
+  right: 0;
+}
+
+#iribbon-title.active::after {
+  border-width: 0 5px 5px 5px;
+  margin-left: 8px;
+  border-color: transparent transparent #fff transparent;
+  position: absolute;
+  top: 14px;
+  right: 0;
+}
+/* end of Informa top ribbon */

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IGM | Informa Global Markets</title>
+    <meta name="description" content="IGM is your one-stop location for independent financial market news, views and analysis">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/assets/images/financial-favicon.png">
+
+    {{content-for "head"}}
+
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/igm-upgrade.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Cabin:400,500,700|Roboto:400,500,700|PT+Sans:400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" />
+
+
+    <script type="text/javascript">
+      var _elqQ = _elqQ || [];
+
+      (function () {
+        function async_load() {
+          var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+          s.src = '//img06.en25.com/i/elqCfg.min.js';
+          var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        }
+        if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+        else if (window.attachEvent) window.attachEvent('onload', async_load);
+      })();
+
+      function elqTrackPageViewInEmber(url) {
+        _elqQ.push(['elqSetSiteId', '990742620']);
+        _elqQ.push(['elqTrackPageView', url]);
+        _elqQ.push(['elqSetSiteId', '383344069']);
+        _elqQ.push(['elqTrackPageView', url]);
+      }
+    </script>
+    
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/igm-upgrade.js"></script>
+
+    {{content-for "body-footer"}}
+  </body>
+</html>

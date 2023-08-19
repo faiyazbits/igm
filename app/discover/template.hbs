@@ -1,0 +1,261 @@
+<TopNav>
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav ad-tooltip">
+      <li class="nav-link">
+        <IgmTooltip @title="Filter destinations by product, region, or asset class"
+          @position="right" @offsetY="2.5">
+               <LinkTo @route='destination-links' class="all-destinations">All Destinations</LinkTo>
+          {{!-- <LinkTo   @route="index" class="all-destinations">All Destinations </LinkTo> --}}
+        </IgmTooltip>
+      </li>
+    </ul>
+
+    <div class="nav navbar-nav navbar-right">
+      <div class="navbar-actions">
+        <IgmTooltip
+          @title="Customize content for your dashboard"
+          @position="left"
+        >
+          {{!-- {{link-to 'Create Feed' 'discover.new-feed' active=false class='btn btn-success navbar-btn'}} --}}
+          <LinkTo
+            @route="discover.new-feed"
+            active="false"
+            class="btn btn-success navbar-btn"
+          >Create Feed</LinkTo>
+        </IgmTooltip>
+      </div>
+    </div>
+  </div>
+</TopNav>
+{{#in-element this.destinationElement}}
+  {{outlet}}
+{{/in-element}}
+{{#if this.isRealtimeFeedsEnabled}}
+  <div class="discover-body">
+    <p class="top-feeds">
+      Top Feeds
+    </p>
+
+    <div class="separator"></div>
+
+    <DiscoverProduct @title="credit">
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="IIIA"
+            @enabled={{await this.hasIIIA}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="Asia"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="Structured Finance"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="Americas Investment Grade"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="High Yield"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="Loans"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="Europe Investment Grade"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="Emerging Markets"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductLink
+            @category="credit"
+            @name="MTNs"
+            @link="landing-page"
+            @paramName="mtns"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="ESG SRI Bonds"
+            @enabled={{await this.hasCredit}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="credit"
+            @name="Premium Credit Reports"
+            @enabled={{await this.hasPremiumCreditReports}}
+          />
+        </div>
+      </div>
+    </DiscoverProduct>
+
+    <DiscoverProduct @title="fx">
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="fx"
+            @name="Majors"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="fx"
+            @name="Emerging Markets"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductLink
+            @category="fx"
+            @name="Data & Events Calendar"
+            @link="calendar-events"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="fx"
+            @name="Key Majors Reports"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="fx"
+            @name="Key EM Reports"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="fx"
+            @name="Options"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="fx"
+            @name="Viewpoints"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="fx"
+            @name="Technicals"
+            @enabled={{await this.hasFX}}
+          />
+        </div>
+      </div>
+    </DiscoverProduct>
+
+    <DiscoverProduct @title="rates">
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="rates"
+            @name="Bonds"
+            @enabled={{await this.hasRates}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="rates"
+            @name="Emerging Markets"
+            @enabled={{await this.hasRates}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductLink
+            @category="rates"
+            @name="Data & Events Calendar"
+            @link="calendar-events"
+            @enabled={{await this.hasRates}}
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="rates"
+            @name="Central Banks"
+            @enabled={{await this.hasRates}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="rates"
+            @name="Key Reports"
+            @enabled={{await this.hasRates}}
+          />
+        </div>
+        <div class="col-md-4">
+          <DiscoverProductItem
+            @category="rates"
+            @name="Technicals"
+            @enabled={{await this.hasRates}}
+          />
+        </div>
+      </div>
+    </DiscoverProduct>
+  </div>
+{{else}}
+  <div class="discover-body">
+    <p class="top-feeds">
+      Top Feeds
+    </p>
+    <div class="separator"></div>
+    <div class="discover-product-section" data-t="discover-product">
+      <DiscoverCredit />
+    </div>
+    <div class="discover-product-section" data-t="discover-product">
+      <DiscoverFx />
+    </div>
+    <div class="discover-product-section" data-t="discover-product">
+      <DiscoverRates />
+    </div>
+  </div>
+{{/if}}

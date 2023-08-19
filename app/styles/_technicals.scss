@@ -1,0 +1,63 @@
+.technicals {
+
+  .price-row {
+    font-weight: bold;
+  }
+
+  span.price-strong {
+    color: #DE4561;
+  }
+
+  span.price-fair {
+    color: #64A0C8;
+  }
+
+  i.icon-edit,
+  i.icon-circle-outline,
+  i.icon-delete {
+    font-size: 14px;
+    float: none;
+    cursor: pointer;
+    padding-right: 35px;
+  }
+
+  div.panel-body {
+    img {
+      width: 100%;
+    }
+  }
+
+  .col-fixed-430{
+    width:430px !important;
+    height:100%;
+  }
+
+  div.commentaries {
+    .author {
+      font: $primary-font-sm;
+      color: $gray-lighter;
+      cursor: pointer;
+      a {
+        color: $gray-lighter;
+      }
+    }
+    .tele {
+      font: $primary-font-sm;
+      color: $gray-lighter;
+    }
+  }
+
+  .table {
+    > tbody {
+      > tr {
+        > td {
+          padding: 8px 8px 8px 16px;
+        }
+      }
+    }
+  }
+
+  .panel-body.technical-chart {
+    padding: 0;
+  }
+}

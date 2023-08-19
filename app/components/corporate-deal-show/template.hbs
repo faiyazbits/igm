@@ -1,0 +1,592 @@
+<div class="row">
+  <div class="col-md-4">
+    <ul class="list-unstyled">
+      {{#if @deal.dateOffered}}
+        <li>
+          <span class="text-muted">Date: </span>
+          <span class="pull-right">{{@deal.displayDateOffered}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.status}}
+        <li>
+          <span class="text-muted">Status: </span>
+          <span class="pull-right">{{@deal.status}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuer.name}}
+        <li>
+          <span class="text-muted">Issuer: </span>
+          <span class="pull-right">{{@deal.issuer.name}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.currency}}
+        <li>
+          <span class="text-muted">Currency: </span>
+          <span class="pull-right">{{@deal.currency}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.amountOffered}}
+        <li>
+          <span class="text-muted">Size: </span>
+          <span class="pull-right">
+            {{@deal.displayAmount}}
+          </span>
+        </li>
+      {{/if}}
+      {{#if @deal.amountOfferedUsdEquivalent}}
+        <li>
+          <span class="text-muted">Size USD: </span>
+          <span class="pull-right">
+            {{@deal.displayAmountUSD}}
+          </span>
+        </li>
+      {{/if}}
+      {{#if @deal.amountOfferedEurEquivalent}}
+        <li>
+          <span class="text-muted">Size EUR: </span>
+          <span class="pull-right">
+            {{@deal.displayAmountEUR}}
+          </span>
+        </li>
+      {{/if}}
+      {{#if @deal.coupon}}
+        <li>
+          <span class="text-muted">Coupon: </span>
+          <span class="pull-right">{{@deal.coupon}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.maturity}}
+        <li>
+          <span class="text-muted">Maturity: </span>
+          <span class="pull-right">{{@deal.displayMaturityfunction}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuePrice}}
+        <li>
+          <span class="text-muted">Issue Price: </span>
+          <span class="pull-right">{{@deal.issuePrice}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.fpr}}
+        <li>
+          <span class="text-muted">FPR: </span>
+          <span class="pull-right">{{@deal.fpr}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.yield}}
+        <li><span class="text-muted">Yield: </span>
+          <span class="pull-right">{{@deal.yield}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.swapsBenchmark}}
+        <li>
+          <span class="text-muted">Swaps Benchmark: </span>
+          <span class="pull-right">{{@deal.swapsBenchmark}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.swapsSpread}}
+        <li>
+          <span class="text-muted">Swaps Spread: </span>
+          <span class="pull-right">{{@deal.swapsSpread}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.govtBenchmark}}
+        <li>
+          <span class="text-muted">Govt Benchmark: </span>
+          <span class="pull-right">{{@deal.govtBenchmark}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.govtBmkSpread}}
+        <li>
+          <span class="text-muted">Govt Bmk Spread: </span>
+          <span class="pull-right">{{@deal.govtBmkSpread}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.frnDiscountMargin}}
+        <li>
+          <span class="text-muted">FRN Discount Margin: </span>
+          <span class="pull-right">{{@deal.frnDiscountMargin}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.priceTalk}}
+        <li>
+          <span class="text-muted">Price Talk: </span>
+          <span class="pull-right">{{@deal.priceTalk}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.settlementDate}}
+        <li>
+          <span class="text-muted">Settlement Date: </span>
+          <span class="pull-right">{{@deal.displaySettlementDatefunction}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.term}}
+        <li>
+          <span class="text-muted">Term: </span>
+          <span class="pull-right">{{@deal.term}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.bookManagerBanks}}
+        <li>
+          <span class="text-muted">Book Managers: </span>
+          <span class="pull-right">
+            {{#each @deal.bookManagerBanks as |bookManager index| }}
+              {{if index " / "}}{{bookManager.shortName}}
+            {{/each}}
+          </span>
+        </li>
+      {{/if}}
+      {{#if @deal.otherManagerBanks}}
+        <li>
+          <span class="text-muted">Other Managers: </span>
+          <span class="pull-right">
+            {{#each @deal.otherManagerBanks as |otherManager index| }}
+               {{if index " / "}} {{otherManager.shortName}}
+            {{/each}}
+          </span>
+        </li>
+      {{/if}}
+      {{#if @deal.format}}
+        <li>
+          <span class="text-muted">Format: </span>
+          <span class="pull-right">{{@deal.format}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.rating}}
+        <li>
+          <span class="text-muted">Rating: </span>
+          <span class="pull-right">{{@deal.rating}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.moodysRating}}
+        <li>
+          <span class="text-muted">Moody's Rating: </span>
+          <span class="pull-right">{{@deal.moodysRating}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.moodysOutlook}}
+        <li>
+          <span class="text-muted">Moody's Outlook: </span>
+          <span class="pull-right">{{@deal.moodysOutlook}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.spRating}}
+        <li>
+          <span class="text-muted">S&amp;P Rating: </span>
+          <span class="pull-right">{{@deal.spRating}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.spOutlook}}
+        <li>
+          <span class="text-muted">S&amp;P Outlook: </span>
+          <span class="pull-right">{{@deal.spOutlook}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.fitchRating}}
+        <li>
+          <span class="text-muted">Fitch Rating: </span>
+          <span class="pull-right">{{@deal.fitchRating}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.fitchOutlook}}
+        <li>
+          <span class="text-muted">Fitch Outlook: </span>
+          <span class="pull-right">{{@deal.fitchOutlook}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.dbrsRating}}
+        <li>
+          <span class="text-muted">DBRS Rating: </span>
+          <span class="pull-right">{{@deal.dbrsRating}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.dbrsOutlook}}
+        <li>
+          <span class="text-muted">DBRS Outlook: </span>
+          <span class="pull-right">{{@deal.dbrsOutlook}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.jcrRating}}
+        <li>
+          <span class="text-muted">JCR Rating: </span>
+          <span class="pull-right">{{@deal.jcrRating}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.riRating}}
+        <li>
+          <span class="text-muted">R&amp;I Rating: </span>
+          <span class="pull-right">{{@deal.riRating}}</span>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <ul class="list-unstyled">
+      {{#if @deal.security}}
+        <li>
+          <span class="text-muted">Security: </span>
+          <span class="pull-right">{{@deal.security}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.couponType}}
+        <li>
+          <span class="text-muted">Coupon Type: </span>
+          <span class="pull-right">{{@deal.couponType}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.payment}}
+        <li>
+          <span class="text-muted">Payment Frequency: </span>
+          <span class="pull-right">{{@deal.payment}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.guarantor}}
+        <li>
+          <span class="text-muted">Guarantor: </span>
+          <span class="pull-right">{{@deal.guarantor}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuer.country.name}}
+        <li>
+          <span class="text-muted">Country/Region: </span>
+          <span class="pull-right">{{@deal.issuer.country.name}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuer.isEmergingMarket}}
+        <li>
+          <span class="text-muted">Emerging Market: </span>
+          <span class="pull-right">{{format-boolean @deal.issuer.isEmergingMarket}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuer.industry.name}}
+        <li>
+          <span class="text-muted">Industry: </span>
+          <span class="pull-right">{{@deal.issuer.industry.name}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuer.industry.industryClass}}
+        <li>
+          <span class="text-muted">Industry Class: </span>
+          <span class="pull-right">{{@deal.issuer.industry.industryClass}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuer.industry.industrySubclass}}
+        <li>
+          <span class="text-muted">Industry Subclass: </span>
+          <span class="pull-right">{{@deal.issuer.industry.industrySubclass}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.regions}}
+        <li>
+          <span class="text-muted">Regions: </span>
+          <span class="pull-right">
+            {{#each @deal.regions as |region index| }}
+              {{if index " / "}}{{region.displayName}}
+            {{/each}}
+          </span>
+        </li>
+      {{/if}}
+      {{#if @deal.dealType}}
+        <li>
+          <span class="text-muted">Deal Type: </span>
+          <span class="pull-right">
+            {{#each @deal.dealType as |dealType index| }}
+              {{if index " / "}}{{dealType}}
+            {{/each}}
+          </span>
+        </li>
+      {{/if}}
+      {{#if @deal.marketType}}
+        <li>
+          <span class="text-muted">Market Type: </span>
+          <span class="pull-right">{{@deal.marketType}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.coveredBonds}}
+        <li>
+          <span class="text-muted">Covered Bonds: </span>
+          <span class="pull-right">{{@deal.coveredBonds}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.subordinatedHybridPreferred}}
+        <li>
+          <span class="text-muted">Subordinated/Hybrid/Preferred: </span>
+          <span class="pull-right">{{@deal.subordinatedHybridPreferred}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.selfLed}}
+        <li>
+          <span class="text-muted">Self-Led: </span>
+          <span class="pull-right">{{format-boolean @deal.selfLed}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.fdicGgb}}
+        <li>
+          <span class="text-muted">FDIC GGB: </span>
+          <span class="pull-right">{{@deal.fdicGgb}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.indexLinked}}
+        <li>
+          <span class="text-muted">Index-Linked: </span>
+          <span class="pull-right">{{@deal.indexLinked}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.upped}}
+        <li>
+          <span class="text-muted">Upped (Increased): </span>
+          <span class="pull-right">{{format-boolean @deal.upped}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.addOn}}
+        <li>
+          <span class="text-muted">Add-on (Reopening/Tap): </span>
+          <span class="pull-right">{{format-boolean @deal.addOn}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.totalDealSize}}
+        <li>
+          <span class="text-muted">Total Deal Size: </span>
+          <span class="pull-right">{{@deal.displayTotalDealSize}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.totalTranches}}
+        <li>
+          <span class="text-muted">Total Tranches: </span>
+          <span class="pull-right">{{@deal.totalTranches}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.expectedMaturity}}
+        <li>
+          <span class="text-muted">Expected Maturity: </span>
+          <span class="pull-right">{{@deal.expectedMaturity}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.averageLife}}
+        <li>
+          <span class="text-muted">Average Life: </span>
+          <span class="pull-right">{{@deal.averageLife}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.callOption}}
+        <li>
+          <span class="text-muted">Call Option: </span>
+          <span class="pull-right">{{format-boolean @deal.callOption}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.putOption}}
+        <li>
+          <span class="text-muted">Put Option: </span>
+          <span class="pull-right">{{format-boolean @deal.putOption}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.callProtection}}
+        <li>
+          <span class="text-muted">Call Protection: </span>
+          <span class="pull-right">{{@deal.callProtection}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.callDate}}
+        <li>
+          <span class="text-muted">Call Date: </span>
+          <span class="pull-right">{{@deal.displayCallDate}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.totalFees}}
+        <li>
+          <span class="text-muted">Total Fees: </span>
+          <span class="pull-right">{{@deal.totalFees}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.mufees}}
+        <li>
+          <span class="text-muted">M&amp;U Fees: </span>
+          <span class="pull-right">{{@deal.mufees}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.sellingConcession}}
+        <li>
+          <span class="text-muted">Selling Concession: </span>
+          <span class="pull-right">{{@deal.sellingConcession}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.sellingRestrictions}}
+        <li>
+          <span class="text-muted">Selling Restrictions: </span>
+          <span class="pull-right">{{@deal.sellingRestrictions}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.tefra}}
+        <li>
+          <span class="text-muted">Tefra: </span>
+          <span class="pull-right">{{@deal.tefra}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.listing}}
+        <li>
+          <span class="text-muted">Listing: </span>
+          <span class="pull-right">{{@deal.listing}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.denom}}
+        <li>
+          <span class="text-muted">Denom: </span>
+          <span class="pull-right">{{@deal.denom}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.governingLaw}}
+        <li>
+          <span class="text-muted">Governing Law: </span>
+          <span class="pull-right">{{@deal.governingLaw}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.isin}}
+        <li>
+          <span class="text-muted">ISIN: </span>
+          <span class="pull-right">{{@deal.isin}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.cusip}}
+        <li>
+          <span class="text-muted">CUSIP: </span>
+          <span class="pull-right">{{@deal.cusip}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.figi}}
+        <li>
+          <span class="text-muted">FIGI: </span>
+          <span class="pull-right">{{@deal.figi}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.valoren}}
+        <li>
+          <span class="text-muted">Valoren: </span>
+          <span class="pull-right">{{@deal.valoren}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.wkn}}
+        <li>
+          <span class="text-muted">WKN: </span>
+          <span class="pull-right">{{@deal.wkn}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.otherSecId}}
+        <li>
+          <span class="text-muted">Other Sec ID: </span>
+          <span class="pull-right">{{@deal.otherSecId}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.sharesOffered}}
+        <li>
+          <span class="text-muted">Shares Offered: </span>
+          <span class="pull-right">{{@deal.sharesOffered}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.pfdParValue}}
+        <li>
+          <span class="text-muted">Pfd Par Value: </span>
+          <span class="pull-right">{{@deal.pfdParValue}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.dividendProt}}
+        <li>
+          <span class="text-muted">Dividend Prot: </span>
+          <span class="pull-right">{{@deal.dividendProt}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.dividendRate}}
+        <li>
+          <span class="text-muted">Dividend Rate: </span>
+          <span class="pull-right">{{@deal.dividendRate}}</span>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <ul class="list-unstyled">
+      {{#if @deal.bookSize}}
+        <li>
+          <span class="text-muted">Book Size: </span>
+          <span class="pull-right">{{@deal.bookSize}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.numberOfAccounts}}
+        <li>
+          <span class="text-muted">No. Accounts: </span>
+          <span class="pull-right">{{@deal.numberOfAccounts}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.xcvrd}}
+        <li>
+          <span class="text-muted">XCVRD: </span>
+          <span class="pull-right">{{@deal.xcvrd}}</span>
+        </li>
+      {{/if}}
+      {{#if (or @deal.nics (eq @deal.nics 0))}}
+        <li>
+          <span class="text-muted">NICs: </span>
+          <span class="pull-right">{{@deal.nics}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.peakBooks}}
+        <li>
+          <span class="text-muted">Peak Books: </span>
+          <span class="pull-right">{{@deal.peakBooks}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.jlmInterest}}
+        <li>
+          <span class="text-muted">JLM Interest: </span>
+          <span class="pull-right">{{@deal.jlmInterest}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.igPostPricingSecondarySpread}}
+        <li>
+          <span class="text-muted">IG Post Pricing Secondary Price: </span>
+          <span class="pull-right">{{@deal.igPostPricingSecondarySpread}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.hyPostPricingSecondaryPrice}}
+        <li>
+          <span class="text-muted">HY Post Pricing Secondary Price: </span>
+          <span class="pull-right">{{@deal.hyPostPricingSecondaryPrice}}</span>
+        </li>
+      {{/if}}
+      <GeographyStatsPrinter @deal={{@deal}} />
+      <InvestorTypeStatsPrinter @deal={{@deal}} />
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-unstyled">
+      {{#if @deal.useOfProceeds}}
+        <li>
+          <span class="text-muted">Use of Proceeds: </span>
+          {{@deal.useOfProceeds}}
+        </li>
+      {{/if}}
+      {{#if @deal.comments}}
+        <li>
+          <span class="text-muted">Comments: </span>
+          {{@deal.comments}}
+        </li>
+      {{/if}}
+      {{#if @deal.callPutComment}}
+        <li>
+          <span class="text-muted">Call Put Comment: </span>
+          {{@deal.callPutComment}}
+        </li>
+      {{/if}}
+      {{#if @deal.commentaryFileUrl}}
+        <li>
+          <span class="text-muted">Commentary File: </span>
+          <a href="{{@deal.commentaryFileUrl}}" target="_blank" rel="noopener noreferrer">download</a>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+</div>

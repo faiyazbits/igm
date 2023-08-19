@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    RESULTS
+  </div>
+
+  <div class="list-group">
+    {{#if (is-pending @results)}}
+      <h2> Loading..</h2>
+    {{else}}
+      {{#each @results as |result|}}
+        <LinkTo @route="index" class="list-group-item list-group-item-large">
+          <div class="content-block">
+            <div class="content-block-heading">
+              <div class="content-block-date">
+                {{format-date
+                  result.searchable.feedSortDate
+                  customFormat="MMM-DD HH:mm"
+                }}
+              </div>
+              <div class="content-block-headline">
+                {{result.searchable.headline}}
+              </div>
+            </div>
+          </div>
+        </LinkTo>
+      {{/each}}
+    {{/if}}
+
+    <div class="panel-footer clearfix">
+      <span class="pull-right">
+        {{#if this.hasPreviousPage}}
+          {{! template-lint-disable no-invalid-interactive }}
+          <span {{on "click" this.previous}}><i
+              class="icon-arrow-left"
+            ></i></span>
+        {{/if}}
+        {{#if this.hasNextPage}}
+          <span {{on "click" this.next}}><i class="icon-arrow-right"></i></span>
+        {{/if}}
+      </span>
+    </div>
+  </div>
+</div>

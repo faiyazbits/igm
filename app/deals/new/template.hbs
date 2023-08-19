@@ -1,0 +1,26 @@
+<TopNav>
+  <AuthorNav />
+</TopNav>
+{{#if this.isPreview}}
+  <button type="button" {{on "click" this.preview}} class="btn btn-default">Back
+    to Form</button>
+  <DealShow
+    @alertFeed={{this.alertFeed}}
+    @deal={{this.deal}}
+    @relatedStories={{this.relatedStories}}
+  />
+{{else}}
+  {{#if this.deal.isSF}}
+    <SfDealForm
+      @deal={{this.deal}}
+      @preview={{this.preview}}
+      @save={{this.saveSF}}
+    />
+  {{else}}
+    <CorporateDealForm
+      @deal={{this.deal}}
+      @preview={{this.preview}}
+      @save={{this.saveCorporate}}
+    />
+  {{/if}}
+{{/if}}

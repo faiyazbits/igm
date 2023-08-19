@@ -1,0 +1,136 @@
+{{page-title "MyIgm"}}
+
+<TopNav>
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li>
+        <LinkTo @route="my-igm"><i class="icon-search-solid"></i></LinkTo>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        {{! template-lint-disable require-presentational-children }}
+        <a
+          href="#"
+          class="dropdown-toggle"
+          data-toggle="dropdown"
+          role="button"
+          aria-expanded="false"
+        >
+          {{! template-lint-disable require-presentational-children }}
+          <i class="icon-gear-solid"></i>
+        </a>
+
+        <ul class="dropdown-menu" role="menu">
+
+          <li>
+            <LinkTo @route="application">
+              Home
+            </LinkTo>
+          </li>
+          {{#if (get (await this.session.currentUser) "canEditTags")}}
+            <li>
+              <LinkTo @route="tags">
+                Tags
+              </LinkTo>
+            </li>
+          {{/if}}
+
+          <li><a href="#">Help</a></li>
+          <li><LinkTo @route="about">
+              About
+            </LinkTo></li>
+          <li class="divider"></li>
+          <li>
+            <LinkTo @route="application">
+              {{get (await this.session.currentUser) "email"}}
+            </LinkTo>
+          </li>
+
+          <li><a href="#" {{on "click" this.logout}}>Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</TopNav>
+
+{{#each this.dashboardItems as |dashboardItem|}}
+  {{#if (await (get dashboardItem "isDealSearch"))}}
+    <div class="col-sm-12">
+      {{#if (await (get dashboardItem "dashboardable"))}}
+        <SavedSearchPanel
+          @isCorporate={{dashboardItem.dashboardable.isCorporate}}
+          @savedSearch={{get dashboardItem "dashboardable"}}
+          @goToSavedSearch={{this.goToSavedSearch}}
+        />
+      {{/if}}
+
+    </div>
+  {{else if (get dashboardItem "isSavedSearch")}}
+    <div class="col-sm-12 col-md-6">
+      {{#if (get dashboardItem "dashboardable")}}
+        <SavedSearchPanel
+          @savedSearch={{get dashboardItem "dashboardable"}}
+          @goToSavedSearch={{this.goToSavedSearch}}
+        />
+      {{/if}}
+    </div>
+  {{else if (await (get dashboardItem "isTechnicalFeed"))}}
+    <div class="technicals col-sm-12 col-lg-6">
+      {{#if (get dashboardItem "dashboardable")}}
+        <FeedPanel
+          @feed={{get dashboardItem "dashboardable"}}
+          @isAddableFeed={{false}}
+          @isEditable={{true}}
+        />
+      {{/if}}
+    </div>
+  {{else if (await (get dashboardItem "isTechCompositeFeed"))}}
+    <div class="col-sm-12">
+      {{#if (get dashboardItem "dashboardable")}}
+        <FeedPanel
+          @feed={{get dashboardItem "dashboardable"}}
+          @isAddableFeed={{false}}
+          @isEditable={{true}}
+        />
+      {{/if}}
+    </div>
+  {{else if (await (get dashboardItem "isDealFeed"))}}
+    <div class="col-sm-12">
+      {{#if (get dashboardItem "dashboardable")}}
+        <FeedPanel
+          @feed={{get dashboardItem "dashboardable"}}
+          @isAddableFeed={{false}}
+          @isEditable={{true}}
+        />
+      {{/if}}
+    </div>
+  {{else if (await (get dashboardItem "isLeagueTableFeed"))}}
+    <div class="col-sm-12 col-md-12">
+      {{#if (get dashboardItem "dashboardable")}}
+        <FeedPanel
+          @feed={{get dashboardItem "dashboardable"}}
+          @isAddableFeed={{false}}
+          @isEditable={{true}}
+        />
+      {{/if}}
+    </div>
+  {{else if (get dashboardItem "isFeed")}}
+    <div class="col-sm-12 col-md-6">
+      {{#if (get dashboardItem "dashboardable")}}
+        <FeedPanel
+          @feed={{get dashboardItem "dashboardable"}}
+          @isAddableFeed={{false}}
+          @isEditable={{true}}
+        />
+      {{/if}}
+    </div>
+  {{/if}}
+{{else}}
+  <div class="col-md-12">
+    <p>You have no content added to your dashboard. Navigate to our
+      <LinkTo @route="discover">Discover</LinkTo>
+      page to find top content to add.</p>
+  </div>
+{{/each}}

@@ -1,0 +1,96 @@
+<IgmForm @for={{@technical}} @submitForm={{this.publish}}>
+  <div class="row">
+    <div class="col-md-8">
+      <IgmInput @value={{@technical.strategy}} @label="Strategy" />
+    </div>
+    <div class="col-md-4">
+      <IgmInput @value={{@technical.email}} @label="Email" />
+    </div>
+  </div>
+  {{#if this.session.currentUser.isAdmin}}
+    <div class="row">
+      <div class="col-md-4">
+        <IgmInput @value={{@technical.name}} @label="Name" />
+      </div>
+      <div class="col-md-6">
+        <IgmPowerSelect
+          @selection={{@technical.destinations}}
+          @options={{@destinations}}
+          @errors={{@technical.errors.destinations}}
+          @label="Destinations"
+          @placeholder="Choose some destinations"
+          @multiple={{true}}
+          @optionLabelPath="name"
+          @onChange={{this.onDealRegionChange}}
+          @searchEnabled={{true}}
+          @closeOnSelect={{false}}
+          @search={{this.searchDestinationNamesOptions}}
+        />
+      </div>
+    </div>
+  {{/if}}
+  <div class="row">
+    {{! template-lint-disable no-inline-styles }}
+    <div class="col-md-4 col-fixed-430" style="width: 430px;">
+      <div class="form-group">
+        <label>Levels</label>
+        <Hot @data={{@technical.tableData}} @onChange={{this.onHotChange}} />
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div>
+        <label for="commentary">Commentary</label>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          NEW COMMENTARY
+        </div>
+        <div class="panel-body">
+          <IgmInput @value={{@newCommentaryHeadline}} @label="Headline" />
+
+          <IgmFroalaEditor
+            @label="Body"
+            @value={{@newCommentaryBody}}
+            @update={{fn (mut @newCommentaryBody)}}
+          />
+        </div>
+      </div>
+
+      {{#if @technical.commentaries}}
+        {{#each @technical.commentaries as |commentary|}}
+          <TechnicalCommentary @commentary={{commentary}} />
+        {{/each}}
+        <PaginationButtons
+          @currentPage={{@commentsPage}}
+          @totalPages={{@commentsTotalPages}}
+        />
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <label class="pull-right">
+        Resend alerts?
+        <Input
+          @type="checkbox"
+          name="resendAlerts"
+          @checked={{@technical.resendAlerts}}
+        />
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <label class="pull-right">
+        <button
+          class="btn btn-default"
+          type="button"
+          {{on "click" this.publish}}
+        >Publish</button>
+      </label>
+    </div>
+  </div>
+</IgmForm>

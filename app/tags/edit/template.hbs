@@ -1,0 +1,32 @@
+<h1>Edit {{@model.name}}</h1>
+
+<IgmForm @for={{@model}} @submitForm={{this.saveTag}}>
+  <div class="row">
+    <div class="col-sm-12">
+      <IgmInput
+        type="text"
+        @label="Name"
+        @value={{@model.name}}
+        @errors={{@model.errors}}
+        @update={{fn (mut @model.name)}}
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <button
+        type="button"
+        {{on "click" (fn this.saveTag @model)}}
+        class="btn btn-success"
+      >Save</button>
+      <LinkTo @route="tags.index" class="btn btn-primary">
+        Cancel
+      </LinkTo>
+      <button
+        type="button"
+        {{on "click" (fn this.deleteTag @model)}}
+        class="btn btn-danger"
+      >Delete</button>
+    </div>
+  </div>
+</IgmForm>

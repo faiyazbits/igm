@@ -1,0 +1,28 @@
+<div class="form-group {{if this.hasError 'has-error'}}">
+
+  <label for={{@uid}} class="control-label {{@labelClass}}">
+    {{@label}}
+  </label>
+
+  <div class="{{if this.hasAffix 'input-group'}} {{@inputWrapperClass}}">
+    {{#if @prefix}}
+      <div class="input-group-addon">{{@prefix}}</div>
+    {{/if}}
+
+    <Input
+      id={{this.uid}}
+      @type="text"
+      disabled={{this.disabled}}
+      class="form-control"
+      placeholder={{this.placeholder}}
+      @value={{@value}}
+    />
+    {{#if @suffix}}
+      <div class="input-group-addon">{{@suffix}}</div>
+    {{/if}}
+  </div>
+
+  {{#each @errors as |error|}}
+    <span class="help-block">{{error.message}}</span>
+  {{/each}}
+</div>

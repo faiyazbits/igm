@@ -1,0 +1,149 @@
+<IgmForm @for={{@calendarEvent}} @submitForm={{this.save}}>
+  <div class="row">
+    <div class="col-sm-2">
+      <IgmPowerSelect
+        @selection={{this.eventType}}
+        @options={{this.eventTypeOptions}}
+        @errors={{@calendarEvent.errors.eventType}}
+        @label="Event type"
+        @optionLabelPath="label"
+        @onChange={{this.onEventTypeChange}}
+        @allowClear={{true}}
+      />
+    </div>
+
+    <div class="col-sm-4">
+      <IgmInput
+        @value={{@calendarEvent.name}}
+        @errors={{@calendarEvent.errors.name}}
+        @label="Name"
+      />
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group {{if @calendarEvent.errors.dateTime 'has-error'}}">
+        <label for="dateTime" class="control-label">When (GMT)</label>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <BooleanToggle
+              @classNames="btn btn-block"
+              @text="All day"
+              @value={{@calendarEvent.allDay}}
+              @toggle={{this.makeAllDayEvent}}
+            />
+          </div>
+
+          <div class="col-sm-9">
+            {{#if (get @calendarEvent "allDay")}}
+              <DatetimePicker @date={{@calendarEvent.dateTime}} />
+            {{else}}
+              <DatetimePicker
+                @date={{@calendarEvent.dateTime}}
+                @pickTime={{true}}
+              />
+            {{/if}}
+          </div>
+        </div>
+
+        {{#each @calendarEvent.errors.dateTime as |error|}}
+          <span class="help-block">{{error.message}}</span>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <IgmPowerSelect
+        @selection={{@calendarEvent.prefix}}
+        @options={{this.prefixOptions}}
+        @errors={{@calendarEvent.errors.prefix}}
+        @label="Prefix"
+        @onChange={{fn (mut @calendarEvent.prefix)}}
+        @allowClear={{true}}
+        @placeholder={{this.prefixPlaceholder}}
+      />
+    </div>
+
+    <div class="col-sm-6">
+      <IgmPowerSelect
+        @selection={{@calendarEvent.suffix}}
+        @options={{this.prefixOptions}}
+        @errors={{@calendarEvent.errors.suffix}}
+        @label="Suffix"
+        @onChange={{fn (mut @calendarEvent.suffix)}}
+        @allowClear={{true}}
+        @placeholder={{this.prefixPlaceholder}}
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <IgmInput
+        @value={{@calendarEvent.actual}}
+        @errors={{@calendarEvent.actual.errors}}
+        @label="Actual"
+        @prefix={{@calendarEvent.prefix}}
+        @suffix={{@calendarEvent.suffix}}
+      />
+    </div>
+
+    <div class="col-sm-4">
+      <IgmInput
+        @value={{@calendarEvent.consensus}}
+        @errors={{@calendarEvent.consensus.errors}}
+        @label="Consensus"
+        @prefix={{@calendarEvent.prefix}}
+        @suffix={{@calendarEvent.suffix}}
+      />
+    </div>
+
+    <div class="col-sm-4">
+      <IgmInput
+        @value={{@calendarEvent.previous}}
+        @errors={{@calendarEvent.previous.errors}}
+        @label="Previous"
+        @prefix={{@calendarEvent.prefix}}
+        @suffix={{@calendarEvent.suffix}}
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <IgmPowerSelect
+        @selection={{@calendarEvent.country}}
+        @options={{@allCountries}}
+        @errors={{@calendarEvent.errors.country}}
+        @onChange={{fn (mut @calendarEvent.country)}}
+        @optionLabelPath="name"
+        @allowClear={{true}}
+        @placeholder="Choose a country"
+        @searchEnabled={{true}}
+        @search={{this.searchCountryOptions}}
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary">Save</button>
+
+      {{#if this.isDeleteable}}
+        <button
+          {{on "click" this.delete}}
+          type="button"
+          class="btn btn-danger"
+        >Delete</button>
+      {{else}}
+        <button
+          {{on "click" this.cancel}}
+          type="button"
+          class="btn btn-default"
+        >Cancel</button>
+      {{/if}}
+    </div>
+  </div>
+</IgmForm>

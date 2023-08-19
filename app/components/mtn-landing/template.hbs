@@ -1,0 +1,36 @@
+{{#if @items}}
+  <table class="table mtn-index mtn-landing">
+    <thead>
+      <tr>
+        <th class="created">Issue Date</th>
+        <th>ISIN</th>
+        <th>Issue Type</th>
+        <th>Issue Price</th>
+        <th>Rate</th>
+        <th>Coupon</th>
+        <th>Settles</th>
+        <th>Maturity</th>
+        <th class="size">Size</th>
+        <th>Currency</th>
+        <th class="issuer">Issuer</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each @items as |mtn|}}
+        <tr>
+          <td>{{format-date mtn.issueDate customFormat="MMM-D-YYYY" utc=true}}</td>
+          <td>{{mtn.isin}}</td>
+          <td>{{mtn.issueType}}</td>
+          <td>{{mtn.issuePrice}}</td>
+          <td>{{mtn.rate}}</td>
+          <td>{{mtn.coupon}}</td>
+          <td>{{mtn.settles}}</td>
+          <td>{{format-date mtn.maturity customFormat="MMM-D-YYYY" utc=true}}</td>
+          <td>{{mtn.displayAmount}}</td>
+          <td>{{mtn.ccy}}</td>
+          <td>{{mtn.issuer}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/if}}

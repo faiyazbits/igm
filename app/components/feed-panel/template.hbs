@@ -1,0 +1,235 @@
+<div data-t="feed-panel" class={{this.rootClassName}}>
+  <div class="feed-panel-container">
+    {{#unless this.feed.isDeal}}
+      <div class="panel-heading">
+        <ul class="panel-actions">
+          {{#if (or this.feed.isStory this.feed.isAll)}}
+            <li>
+              <span
+                {{on "click" this.toggleIsShowingStoryBody}}
+                class="panel-action-maximize"
+              ><i class="icon-maximize"></i></span>
+
+            </li>
+          {{/if}}
+          {{#if this.isRealtimeFeedsEnabled}}
+            {{#if this.isAddableFeed}}
+              <li>
+                <AddFeedPopover
+                  @feed={{this.newFeed}}
+                  @save={{this.saveFeed}}
+                  @iconClass="icon-plus"
+                />
+              </li>
+            {{/if}}
+          {{/if}}
+          {{#if this.isAlertable}}
+            <li>
+              {{#if (await this.newFeed)}}
+                <AlertPopover
+                  @alertable={{this.newFeed}}
+                  @iconClass="icon-bell-solid"
+                />
+              {{/if}}
+            </li>
+          {{/if}}
+        </ul>
+        <div class="panel-title">
+          <span class="feed-content-type">{{this.feed.contentType}}</span>
+          -
+          <span class="feed-title" data-t="feed-panel-title">
+            {{#if this.isRealtimeFeedsEnabled}}
+              {{#if this.isEditable}}
+                <LinkTo
+                  @route="settings.feeds.edit"
+                  @model={{this.feed}}
+                >{{this.feed.title}}</LinkTo>
+              {{else}}
+                <LinkTo
+                  @route={{this.titleLink}}
+                  @query={{hash
+                    destinations=(await this.destinationNames)
+                    title=this.feed.title
+                  }}
+                >{{this.feed.title}}</LinkTo>
+              {{/if}}
+            {{else}}
+              <LinkTo
+                @route="settings.feeds.edit"
+                @model={{this.feed}}
+              >{{this.feed.title}}</LinkTo>
+            {{/if}}
+          </span>
+        </div>
+      </div>
+    {{/unless}}
+
+    {{#if this.feed.searchResults}}
+      {{#if this.feed.isTechnical}}
+        <div class="technicals">
+          {{#each this.feed.searchResults as |result|}}
+            {{#if this.isRealtimeFeedsEnabled}}
+              {{#if this.isAddableFeed}}
+                <TechnicalChart @technical={{@result.searchable}} />
+              {{else}}
+                <TechnicalShowPanel @technical={{result.searchable}} />
+                {{#if this.commentaries}}
+                  <div class="panel-heading">
+                    <div class="panel-title">
+                      COMMENTARY
+                    </div>
+                  </div>
+                  <div class="feed-panel-commentary">
+                    <TechnicalShowCommentary
+                      @commentaries={{this.commentaries}}
+                    />
+                  </div>
+                {{/if}}
+              {{/if}}
+            {{else}}
+              <TechnicalShowPanel @technical={{result.searchable}} />
+              {{#if this.commentaries}}
+                <div class="panel-heading">
+                  <div class="panel-title">
+                    COMMENTARY
+                  </div>
+                </div>
+                <div class="feed-panel-commentary">
+                  <TechnicalShowCommentary
+                    @commentaries={{this.commentaries}}
+                  />
+                </div>
+              {{/if}}
+            {{/if}}
+          {{/each}}
+        </div>
+      {{else if this.feed.isLeagueTable}}
+        <div class="league-table-landing">
+          {{#each this.feed.searchResults as |result|}}
+            {{!-- {{league-table-table leagueTable=result.searchable}} --}}
+          {{/each}}
+        </div>
+      {{else if (await (get this.feed "isTechComposite"))}}
+        <div class="technical-composite-route tech-composite-landing">
+          {{#each this.feed.searchResults as |result|}}
+            <TechnicalCompositeTable
+              @technicalComposite={{result.searchable}}
+              @destinations={{this.destinationNames}}
+            />
+          {{/each}}
+        </div>
+      {{else if this.feed.isDeal}}
+        <div>
+          {{#if this.isRealtimeFeedsEnabled}}
+            <DealIndexTable
+              @deals={{await this.searchables}}
+              @destinations={{this.destinationNames}}
+              @status={{await this.feed.status}}
+              @dealType={{this.feed.dealType}}
+              @title={{this.feed.title}}
+              @route={{this.feed.route}}
+              @feedId={{this.feed.id}}
+              @feedPageView={{this.feed.onDashboard}}
+              @landingPageView={{(not this.feed.onDashboard)}}
+            />
+          {{else}}
+            <DealIndexTable
+              @deals={{this.searchables}}
+              @destinations={{this.destinationNames}}
+              @status={{this.feed.status}}
+              @dealType={{this.feed.dealType}}
+              @title={{this.feed.title}}
+              @route={{this.feed.route}}
+              @feedId={{this.feed.id}}
+              @feedPageView={{true}}
+            />
+          {{/if}}
+        </div>
+      {{else}}
+        <div class="feed-content-list list-group">
+          {{#each this.feed.searchResults as |result|}}
+
+            <LinkTo
+              @route={{result.routeForLink}}
+              @model={{result.searchable.id}}
+              class="feed-content-list-item list-group-item list-group-item-large"
+            >
+              <div class="content-block" data-t="feed-item">
+                <div class="content-block-heading">
+                  <div class="content-block-date">
+                    {{format-date
+                      result.searchable.feedSortDate
+                      customFormat="MMM-DD HH:mm"
+                    }}
+                  </div>
+                  <div
+                    class="content-block-headline"
+                    data-t="feed-item-headline"
+                  >
+                    {{result.searchable.headline}}
+                  </div>
+                </div>
+                <div class="content-block-meta">
+                  {{#if this.isShowingStoryBody}}
+                    <div class="story-content">
+                      {{render-html result.searchable.body}}
+                    </div>
+                  {{/if}}
+                </div>
+              </div>
+            </LinkTo>
+          {{/each}}
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="panel-body">
+        No content or you are not permissioned to see this content
+      </div>
+    {{/if}}
+    <div class="panel-footer">
+      {{#if this.feed.isTechnical}}
+        {{! template-lint-disable no-invalid-interactive }}
+        <span
+          class="headline-viewer-popout"
+          {{on "click" (fn this.popOut 750)}}
+        >
+          <i class="icon-popout"> </i>
+        </span>
+      {{else if this.feed.isTechComposite}}
+        <span
+          class="headline-viewer-popout"
+          {{on "click" (fn this.popOut 1500)}}
+        >
+          <i class="icon-popout"> </i>
+        </span>
+      {{else if this.feed.isDeal}}
+        <span
+          class="headline-viewer-popout"
+          {{on "click" (fn this.popOut 1200 330)}}
+        >
+          <i class="icon-popout"> </i>
+        </span>
+      {{else}}
+        <span
+          class="headline-viewer-popout"
+          {{on "click" (fn this.popOut 1000)}}
+        >
+          <i class="icon-popout"> </i>
+        </span>
+      {{/if}}
+      <span class="pull-right">
+        {{#if this.hasPreviousPage}}
+          <a href="javascript:void(0);" {{on "click" this.previous}}><i
+              class="icon-arrow-left"
+            ></i></a>
+        {{/if}}
+        {{#if this.hasNextPage}}
+          <a href="javascript:void(0);" {{on "click" this.next}}><i
+              class="icon-arrow-right"
+            ></i></a>
+        {{/if}}
+      </span>
+    </div>
+  </div>
+
+</div>

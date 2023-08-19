@@ -1,0 +1,20 @@
+<div class="input-group date flatpickr">
+  <EmberFlatpickr
+    {{on "blur" this.blur}}
+    {{on "focus" this.focus}}
+    class="form-control"
+    placeholder={{this.placeholder}}
+    @dateFormat={{this.dateFormat}}
+    @allowInput={{true}}
+    @date={{this.date}}
+    @enableTime={{this.pickTime}}
+    @onChange={{this.onChange}}
+    @onReady={{this.ready}}
+    @mode="single"
+  />
+
+  {{! template-lint-disable no-invalid-interactive }}
+  <span class="input-group-addon" data-toggle {{on "click" this.togglePicker}}>
+    <span class="fa fa-calendar"></span>
+  </span>
+</div>

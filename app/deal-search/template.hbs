@@ -1,0 +1,731 @@
+<TopNav>
+  <div class="search-bar">
+    <div class="search-bar-input-ds">
+
+      {{! template-lint-disable no-autofocus-attribute }}
+      <Input
+        @type="text"
+        id="deal-search"
+        placeholder="Add Search Title"
+        @value={{this.title}}
+        autofocus="true"
+      />
+    </div>
+
+    <div class="search-bar-actions">
+      {{#if this.fromVolumeReport}}
+        <LinkTo class="btn btn-success" @route="volume-report-search">Back to
+          Volume Report
+        </LinkTo>
+
+        <IgmTooltip
+          @title="Save your deal search with the selected Volume Report filters"
+          @side="bottom"
+        >
+          <button
+            type="button"
+            {{on "click" this.saveSearch}}
+            class="btn btn-success"
+          >Save</button>
+        </IgmTooltip>
+
+        <button
+          type="button"
+          {{on "click" this.resetFilters}}
+          class="btn btn-success"
+        >Reset Deal Search</button>
+      {{else}}
+        {{#if this.pendingSearch}}
+
+          <button
+            type="button"
+            {{on "click" this.findDeals}}
+            class="btn btn-success"
+          >Find Deals</button>
+
+        {{/if}}
+
+        <IgmTooltip
+          @title="Save your search term to rerun in the future"
+          @side="left"
+        >
+          <button
+            type="button"
+            {{on "click" this.saveSearch}}
+            class="btn btn-success"
+          >Save</button>
+        </IgmTooltip>
+
+        {{#if this.savedDealSearches}}
+          <div class="dropdown">
+            <button
+              class="btn btn-success dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+            >
+              Saved Searches
+              <span class="caret"></span>
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-right deal-search-dropdown"
+              aria-labelledby="dropdownMenu1"
+            >
+
+              <SavedSearchesList
+                @searchTitle="Saved Deal Searches"
+                @searches={{this.savedDealSearches}}
+                @delete={{this.deleteSearch}}
+                @addToDashboard={{this.addToDashboard}}
+                @selectSearch={{this.goToSavedSearch}}
+              />
+            </div>
+          </div>
+        {{/if}}
+
+        <button
+          type="button"
+          {{on "click" this.resetFilters}}
+          class="btn btn-success"
+        >Reset Filters</button>
+
+        {{#if this.pendingSearch}}
+          {{#if this.showingAdvancedSearch}}
+            <button
+              type="button"
+              {{on "click" this.simpleSearch}}
+              class="btn btn-success"
+            >Simple Search</button>
+          {{else}}
+            <button
+              type="button"
+              {{on "click" this.advancedSearch}}
+              class="btn btn-success"
+            >Advanced Search</button>
+          {{/if}}
+        {{else}}
+          <button
+            type="button"
+            {{on "click" this.backToSearch}}
+            class="btn btn-success"
+          >Back To Search</button>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+
+</TopNav>
+
+<div class="deal-search-filter collapse" id="all-fields">
+  {{#unless this.returnFromDealPage}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-md-4">
+            <IgmPowerSelect
+              @selection={{this.dealIdentifier}}
+              @options={{this.dealOptions.dealIdentifier}}
+              @label="Select Database"
+              @onChange={{fn (mut this.dealIdentifier)}}
+            />
+          </div>
+
+          <div class="col-md-4">
+            <IgmPowerSelect
+              @selection={{this.region}}
+              @options={{this.regionOptions}}
+              @multiple={{true}}
+              @label="Region"
+              @optionLabelPath="displayName"
+              @searchEnabled={{true}}
+              @search={{this.searchRegions}}
+              @onChange={{this.regionChange}}
+            />
+          </div>
+
+          <div class="col-md-4">
+            <IgmPowerSelect
+              @selection={{this.statusSelection}}
+              @options={{this.dealOptions.status}}
+              @errors={{@deal.errors.status}}
+              @multiple={{true}}
+              @label="Status"
+              @searchEnabled={{true}}
+              @search={{this.searchStatus}}
+              @onChange={{this.onStatusChange}}
+              @allowClear={{true}}
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label for="dateOfferedGteMoment">Date From</label>
+
+            <DatetimePicker
+              @date={{this.dateOfferedGteMoment}}
+              @timeZone="UTC"
+              @onChange={{fn (mut this.dateOfferedGteMoment)}}
+            />
+
+            <div class="second-field-vertical-align">
+              <label for="dateOfferedLteMoment">Date To</label>
+              <DatetimePicker
+                @date={{this.dateOfferedLteMoment}}
+                @timeZone="UTC"
+                @onChange={{fn (mut this.dateOfferedLteMoment)}}
+              />
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <IgmPowerSelect
+              @selection={{this.issuersSelection}}
+              @label="Issuer"
+              @optionLabelPath="name"
+              @multiple={{true}}
+              @placeholder="Choose an issuer"
+              @onChange={{this.issuerChange}}
+              @search={{perform this.searchIssuers}}
+              @searchEnabled={{true}}
+            />
+
+            <IgmPowerSelect
+              @selection={{this.industriesSelection}}
+              @options={{this.industries}}
+              @errors={{@deal.errors.industry}}
+              @label="Industry"
+              @multiple={{true}}
+              @optionLabelPath="displayName"
+              @searchEnabled={{true}}
+              @onChange={{this.industryChange}}
+              @search={{this.searchIndustriesOptions}}
+            />
+          </div>
+
+          <div class="col-md-4">
+
+            <IgmPowerSelect
+              @selection={{this.currencySelection}}
+              @options={{this.dealOptions.currency}}
+              @label="Currency"
+              @multiple={{true}}
+              @searchEnabled={{true}}
+              @onChange={{this.currencyChange}}
+              @search={{this.searchCurrencyOptions}}
+            />
+
+            {{#if this.showingAdvancedSearch}}
+              <IgmPowerSelect
+                @selection={{this.currencyExcludeSelection}}
+                @options={{this.dealOptions.currency}}
+                @label="Exclude Currency"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.currencyExcludeChange}}
+                @search={{this.searchCurrencyOptions}}
+              />
+            {{else}}
+              <IgmInput
+                @value={{this.queryString}}
+                @errors={{@deal.errors.queryString}}
+                @label="Additional Keywords"
+              />
+            {{/if}}
+          </div>
+        </div>
+
+        <div class="collapse" id="more-fields">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="maturityGteMoment">Maturity From</label>
+
+              <DatetimePicker
+                @date={{this.maturityGteMoment}}
+                @timeZone="UTC"
+                @onChange={{fn (mut this.maturityGteMoment)}}
+              />
+              <div class="second-field-vertical-align">
+                <label for="maturityLteMoment">Maturity To</label>
+
+                <DatetimePicker
+                  @date={{this.maturityLteMoment}}
+                  @timeZone="UTC"
+                  @onChange={{fn (mut this.maturityLteMoment)}}
+                />
+              </div>
+
+              <IgmPowerSelect
+                @selection={{this.couponTypeSelection}}
+                @options={{this.dealOptions.couponType}}
+                @label="Coupon Type"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.couponTypeChange}}
+                @search={{this.searchCouponTypeOptions}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.industriesExcludeSelection}}
+                @options={{this.industries}}
+                @label="Exclude Industry"
+                @placeholder="Choose an industry"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @optionLabelPath="displayName"
+                @onChange={{this.industryExcludeChange}}
+                @search={{this.searchIndustriesOptions}}
+              />
+
+              <IgmPowerSelect
+                @selection={{this.countriesSelection}}
+                @options={{this.countries}}
+                @label="Country/Region of Issuer"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @optionLabelPath="name"
+                @onChange={{this.countryChange}}
+                @search={{this.searchCountry}}
+              />
+
+              <IgmPowerSelect
+                @selection={{this.countriesExcludeSelection}}
+                @options={{this.countries}}
+                @label="Exclude Country/Region of Issuer"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @optionLabelPath="name"
+                @onChange={{this.countryExcludeChange}}
+                @search={{this.searchCountry}}
+              />
+            </div>
+
+            <div class="col-md-4">
+
+              <IgmInput
+                @value={{this.queryString}}
+                @errors={{@deal.errors.title}}
+                @label="Additional Keywords"
+              />
+              <div class="deal-search-checkbox-vertical-align">
+                <div class="deal-search-checkbox">
+                  <label>
+                  </label>
+
+                  <IgmCheckbox
+                    @label="Deal Comments"
+                    @checked={{this.relatedStories}}
+                    @value="true"
+                  />
+                </div>
+
+                <div class="deal-search-checkbox">
+                  <IgmCheckbox
+                    @label="Distribution Statistics"
+                    @checked={{this.distributionStatistics}}
+                    @value="true"
+                  />
+                </div>
+
+                <div class="deal-search-checkbox">
+                  <IgmCheckbox
+                    @label="Emerging Markets"
+                    @checked={{this.emergingMarket}}
+                    @value="true"
+                  />
+                </div>
+                <div class="deal-search-checkbox">
+                  <IgmCheckbox
+                    @label=" Exclude Emerging Markets"
+                    @checked={{this.emergingMarketExclude}}
+                    @value="true"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.couponTypeExcludeSelection}}
+                @options={{this.dealOptions.couponType}}
+                @label="Exclude Coupon Type"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.couponExcludeChange}}
+                @search={{this.searchCouponTypeOptions}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.formatSelection}}
+                @options={{this.dealOptions.format}}
+                @label="Format"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.formatChange}}
+                @search={{this.searchFormat}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmInput
+                @value={{this.isin}}
+                @errors={{@deal.errors.isin}}
+                @label="ISIN"
+              />
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.ratingSelection}}
+                @options={{this.dealOptions.rating}}
+                @label="Rating Category"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.ratingChange}}
+                @search={{this.searchRating}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.dealTypeSelection}}
+                @options={{this.dealOptions.dealType}}
+                @label="Deal Type"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.dealTypeChange}}
+                @search={{this.searchDealType}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.subordinatedHybridPreferredSelection}}
+                @options={{this.dealOptions.subordinatedHybridPreferred}}
+                @label="Subordinated/Hybrid/Preferred"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.subordinatedHybridPreferredChange}}
+                @search={{this.searchSubordinatedHybridPreferred}}
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.ratingExcludeSelection}}
+                @options={{this.dealOptions.rating}}
+                @label="Exclude Rating Category"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.ratingExcludeChange}}
+                @search={{this.searchRating}}
+              />
+            </div>
+
+            <div class="col-md-4">
+
+              <IgmPowerSelect
+                @selection={{this.dealTypeExcludeSelection}}
+                @options={{this.dealOptions.dealType}}
+                @label="Exclude Deal Type"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.dealTypeExcludeChange}}
+                @search={{this.searchDealType}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.subordinatedHybridPreferredExcludeSelection}}
+                @options={{this.dealOptions.subordinatedHybridPreferred}}
+                @label="Exclude Subordinated/Hybrid/Preferred"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.subordinatedHybridPreferredExcludeChange}}
+                @search={{this.searchSubordinatedHybridPreferred}}
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.moodysRatingSelection}}
+                @options={{this.dealOptions.moodysRating}}
+                @label="Moody's Rating"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.moodysRatingChange}}
+                @search={{this.searchMoodysRating}}
+              />
+            </div>
+            <div class="col-md-4">
+
+              <IgmPowerSelect
+                @selection={{this.coveredBondsSelection}}
+                @options={{this.dealOptions.coveredBonds}}
+                @label="Covered Bonds"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.coveredBondsChange}}
+                @search={{this.searchCoveredBonds}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.marketTypeSelection}}
+                @options={{this.dealOptions.marketType}}
+                @label="Market Type"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.marketTypeChange}}
+                @search={{this.searchMarketType}}
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.spRatingSelection}}
+                @options={{this.dealOptions.spRating}}
+                @label="S&P Rating"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.spRatingChange}}
+                @search={{this.searchSpRating}}
+              />
+            </div>
+
+            <div class="col-md-4">
+
+              <IgmPowerSelect
+                @selection={{this.coveredBondsExcludeSelection}}
+                @options={{this.dealOptions.coveredBonds}}
+                @label="Exclude Covered Bonds"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.coveredBondsExcludeChange}}
+                @search={{this.searchCoveredBonds}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.marketTypeExcludeSelection}}
+                @options={{this.dealOptions.marketType}}
+                @label="Exclude Market Type"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.marketTypeExcludeChange}}
+                @search={{this.searchMarketType}}
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.fitchRatingSelection}}
+                @options={{this.dealOptions.fitchRating}}
+                @label="Fitch Rating"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.fitchRatingChange}}
+                @search={{this.searchfitchRating}}
+              />
+            </div>
+            <div class="col-md-4">
+              <IgmInput
+                @value={{this.couponGte}}
+                @errors={{@deal.errors.coupon}}
+                @label="Coupon Min"
+              />
+            </div>
+            <div class="col-md-4">
+              <IgmInput
+                @value={{this.term}}
+                @errors={{@deal.errors.term}}
+                @label="Term"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.bookManagerBanksSelection}}
+                @errors={{@deal.errors.bookManagerBanks}}
+                @label="Book Manager"
+                @multiple={{true}}
+                @optionLabelPath="fullName"
+                @placeholder="Choose a manager"
+                @onChange={{this.onBookManagerBankChange}}
+                @searchEnabled={{true}}
+                @searchField="fullName"
+                @search={{perform this.searchBookBanks}}
+                @closeOnSelect={{false}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmInput
+                @value={{this.couponLte}}
+                @errors={{@deal.errors.coupon}}
+                @label="Coupon Max"
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmInput
+                @value={{this.termExclude}}
+                @errors={{@deal.errors.term}}
+                @label="Exclude Term"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.assetClassSelection}}
+                @options={{this.dealOptions.assetClass}}
+                @label="Structured Finance Asset Class"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.assetClassChange}}
+                @search={{this.searchAssetClass}}
+              />
+            </div>
+
+            <div class="col-md-4">
+
+              <IgmPowerSelect
+                @selection={{this.absAssetClassSelection}}
+                @options={{this.dealOptions.absAssetClass}}
+                @label="Structured Finance ABS Asset Class"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.absAssetClassChange}}
+                @search={{this.searchAbsAssetClass}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.collateralSelection}}
+                @options={{this.dealOptions.collateral}}
+                @label="Structured Finance Collateral"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.collateralChange}}
+                @search={{this.searchCollateral}}
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.dealOriginatorsSelection}}
+                @errors={{@deal.errors.bookManagerBanks}}
+                @label="Deal Originators"
+                @multiple={{true}}
+                @optionLabelPath="name"
+                @placeholder="Choose an originator"
+                @onChange={{this.onDealOriginatorChange}}
+                @searchEnabled={{true}}
+                @searchField="fullName"
+                @search={{perform this.searchDealOriginator}}
+                @closeOnSelect={{false}}
+              />
+            </div>
+
+            <div class="col-md-4">
+              <IgmPowerSelect
+                @selection={{this.esgSriDealTypeSelection}}
+                @options={{this.dealOptions.esgSriDealType}}
+                @label="Structured Finance ESG/SRI Deal Type"
+                @multiple={{true}}
+                @searchEnabled={{true}}
+                @onChange={{this.esgSriDealTypeChange}}
+                @search={{this.searchEsgSriDeal}}
+              />
+
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  {{/unless}}
+</div>
+
+<SearchQuery
+  @setComponentRef={{this.setComponentRef}}
+  @searchQuery={{this.searchQuery}}
+  as |search updateSearchQuery|
+>
+  <div class="search-results">
+    {{#if this.pendingSearch}}
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="text-center">
+            <h2>Search database for deals</h2>
+            <h4>Search by using the filters above</h4>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      {{!-- {{#if searchServicePromise.isSettled}}
+        {{#if search.searchResults}}
+          {{search-deal-result-list
+            canExport=canExport
+            changePage=(action "changePage")
+            page=page
+            results=search.searchResults
+            dealIdentifier=dealIdentifier
+            sendInCSV=sendInCSV
+            sendInExcel=sendInExcel
+            sendInXLSX=sendInXLSX
+            export=(action "exportData")
+            totalCount=search.totalCount
+            totalPages=search.totalPages
+            dealSearchRoute=true
+          }}
+        {{else}}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="text-center">
+                <h2>No results match your search</h2>
+                <h4>Please select new
+                  <a href="#" {{action "backToSearch"}}>search criteria</a>
+                </h4>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      {{else if searchServicePromise.isPending}}
+        {{partial "loading"}}
+      {{/if}} --}}
+    {{/if}}
+  </div>
+
+</SearchQuery>

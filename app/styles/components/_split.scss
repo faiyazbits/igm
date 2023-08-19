@@ -1,0 +1,28 @@
+// Split
+//
+// Example:
+//
+// <div class="split">
+//   <div class="split-left">
+//     <h4>You have ({{alertCount}}) alerts...</h4>
+//   </div>
+//
+//   <div class="split-right">
+//     {{link-to '+ New Alert' 'alerts.new' class='btn btn-success'}}
+//   </div>
+// </div>
+
+.split {
+  width: 100%;
+  display: table;
+}
+
+.split-left,
+.split-right {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.split-right {
+  text-align: right;
+}

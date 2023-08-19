@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="product-title fx" title="fx" data-t="discover-product-title">
+      Fx
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-4">
+        <LinkTo @route='landing-page' @query={{hash category=this.data.fx.row1.col1.landingPage.category name=this.data.fx.row1.col1.landingPage.name}}>
+          <div class="product-link fx">
+            {{this.data.fx.row1.col1.name}}
+          </div>
+      </LinkTo>
+      </div>
+      <div class="col-md-4">
+          <LinkTo @route='landing-page' @query={{hash category=this.data.fx.row1.col2.landingPage.category name=this.data.fx.row1.col2.landingPage.name}}>
+          <div class="product-link fx">
+            {{this.data.fx.row1.col2.name}}
+          </div>
+       </LinkTo>
+      </div>
+      <div class="col-md-4">
+        <LinkTo @route="calendar-events">
+          <div class="product-link fx">
+            {{this.data.fx.row1.col3.name}}
+          </div>
+        </LinkTo>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <LinkTo @route='landing-page' @query={{hash category=this.data.fx.row2.col1.landingPage.category name=this.data.fx.row2.col1.landingPage.name}}>
+          <div class="product-link fx">
+            {{this.data.fx.row2.col1.name}}
+          </div>
+        </LinkTo>
+      </div>
+      <div class="col-md-4">
+        <LinkTo @route='landing-page' @query={{hash category=this.data.fx.row2.col2.landingPage.category name=this.data.fx.row2.col2.landingPage.name}}>
+          <div class="product-link fx">
+            {{this.data.fx.row2.col2.name}}
+          </div>
+        </LinkTo>
+      </div>
+    </div>
+  </div>
+</div>

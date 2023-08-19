@@ -1,0 +1,40 @@
+.feed-panel-fullscreen {
+  background: $background-color-none;
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+}
+
+.feed-panel {
+  .btn-danger {
+    margin-bottom: 7px;
+  }
+}
+
+.feed-content-list {
+  border-top: 1px solid $table-border-color;
+  margin-bottom: 0;
+  min-height: 340px;
+}
+
+.feed-content-list-item {
+  border: 0;
+  padding: 5px 24px;
+}
+
+.feed-panel-commentary {
+  .panel-default {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+.feed-name {
+  color: $gray-dark;
+}

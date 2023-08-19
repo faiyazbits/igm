@@ -1,0 +1,143 @@
+.l-wrapper {
+  padding-left: $sidebar-width;
+  transition: all 0.4s ease 0s;
+}
+
+.l-wrapper-with-navbar {
+  .l-page-content {
+    padding-top: $navbar-height + calc($grid-gutter-width * 2);
+  }
+}
+
+.l-sidebar-wrapper {
+  z-index: 1000;
+  overflow-y: auto;
+  position: fixed;
+  left: $sidebar-width;
+  margin-left: -$sidebar-width;
+  padding-left: 32px;
+  height: 100%;
+  width: $sidebar-width;
+  background-color: $background-color-dark;
+  transition: all 0.4s ease 0s;
+  overflow-x: hidden;
+}
+
+.l-secondary-sidebar-wrapper {
+  @extend .panel;
+  @extend .panel-default;
+
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: -$sidebar-width;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  margin-bottom: 0;
+  height: 100%;
+  width: $secondary-sidebar-width;
+  transition: all 0.4s ease 0s;
+
+  @media (max-width: $screen-sm-max) {
+    display: none;
+  }
+
+  .panel-heading {
+    padding-top: 48px;
+  }
+}
+
+.l-page-content-wrapper {
+  width: 100%;
+}
+
+.l-page-content {
+  padding: $grid-gutter-width calc($grid-gutter-width / 2);
+}
+
+.button-spacer {
+  margin: 2px 0;
+  display: inline-block;
+}
+
+// Adjust page padding when top navbar
+.deal-index-route,
+.deals-edit-route,
+.deals-new-route,
+.discover-route,
+.my-igm-route,
+.search-route,
+.deal-search-route,
+.league-table-search-route,
+.settings-route,
+.stories-edit-route,
+.stories-new-route,
+.stories-show-route,
+.technicals-show-route,
+.volume-report-search-route {
+  .l-page-content {
+    // pushes page content below the navbar
+    padding-top: $navbar-height + ($grid-gutter-width * 2);
+  }
+}
+.author-route {
+  .l-page-content {
+    padding-top: ($navbar-height * 2) + ($grid-gutter-width * 2);
+  }
+}
+
+// Adjust page padding for secondary sidebar when top navbar exists
+.settings-feeds-new-route,
+.settings-feeds-edit-route,
+.discover-new-feed-route {
+  .l-secondary-sidebar-wrapper {
+    // pushes page content below the navbar
+    margin-top: $navbar-height + ($grid-gutter-width * 2);
+    // in case the sidebar is too long
+    overflow: scroll;
+    padding-bottom: 150px;
+  }
+}
+
+// Adjust page padding when secondary sidebar is open
+.admin-feeds-users-edit-route,
+.admin-feeds-users-new-route,
+.admin-account-users-new-route,
+.admin-account-users-edit-route,
+.admin-users-edit-route,
+.settings-feeds-new-route,
+.settings-feeds-edit-route,
+.discover-new-feed-route {
+  .l-wrapper {
+    padding-left: $sidebar-width + $secondary-sidebar-width;
+  }
+
+  .l-secondary-sidebar-wrapper {
+    left: $sidebar-width;
+    transition: all 0.4s ease 0s;
+    // in case the sidebar is too long
+    overflow: auto;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .l-wrapper {
+    padding-left: 0;
+  }
+
+  .l-sidebar-wrapper {
+    left: 0;
+  }
+
+  .l-wrapper.active {
+    position: relative;
+    left: $sidebar-width;
+  }
+
+  .l-wrapper.active .l-sidebar-wrapper {
+    left: $sidebar-width;
+    width: $sidebar-width;
+    transition: all 0.4s ease 0s;
+  }
+}

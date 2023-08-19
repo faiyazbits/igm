@@ -1,0 +1,46 @@
+<h1>{{this.user.fullName}}</h1>
+
+
+<div class="row">
+  <div class="col-md-12">
+    {{this.user.biography}}
+  </div>
+</div>
+
+{{#if this.canEditProfile}}
+  <div class="row">
+    <div class="col-md-12">
+      <LinkTo @route='users.edit' @model={{this.user.id}}>Edit Profile</LinkTo>
+    </div>
+  </div>
+{{/if}}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">{{this.title}}</div>
+
+      <div class="list-group">
+        {{#each this.stories as |story|}}
+          <LinkTo @route='stories.show' @model={{story.id}} class="list-group-item">
+            {{story.headline}}
+            <span class="date pull-right">{{format-date story.createdAt}}</span>
+          </LinkTo>
+          {{else}}
+          <div class="list-group-item">
+            No recent headlines have been published for this destination.
+          </div>
+        {{/each}}
+      </div>
+
+      <div class="panel-footer clearfix">
+        <span class="pull-right">
+          <PaginationButtons
+            @currentPage={{this.page}}
+            @totalPages={{this.totalPages}}
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

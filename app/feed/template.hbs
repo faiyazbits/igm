@@ -1,0 +1,11 @@
+{{#if this.isRealtimeFeedsEnabled}}
+  <FeedPanel
+    @feed={{this.feed}}
+    @isAddableFeed={{not this.feed.onDashboard}}
+    @isEditable={{this.feed.onDashboard}}
+    @isFullScreen={{this.fullscreen}}
+  />
+{{else}}
+
+  <FeedPanel @feed={{this.feed}} @isFullScreen={{true}} />
+{{/if}}

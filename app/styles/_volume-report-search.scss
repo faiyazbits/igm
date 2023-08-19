@@ -1,0 +1,70 @@
+.volume-report-search-route {
+  .second-field-vertical-align {
+    margin: 20px 0;
+  }
+
+  .volume-search-checkbox {
+    padding: 30px;
+  }
+}
+
+.volume-search-dropdown {
+  min-width: 400px;
+}
+
+.volume-search-result-list-panel {
+  height: 450px;
+  margin: 0 5px;
+  overflow: scroll;
+  padding: 5px 25px;
+
+  table {
+    table-layout: auto;
+  }
+}
+
+.volume-search-year-column {
+  min-width: 60px;
+}
+
+.volume-search-period-column {
+  min-width: 100px;
+}
+
+.volume-search-deal-count-column {
+  min-width: 100px;
+}
+
+.volume-search-amount-column {
+  min-width: 120px;
+}
+
+.volume-search-row {
+  margin-right: 5px;
+
+  th,
+  td {
+    overflow: hidden;
+    padding: 0 10 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.volume-search-totals-row {
+  border-style: double none;
+  border-width: medium;
+  margin-right: 5px;
+
+  th,
+  td {
+    overflow: hidden;
+    padding: 0 10 0 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.volume-search-advanced-filter-button {
+  text-align: center;
+}

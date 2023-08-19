@@ -1,0 +1,108 @@
+<div class="panel-heading">
+  <h3 class="panel-title">Select Destinations</h3>
+</div>
+<div class="panel-body">
+  <div class="row">
+    <div class="col-md-6">
+      <IgmPowerSelect
+        @selection={{this.contentTypes}}
+        @options={{this.feedContentTypes}}
+        @label="Content Type"
+        @multiple={{true}}
+        @onChange={{(fn this.onDestinationChange "contentTypes")}}
+        @renderInPlace={{true}}
+        @optionLabelPath="displayName"
+        @searchEnabled={{true}}
+        @searchField="displayName"
+        @closeOnSelect={{false}}
+        @placeholder="Select content type"
+        @search={{this.searchContentType}}
+      />
+
+      <IgmPowerSelect
+        @selection={{this.products}}
+        @options={{this.destinations.products}}
+        @label="Product"
+        @multiple={{true}}
+        @onChange={{(fn this.onDestinationChange "products")}}
+        @renderInPlace={{true}}
+        @optionLabelPath="displayName"
+        @searchEnabled={{true}}
+        @searchField="displayName"
+        @closeOnSelect={{false}}
+        @placeholder="Select products"
+        @search={{this.searchProduct}}
+      />
+
+      <IgmPowerSelect
+        @selection={{this.regions}}
+        @options={{this.destinations.regions}}
+        @label="Geography"
+        @multiple={{true}}
+        @onChange={{(fn this.onDestinationChange "regions")}}
+        @renderInPlace={{true}}
+        @optionLabelPath="displayName"
+        @searchEnabled={{true}}
+        @searchField="displayName"
+        @closeOnSelect={{false}}
+        @placeholder="Select regions"
+        @search={{this.searchRegions}}
+      />
+    </div>
+    <div class="col-md-6">
+
+      <IgmPowerSelect
+        @selection={{this.assetClasses}}
+        @options={{this.destinations.assetClasses}}
+        @label="Asset Class"
+        @multiple={{true}}
+        @onChange={{(fn this.onDestinationChange "assetClasses")}}
+        @renderInPlace={{true}}
+        @optionLabelPath="displayName"
+        @searchEnabled={{true}}
+        @searchField="displayName"
+        @closeOnSelect={{false}}
+        @placeholder="Select asset classes"
+        @search={{this.searchAssetClasses}}
+      />
+
+      <IgmPowerSelect
+        @selection={{this.assetTypes}}
+        @options={{this.feedAssetTypes}}
+        @label="Asset Type"
+        @multiple={{true}}
+        @onChange={{(fn this.onDestinationChange "assetTypes")}}
+        @renderInPlace={{true}}
+        @optionLabelPath="displayName"
+        @searchEnabled={{true}}
+        @searchField="displayName"
+        @closeOnSelect={{false}}
+        @placeholder="Select asset types"
+        @search={{this.searchAssetTypes}}
+      />
+
+      <IgmPowerSelect
+        @selection={{this.countries}}
+        @options={{this.destinations.countries}}
+        @label="Country/Region"
+        @multiple={{true}}
+        @onChange={{(fn this.onDestinationChange "countries")}}
+        @renderInPlace={{true}}
+        @optionLabelPath="displayName"
+        @searchEnabled={{true}}
+        @searchField="displayName"
+        @closeOnSelect={{false}}
+        @placeholder="Select countries"
+        @search={{this.searchCountries}}
+      />
+
+    </div>
+  </div>
+</div>
+<div class="panel-footer">
+  <button
+    type="button"
+    {{on "click" @close}}
+    class="btn btn-default pull-right"
+  >Done</button>
+</div>

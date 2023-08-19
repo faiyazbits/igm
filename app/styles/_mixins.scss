@@ -1,0 +1,49 @@
+@mixin border {
+  border: 1px solid $border-color;
+}
+
+@mixin nav-animations($min, $max) {
+  @-webkit-keyframes nav-expand {
+    from {width: $min;}
+    to {width: $max;}
+  }
+  @-webkit-keyframes margin-expand {
+    from {margin-left: $min;}
+    to {margin-left: $max;}
+  }
+
+  @-webkit-keyframes nav-collapse {
+    from {width: $max;}
+    to {width: $min;}
+  }
+  @-webkit-keyframes margin-collapse {
+    from {margin-left: $max;}
+    to {margin-left: $min;}
+  }
+
+  @keyframes nav-expand {
+    from {width: $min;}
+    to {width: $max;}
+  }
+  @keyframes margin-expand {
+    from {margin-left: $min;}
+    to {margin-left: $max;}
+  }
+
+  @keyframes nav-collapse {
+    from {width: $max;}
+    to {width: $min;}
+  }
+  @keyframes margin-collapse {
+    from {margin-left: $max;}
+    to {margin-left: $min;}
+  }
+}
+
+@mixin nav-anim($animation, $timing, $duration) {
+  -webkit-animation: $animation $duration;
+  animation: $animation $duration;
+  -webkit-animation-timing-function: $timing; /* Chrome, Safari, Opera */
+  animation-timing-function: $timing;
+}
+

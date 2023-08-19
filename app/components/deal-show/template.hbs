@@ -1,0 +1,44 @@
+<TopNav>
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li>
+        {{! template-lint-disable no-invalid-interactive }}
+        <div class="back" {{on "click" this.back}}>
+          <i class="icon-close clickable"></i>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="showpage-alert-li">
+        <AlertPopover
+          @alertable={{@alertFeed}}
+          @iconClass="icon-bell-solid showpage-alert-icon"
+        />
+      </li>
+      <li>
+        <PrintButton />
+      </li>
+      <li>
+        <ShareUrlPopover />
+      </li>
+    </ul>
+  </div>
+</TopNav>
+
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <span class="pull-right">
+      <h1>Updated on {{format-date @deal.updatedAt}}</h1>
+      {{#if (get (await this.session.currentUser) "canEditDeal")}}
+        <LinkTo @route="deals.edit" @model={{@deal}}>Edit this Deal</LinkTo>
+      {{/if}}
+    </span>
+  </div>
+</div>
+
+{{#if @deal.isCorporate}}
+  <CorporateDealShow @deal={{@deal}} />
+{{else}}
+  <SfDealShow @deal={{@deal}} />
+{{/if}}

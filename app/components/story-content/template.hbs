@@ -1,0 +1,39 @@
+<div class="story-content">
+
+  {{! template-lint-disable no-triple-curlies }}
+
+  <FroalaContent>
+    {{{this.story.body}}}
+
+  </FroalaContent>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h5>Destinations:</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{#each this.story.destinations as |destination|}}
+      <span class="label label-default">{{destination.displayName}}</span>
+    {{else}}
+      No destinations added.
+    {{/each}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h5>Tagged as:</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{#each this.story.tags as |tag|}}
+      {{!-- <LinkTo  tag.name 'stories.index' @query = {{ tag = tag.name}} class="label label-default" ></LinkTo> --}}
+      <LinkTo class="label label-default" @route="index">{{tag.name}}</LinkTo>
+    {{else}}
+      No tags added.
+    {{/each}}
+  </div>
+</div>

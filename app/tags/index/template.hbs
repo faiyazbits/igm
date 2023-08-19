@@ -1,0 +1,54 @@
+<h1>Tags</h1>
+
+<h3>{{if this.isAddingTag "New Tag"}}</h3>
+
+{{#if this.isAddingTag}}
+  <IgmForm @for={{this.newTag}} @submitForm={{this.saveTag}}>
+    <div class="row">
+      <div class="col-sm-12">
+        <IgmInput
+          type="text"
+          @label="Name"
+          @errors={{this.newTag.errors}}
+          @value={{(get this.newTag "name")}}
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-success">Save</button>
+        <button
+          type="button"
+          {{on "click" this.cancel}}
+          class="btn btn-danger"
+        >Cancel</button>
+      </div>
+    </div>
+  </IgmForm>
+{{else}}
+  <button type="button" {{on "click" this.addTag}} class="btn btn-primary">New
+    Tag</button>
+{{/if}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.tags as |tag|}}
+      <tr>
+        {{! template-lint-disable no-inline-styles }}
+        <td style="vertical-align: middle;">{{tag.name}}</td>
+        <td>
+          <LinkTo @route="tags.edit" @model={{tag}} class="btn btn-default">
+            Edit
+          </LinkTo>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

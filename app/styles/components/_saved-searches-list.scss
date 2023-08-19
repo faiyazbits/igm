@@ -1,0 +1,18 @@
+.saved-search-list-actions {
+  .saved-search-action {
+    margin-left: 10px;
+  }
+
+  .icon-plus {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+
+  .btn-danger {
+    margin-bottom: 5px;
+  }
+}

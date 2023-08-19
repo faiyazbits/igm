@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="list-group">
+            {{#each this.technicals as |technical|}}
+                <LinkTo @route='technicals.edit' @model={{technical}} class='list-group-item technical-link'>{{technical.name}}</LinkTo>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<PaginationButtons
+    @currentPage={{this.page}}
+    @totalPages={{this.totalPages}}
+/>

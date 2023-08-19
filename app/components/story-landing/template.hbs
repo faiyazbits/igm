@@ -1,0 +1,23 @@
+<div class="feed-content-list list-group">
+  {{#each this.items as |story|}}
+    {{!-- <LinkTo stories.show this.story.id classNames="feed-content-list-item list-group-item"> --}}
+      <div class="content-block">
+        <div class="content-block-heading">
+          <div class="content-block-date">
+            {{format-date story.feedSortDate customFormat='MMM-DD HH:mm'}}
+          </div>
+          <div class="content-block-headline">
+            {{story.headline}}
+          </div>
+        </div>
+        <div class="content-block-meta">
+          {{#if this.isShowingStoryBody}}
+          <div class="story-content">
+            {{render-html story.body}}
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    {{!-- </LinkTo> --}}
+  {{/each}}
+</div>

@@ -1,0 +1,44 @@
+<h2>Destinations</h2>
+<div class="row">
+  <div class="col-md-12">
+    <IgmPowerSelect
+      @options={{this.destinationNames}}
+      @multiple={{true}}
+      @selection={{this.destinations}}
+      @onChange={{this.onDestinationsChange}}
+      @searchEnabled={{true}}
+      @search={{this.searchDestinationNamesOptions}}
+      @placeholder="Filter By PRODUCT, REGION, COUNTRY, OR ASSET CLASS to find pages"
+    />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="list-group">
+      {{#each this.columns.left as |destinationLink|}}
+        <LinkTo
+          @route={{destinationLink.routeName}}
+          @query={{hash destinations=destinationLink.destinationNames period=destinationLink.period title=destinationLink.linkName}}
+
+          class="list-group-item"
+        >{{destinationLink.linkName}}</LinkTo>
+      {{/each}}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="list-group">
+      {{#each this.columns.right as |destinationLink|}}
+        <LinkTo
+          @route={{destinationLink.routeName}}
+          @query={{hash destinations=destinationLink.destinationNames period=destinationLink.period title=destinationLink.linkName}}
+
+          class="list-group-item"
+        >{{destinationLink.linkName}}</LinkTo>
+      {{/each}}
+    </div>
+  </div>
+  <PaginationButtons
+    @currentPage={{this.page}}
+    @totalPages={{this.totalPages}}
+  />
+</div>

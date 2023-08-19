@@ -1,0 +1,13 @@
+{{#if this.hasPreviousPage}}
+
+  <LinkTo @query={{hash page=this.previousPageNumber}}>
+    <i class="icon-arrow-left"></i>
+  </LinkTo>
+{{/if}}
+
+{{#if this.hasNextPage}}
+
+  <LinkTo @query={{hash page=this.nextPageNumber}}>
+    <i class="icon-arrow-right"></i>
+  </LinkTo>
+{{/if}}

@@ -1,0 +1,41 @@
+<TopNav>
+  <div class="collapse navbar-collapse" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li>
+        <div class="back" {{on 'click' this.back}}>
+          <i class="icon-close clickable"></i>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="showpage-alert-li">
+        <AlertPopover
+          @alertable={{this.feed}}
+          @class="pull-right"
+          @iconClass="icon-bell-solid showpage-alert-icon"
+        />
+      </li>
+      <li>
+        <PrintButton />
+      </li>
+      <li>
+        <ShareUrlPopover />
+      </li>
+    </ul>
+  </div>
+</TopNav>
+
+<div class="row">
+  <div class="col-md-1 col-md-push-11">
+    <AddFeedPopover
+        @feed={{this.feed}}
+        @save={{this.saveFeed}}
+        @iconClass="icon-plus"
+        @showPage={{true}}
+    />
+  </div>
+  <div class="col-md-11 col-md-pull-1">
+    <TechnicalShow @technical={{this.model}} @commentsPage={{this.page}} />
+  </div>
+</div>

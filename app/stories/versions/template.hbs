@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+        <div class="panel-heading">VERSIONS</div>
+        {{#each this.model as |version|}}
+            <div class="panel-body">
+                <div class="version-whodunnit">
+                    #{{version.index}}
+                    {{!-- <LinkTo @route="users.show" version.whodunnit.id> --}}
+                    <LinkTo @route="index">
+                    {{version.whodunnit.fullname}}
+                    </LinkTo>
+                    @
+                    {{version.updatedAtFormatted}}
+                </div>
+                <div class="version-changes">
+                    Destinations:
+                    {{version.destinations}}
+                </div>
+                <div class="version-changes">
+                    tags:
+                    {{version.tags}}
+                </div>
+                {{#each version.changes as |change|}}
+                    {{#if change}}
+                    <div class="version-changes">
+                        {{change.attribute}}:
+                        <span class="version-old">{{change.old}}</span>&nbsp;&nbsp;<span
+                        class="version-new"
+                        >{{change.new}}</span>
+                    </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+            <hr />
+        {{/each}}
+        </div>
+    </div>
+</div>

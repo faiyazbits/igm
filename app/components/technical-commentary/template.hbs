@@ -1,0 +1,35 @@
+{{#if this.isEditing}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <i class="icon-close" {{on 'click' this.cancelEdit}}></i>
+      <i class="icon-circle-outline" {{on 'click' this.save}}></i>
+      <div class="delete-icon">
+        <ConfirmButton @itemTypeName="Technical Commentary" @action={{this.delete}}>
+          <i class="icon-delete"></i>
+        </ConfirmButton>
+      </div>
+    </div>
+    <div class="panel-body">
+      <IgmInput
+        @value={{@commentary.headline}}
+        @label='Headline'
+        @errors={{this.story.errors.headline}}
+      />
+      <IgmFroalaEditor
+        @label="Body"
+        @value={{@commentary.body}}
+        @update={{this.updateBody}}
+      />
+    </div>
+  </div>
+{{else}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <i class="icon-edit" {{on 'click' this.edit}}></i>
+    </div>
+    <div class="panel-body">
+      <h3>{{{@commentary.headline}}}</h3>
+      {{{@commentary.body}}}
+    </div>
+  </div>
+{{/if}}

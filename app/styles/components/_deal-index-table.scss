@@ -1,0 +1,28 @@
+.deal-table-panel {
+  margin-bottom: 0;
+}
+
+.deal-index-panel {
+  background-color: $white;
+}
+
+.deal-index-pagination {
+  padding: 5px 20px;
+}
+
+.deal-table-all {
+  border-top: 1px solid $table-border-color;
+  height: 270px;
+  padding-left: 25px;
+
+  table {
+    margin: 5px 0 0;
+    table-layout: fixed;
+    width: 100%;
+  }
+}
+
+.deal-index-table {
+  border-bottom: 1px solid $table-border-color;
+  height: 515px;
+}

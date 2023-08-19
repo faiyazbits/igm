@@ -1,0 +1,83 @@
+<div
+  class="feed-panel panel panel-default
+    {{if this.isFullScreen 'feed-panel-fullscreen'}}"
+>
+  <div class="saved-search-panel-container">
+    <div class="panel-heading">
+      <ul class="panel-actions">
+        <li>
+          <AlertPopover
+            @alertable={{await this.alertPopOverContent}}
+            @iconClass="icon-bell-solid"
+          />
+        </li>
+      </ul>
+      <div class="panel-title">
+        <span class="feed-content-type">{{this.savedSearch.contentType}}</span>
+        -
+        <span class="feed-name">
+          {{this.savedSearch.title}}
+        </span>
+      </div>
+    </div>
+
+    {{#if (get this.savedSearch "isDealSearch")}}
+      <SearchDealResultListPanel
+        @isCorporate={{this.isCorporate}}
+        @results={{this.savedSearch.searchResults}}
+      />
+    {{else}}
+      <div class="feed-content-list list-group">
+        {{#each this.savedSearch.searchResults as |result|}}
+          <LinkTo
+            @route={{result.routeForLink}}
+            @model={{result.searchable.id}}
+            class="feed-content-list-item list-group-item list-group-item-large"
+          >
+            <div class="content-block">
+              <div class="content-block-date">
+                {{format-date
+                  result.searchable.feedSortDate
+                  customFormat="MMM-DD HH:mm"
+                }}
+              </div>
+              <div class="content-block-headline">
+                {{result.searchable.headline}}
+              </div>
+            </div>
+          </LinkTo>
+        {{else}}
+          <div class="list-group-item">
+            No Content
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+
+    <div class="panel-footer">
+      {{#if this.savedSearch.isDealSearch}}
+        <span
+          class="headline-viewer-popout"
+          {{on "click" (fn this.popOut 1150)}}
+        >
+          <i class="icon-popout"> </i>
+        </span>
+      {{else}}
+        <span
+          class="headline-viewer-popout"
+          {{on "click" (fn this.popOut 600 1080)}}
+        >
+          <i class="icon-popout"> </i>
+        </span>
+      {{/if}}
+      <span class="pull-right">
+        {{#if this.hasPreviousPage}}
+          <a {{on "click" this.previous}}><i class="icon-arrow-left"></i></a>
+        {{/if}}
+        {{#if this.hasNextPage}}
+          <a {{on "click" this.next}}><i class="icon-arrow-right"></i></a>
+        {{/if}}
+      </span>
+    </div>
+  </div>
+</div>

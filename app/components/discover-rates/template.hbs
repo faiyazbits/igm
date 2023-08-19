@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="product-title rates" title="rates" data-t="discover-product-title">
+      Rates
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-4">
+        <LinkTo @route='landing-page' @query={{hash category=this.data.rates.row1.col1.landingPage.category name=this.data.rates.row1.col1.landingPage.name}}>
+          <div class="product-link rates">
+            {{this.data.rates.row1.col1.name}}
+          </div>
+      </LinkTo>
+      </div>
+      <div class="col-md-4">
+        <LinkTo @route='landing-page' @query={{hash category=this.data.rates.row1.col2.landingPage.category name=this.data.rates.row1.col2.landingPage.name}}>
+          <div class="product-link rates">
+            {{this.data.rates.row1.col2.name}}
+          </div>
+        </LinkTo>
+      </div>
+      <div class="col-md-4">
+        <LinkTo @route='landing-page'>
+          <div class="product-link rates">
+            {{this.data.rates.row1.col3.name}}
+          </div>
+       </LinkTo>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <LinkTo @route='landing-page' @query={{hash category=this.data.rates.row2.col1.landingPage.category name=this.data.rates.row2.col1.landingPage.name}}>
+          <div class="product-link rates">
+            {{this.data.rates.row2.col1.name}}
+          </div>
+        </LinkTo>
+      </div>
+      <div class="col-md-4">
+        <LinkTo @route='landing-page' @query={{hash category=this.data.rates.row2.col2.landingPage.category name=this.data.rates.row2.col2.landingPage.name}}>
+          <div class="product-link rates">
+            {{this.data.rates.row2.col2.name}}
+          </div>
+       </LinkTo>
+      </div>
+    </div>
+  </div>
+</div>

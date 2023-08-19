@@ -1,0 +1,8 @@
+// override z-index from ember-modal-dialog to play nice with bootstrap
+.ember-modal-overlay {
+  z-index: $zindex-modal-background;
+}
+
+.ember-modal-dialog {
+  z-index: $zindex-modal;
+}

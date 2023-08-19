@@ -1,0 +1,23 @@
+<UiPopoverToggle @title="share" @toggle={{this.toggle}}>
+  <i class="icon-options-solid"></i>
+</UiPopoverToggle>
+
+<UiPopoverContent
+  @title="Share this story"
+  @isOpen={{this.isOpen}}
+  @close={{this.toggle}}
+>
+  <div class="input-group">
+    <label></label>
+    <input
+      id="share"
+      type="text"
+      class="form-control"
+      value={{this.shareUrl}}
+    />
+
+    <span class="input-group-addon">
+      <IgmClipboard @text={{this.shareUrl}} />
+    </span>
+  </div>
+</UiPopoverContent>

@@ -1,0 +1,82 @@
+  <div class="panel deal-table-panel">
+    <div class="panel-heading">
+      <ul class="panel-actions">
+        <li>
+          <DownloadPopover
+            @exportData={{this.exportData}}
+            @sendInCSV={{this.sendInCSV}}
+            @sendInExcel={{this.sendInExcel}}
+            @sendInXLSX={{this.sendInXLSX}}
+            @totalCount={{this.totalCount}}
+            @class='panel-icon-pull-down'
+            @iconClass='icon-in pull-right'/>
+        </li>
+    </ul>
+    <div class="panel-title">
+      {{this.title}}
+    </div>
+  </div>
+</div>
+
+<table class="table table-one-line">
+  <thead>
+    <tr>
+      <th>Issue Date</th>
+      <th>Instrument ID</th>
+      <th>Issue Name</th>
+      <th>Common Code</th>
+      <th>ISIN</th>
+      <th>Subordination</th>
+      <th>Type</th>
+      <th>Issue Type</th>
+      <th>Day Count</th>
+      <th>Issue Price</th>
+      <th>Coupon Frequency</th>
+      <th>Rate</th>
+      <th>Coupon</th>
+      <th>Settles</th>
+      <th>Maturity</th>
+      <th>Size</th>
+      <th>Currency</th>
+      <th>Classification</th>
+      <th>Classification Sub-Type</th>
+      <th>Issuer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model as |mtn|}}
+    <tr>
+      <td>{{format-date mtn.issueDate customFormat="MMM-D-YYYY" utc=true}}</td>
+      <td>{{mtn.instrumentId}}</td>
+      <td>{{mtn.issueName}}</td>
+      <td>{{mtn.commonCode}}</td>
+      <td>{{mtn.isin}}</td>
+      <td>{{mtn.subordination}}</td>
+      <td>{{mtn.mtnType}}</td>
+      <td>{{mtn.issueType}}</td>
+      <td>{{mtn.dayCount}}</td>
+      <td>{{mtn.issuePrice}}</td>
+      <td>{{mtn.cpnFreq}}</td>
+      <td>{{mtn.rate}}</td>
+      <td>{{mtn.coupon}}</td>
+      <td>{{mtn.settles}}</td>
+      <td>{{format-date mtn.maturity customFormat="MMM-D-YYYY" utc=true}}</td>
+      <td>{{mtn.displayAmount}}</td>
+      <td>{{mtn.ccy}}</td>
+      <td>{{mtn.classification}}</td>
+      <td>{{mtn.classificationSubType}}</td>
+      <td>{{mtn.issuer}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="5"></td>
+    <PaginationButtons
+    @currentPage={{this.page}}
+    @totalPages={{this.totalPages}}
+    />
+    </tr>
+  </tfoot>
+</table>
+

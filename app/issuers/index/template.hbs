@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-sm-2">
+    <h1>Issuers</h1>
+  </div>
+  <div class="col-md-10">
+    <div {{on 'click' this.back}} class="pull-right">
+      <i class="icon-close clickable"></i>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p><LinkTo @route="issuers.new">Create a New Issuer</LinkTo></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+      <div class="form-group ">
+        <label for="Filterbyname" class="control-label">
+          Filter by name
+        </label>
+
+        <div class="">
+          <Input
+            id="Filterbyname"
+            @type="text"
+            class="form-control"
+            placeholder="Filter by name"
+            @value={{this.name}} 
+            {{on 'keyup' this.searchFilter}}
+          />
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Nickname</th>
+          <th>Country</th>
+          <th>Emerging Market?</th>
+          <th>Industry Name</th>
+          <th>Industry Class</th>
+          <th>Industry Subclass</th>
+          <th>Merged To</th>
+          <th>Ticker</th>
+          <th>LEI</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.model as |issuer|}}
+          <tr>
+            <td><LinkTo @route="issuers.edit" @model={{issuer.id}}>{{issuer.name}}</LinkTo></td>
+            <td>{{format-string issuer.nickname}}</td>
+            <td>{{issuer.country.name}}</td>
+            <td>{{issuer.isEmergingMarket}}</td>
+            <td>{{issuer.industry.name}}</td>
+            <td>{{issuer.industry.industryClass}}</td>
+            <td>{{issuer.industry.industrySubclass}}</td>
+            <td>{{issuer.mergerName}}</td>
+            <td>{{issuer.ticker}}</td>
+            <td>{{issuer.lei}}</td>
+            <td><button class="btn btn-default" type="button" {{on 'click' (fn this.delete issuer)}}>Delete</button></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <PaginationButtons
+      @currentPage={{this.page}}
+      @totalPages={{this.totalPages}}
+    />
+</div>

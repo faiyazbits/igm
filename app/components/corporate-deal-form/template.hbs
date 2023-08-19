@@ -1,0 +1,1159 @@
+<h1>Corporate Deal</h1>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.status}}
+      @options={{this.statusOptions}}
+      @errors={{@deal.errors.status}}
+      @label="Status"
+      @placeholder="Choose status"
+      @searchEnabled={{true}}
+      @search={{this.searchStatus}}
+      @onChange={{this.onStatusChange}}
+      @allowClear={{true}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <LinkTo @route="issuers.index" class="btn btn-default btn-xs pull-right">
+      <i class="icon-edit"></i>
+    </LinkTo>
+    <IgmPowerSelect
+      @selection={{@deal.issuer}}
+      @errors={{@deal.errors.issuer}}
+      @label="Issuer"
+      @optionLabelPath="name"
+      @placeholder="Choose an issuer"
+      @onChange={{this.onIssuerChange}}
+      @search={{perform this.searchIssuers}}
+      @searchEnabled={{true}}
+      @allowClear={{true}}
+    />
+  </div>
+  <div class="col-md-3">
+    <label for="country">Country:</label>
+    {{@deal.issuer.country.name}}
+  </div>
+  <div class="form-group col-md-3">
+    <label for="emerging_market">Emerging Market:</label>
+    {{@deal.issuer.isEmergingMarket}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-3">
+    <label for="industry_name">Industry:</label>
+    {{@deal.issuer.industry.name}}
+  </div>
+  <div class="form-group col-md-3">
+    <label for="industry_class">Industry Class:</label>
+    {{@deal.issuer.industry.industryClass}}
+  </div>
+  <div class="form-group col-md-3">
+    <label for="industry_subclass">Industry Subclass:</label>
+    {{@deal.issuer.industry.industrySubclass}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <LinkTo @route="banks.index" class="btn btn-default btn-xs pull-right">
+      <i class="icon-edit"></i>
+    </LinkTo>
+    <IgmPowerSelect
+      @selection={{await @deal.bookManagerBanks}}
+      @errors={{@deal.errors.bookManagerBanks}}
+      @label="Book Managers"
+      @multiple={{true}}
+      @optionLabelPath="shortName"
+      @placeholder="Choose a manager"
+      @onChange={{this.onBookManagerBankChange}}
+      @searchEnabled={{true}}
+      @searchField="shortName"
+      @search={{perform this.searchBookBanks}}
+      @closeOnSelect={{false}}
+    />
+  </div>
+  <div class="col-md-3">
+    <LinkTo @route="banks.index" class="btn btn-default btn-xs pull-right">
+      <i class="icon-edit"></i>
+    </LinkTo>
+    <IgmPowerSelect
+      @selection={{await @deal.otherManagerBanks}}
+      @errors={{@deal.errors.otherManagerBanks}}
+      @label="Other Managers"
+      @multiple={{true}}
+      @optionLabelPath="shortName"
+      @placeholder="Choose a manager"
+      @onChange={{this.otherManagerBankChange}}
+      @searchEnabled={{true}}
+      @searchField="shortName"
+      @search={{perform this.searchOtherBanks}}
+      @closeOnSelect={{false}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{await @deal.regions}}
+      @options={{this.destinations.regionsAndNotAmerica}}
+      @errors={{@deal.errors.destinations}}
+      @label="Deal Region"
+      @multiple={{true}}
+      @optionLabelPath="displayName"
+      @onChange={{this.onDealRegionChange}}
+      @searchEnabled={{true}}
+      @searchField="displayName"
+      @closeOnSelect={{false}}
+      @search={{this.searchDealRegion}}
+    />
+  </div>
+  <div class="form-group col-md-3">
+    <label for="rank">Rank</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.rank}}
+          @value={{true}}
+          @name="rank"
+          @changed={{fn (mut @deal.rank)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.rank}}
+          @value={{false}}
+          @name="rank"
+          @changed={{fn (mut @deal.rank)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.format}}
+      @options={{this.formatOptions}}
+      @errors={{@deal.errors.format}}
+      @label="Format"
+      @placeholder="Choose Format"
+      @searchEnabled={{true}}
+      @onChange={{this.onFormatChange}}
+      @allowClear={{true}}
+      @search={{this.searchFormatOption}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.security}}
+      @options={{this.securitiesOptions}}
+      @errors={{@deal.errors.security}}
+      @label="Security Description"
+      @placeholder="Choose a Security Description"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.security)}}
+      @allowClear={{true}}
+      @search={{this.searchSecuritiesOptions}}
+    />
+
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.rating}}
+      @options={{this.ratingOptions}}
+      @errors={{@deal.errors.rating}}
+      @label="Rating Category"
+      @placeholder="Choose Rating"
+      @searchEnabled={{true}}
+      @onChange={{this.onRatingChange}}
+      @allowClear={{true}}
+      @search={{this.searchRatingOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.dateOffered}}
+      @label="Date"
+      @errors={{@deal.errors.dateOffered}}
+      @onChange={{this.onDateOfferedChange}}
+    />
+  </div>
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.currency}}
+      @options={{this.currencyOptions}}
+      @errors={{@deal.errors.currency}}
+      @label="Currency"
+      @searchEnabled={{true}}
+      @onChange={{this.onCurrencyChange}}
+      @allowClear={{true}}
+      @search={{this.searchCurrencyOptions}}
+    />
+
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.amountOffered}}
+      @label="Amount"
+      @value={{@deal.amountOffered}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.maturity}}
+      @label="Maturity"
+      @onChange={{this.onMaturityChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.term}}
+      @label="Term"
+      @value={{@deal.term}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.settlementDate}}
+      @label="Settlement Date"
+      @onChange={{this.onSettlementDateChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.dayCount}}
+      @label="Day Count"
+      @value={{@deal.dayCount}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.coupon}}
+      @label="Coupon"
+      @value={{@deal.coupon}}
+    />
+  </div>
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.couponType}}
+      @options={{this.couponTypeOptions}}
+      @errors={{@deal.errors.couponType}}
+      @label="Coupon Type"
+      @searchEnabled={{true}}
+      @onChange={{this.onCouponTypeChange}}
+      @allowClear={{true}}
+      @search={{this.searchCouponTypeOptions}}
+    />
+
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.payment}}
+      @options={{this.paymentOptions}}
+      @errors={{@deal.errors.payment}}
+      @label="Payment Frequency"
+      @searchEnabled={{true}}
+      @onChange={{this.onPaymentChange}}
+      @allowClear={{true}}
+      @search={{this.searchPaymentOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.firstCouponDate}}
+      @label="First Coupon Date"
+      @onChange={{this.onFirstCouponDateChange}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.issuePrice}}
+      @label="Issue Price"
+      @value={{@deal.issuePrice}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput @errors={{@deal.errors.fpr}} @label="FPR" @value={{@deal.fpr}} />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.yield}}
+      @label="Yield"
+      @value={{@deal.yield}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.interestAccrualDate}}
+      @label="Interest Accrual Date"
+      @onChange={{this.onInterestAccrualDateChange}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.benchmark}}
+      @label="Benchmark"
+      @value={{@deal.benchmark}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.spread}}
+      @label="Spread"
+      @value={{@deal.spread}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.swapsBenchmark}}
+      @label="Swaps Benchmark"
+      @value={{@deal.swapsBenchmark}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.swapsSpread}}
+      @label="Swaps Spread"
+      @value={{@deal.swapsSpread}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.govtBenchmark}}
+      @label="Govt Benchmark"
+      @value={{@deal.govtBenchmark}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.govtBmkSpread}}
+      @label="Govt Bmk Spread"
+      @value={{@deal.govtBmkSpread}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.frnDiscountMargin}}
+      @label="FRN Discount Margin"
+      @value={{@deal.frnDiscountMargin}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.priceTalk}}
+      @label="Price Talk"
+      @value={{@deal.priceTalk}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.iptsInitialGuidance}}
+      @label="IPTs/Initial Guidance"
+      @value={{@deal.iptsInitialGuidance}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.guidance}}
+      @label="Guidance"
+      @value={{@deal.guidance}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.iptsToPxd}}
+      @label="IPTs to Pxd"
+      @value={{@deal.iptsToPxd}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="guarantor">Guarantor</label>
+    <Textarea id="guarantor" @value={{@deal.guarantor}} class="form-control" />
+  </div>
+  <div class="col-md-3">
+    <label for="use_of_proceeds">Use of Proceeds</label>
+    <Textarea
+      id="use_of_proceeds"
+      @value={{@deal.useOfProceeds}}
+      class="form-control"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.dealType}}
+      @options={{this.dealTypeOptions}}
+      @errors={{@deal.errors.dealType}}
+      @label="Deal Type"
+      @multiple={{true}}
+      @searchEnabled={{true}}
+      @onChange={{this.onDealTypeChange}}
+      @allowClear={{true}}
+      @closeOnSelect={{false}}
+      @search={{this.searchDealTypeOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.marketType}}
+      @options={{this.marketTypeOptions}}
+      @errors={{@deal.errors.marketType}}
+      @label="Market Type"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.marketType)}}
+      @allowClear={{true}}
+      @search={{this.searchMarketType}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.coveredBonds}}
+      @options={{this.coveredBondsOptions}}
+      @errors={{@deal.errors.coveredBonds}}
+      @label="Covered Bonds"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.coveredBonds)}}
+      @allowClear={{true}}
+      @search={{this.searchCoveredBonds}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.subordinatedHybridPreferred}}
+      @options={{this.subordinatedHybridPreferredOptions}}
+      @errors={{@deal.errors.subordinatedHybridPreferred}}
+      @label="Subordinated/Hybrid/Preferred"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.subordinatedHybridPreferred)}}
+      @allowClear={{true}}
+      @search={{this.searchSubordinatedHybridPreferred}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="self_led">Self-Led</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.selfLed}}
+          @value={{true}}
+          @name="selfLed"
+          @changed={{fn (mut @deal.selfLed)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.selfLed}}
+          @value={{false}}
+          @name="selfLed"
+          @changed={{fn (mut @deal.selfLed)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.fdicGgb}}
+      @options={{this.fdicGgbOptions}}
+      @errors={{@deal.errors.fdicGgb}}
+      @label="FDIC GGB"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.fdicGgb)}}
+      @allowClear={{true}}
+      @search={{this.searchFdicGgbOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.indexLinked}}
+      @options={{this.indexLinkedOptions}}
+      @errors={{@deal.errors.indexLinked}}
+      @label="Index-Linked"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.indexLinked)}}
+      @allowClear={{true}}
+      @search={{this.searchIndexLinkedOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="upped">Upped (Increased)</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.upped}}
+          @value={{true}}
+          @name="upped"
+          @changed={{fn (mut @deal.upped)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.upped}}
+          @value={{false}}
+          @name="upped"
+          @changed={{fn (mut @deal.upped)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="add_on">Add-On (Reopening/Tap)</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.addOn}}
+          @value={{true}}
+          @name="addOn"
+          @changed={{fn (mut @deal.addOn)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.addOn}}
+          @value={{false}}
+          @name="addOn"
+          @changed={{fn (mut @deal.addOn)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.totalDealSize}}
+      @label="Total Deal Size"
+      @value={{@deal.totalDealSize}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.totalTranches}}
+      @label="Total Tranches"
+      @value={{@deal.totalTranches}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.expectedMaturity}}
+      @label="Expected Maturity"
+      @value={{@deal.expectedMaturity}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.averageLife}}
+      @label="Average Life"
+      @value={{@deal.averageLife}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.moodysRating}}
+      @options={{this.moodysRatingOptions}}
+      @errors={{@deal.errors.moodysRating}}
+      @label="Moody's"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.moodysRating)}}
+      @allowClear={{true}}
+      @search={{this.searchMoodysRatingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.moodysOutlook}}
+      @options={{this.moodysOutlookOptions}}
+      @errors={{@deal.errors.moodysOutlook}}
+      @label="Moody's Outlook"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.moodysOutlook)}}
+      @allowClear={{true}}
+      @search={{this.searchMoodysOutlookOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.spRating}}
+      @options={{this.spRatingOptions}}
+      @errors={{@deal.errors.spRating}}
+      @label="S&P"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.spRating)}}
+      @allowClear={{true}}
+      @search={{this.searchSpRatingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.spOutlook}}
+      @options={{this.spOutlookOptions}}
+      @errors={{@deal.errors.spOutlook}}
+      @label="S&P Outlook"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.spOutlook)}}
+      @allowClear={{true}}
+      @search={{this.searchSpOutlookOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.fitchRating}}
+      @options={{this.fitchRatingOptions}}
+      @errors={{@deal.errors.fitchRating}}
+      @label="Fitch"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.fitchRating)}}
+      @allowClear={{true}}
+      @search={{this.searchFitchRatingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.fitchOutlook}}
+      @options={{this.fitchOutlookOptions}}
+      @errors={{@deal.errors.fitchOutlook}}
+      @label="Fitch Outlook"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.fitchOutlook)}}
+      @allowClear={{true}}
+      @search={{this.searchFitchOutlookOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.dbrsRating}}
+      @options={{this.dbrsRatingOptions}}
+      @errors={{@deal.errors.dbrsRating}}
+      @label="DBRS"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.dbrsRating)}}
+      @allowClear={{true}}
+      @search={{this.searchDbrsRatingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.dbrsOutlook}}
+      @label="DBRS Outlook"
+      @value={{@deal.dbrsOutlook}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.jcrRating}}
+      @options={{this.jcrRatingOptions}}
+      @errors={{@deal.errors.jcrRating}}
+      @label="JCR"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.jcrRating)}}
+      @allowClear={{true}}
+      @search={{this.searchJcrRatingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.riRating}}
+      @options={{this.riRatingOptions}}
+      @errors={{@deal.errors.riRating}}
+      @label="R&I"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.riRating)}}
+      @allowClear={{true}}
+      @search={{this.searchRiRatingOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="call_option">Call Option</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.callOption}}
+          @value={{true}}
+          @name="callOption"
+          @changed={{fn (mut @deal.callOption)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.callOption}}
+          @value={{false}}
+          @name="callOption"
+          @changed={{fn (mut @deal.callOption)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="put_option">Put Option</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.putOption}}
+          @value={{true}}
+          @name="putOption"
+          @changed={{fn (mut @deal.putOption)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.putOption}}
+          @value={{false}}
+          @name="putOption"
+          @changed={{fn (mut @deal.putOption)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.callProtection}}
+      @label="Call Protection"
+      @value={{@deal.callProtection}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.callDate}}
+      @label="Call Date"
+      @onChange={{this.onCallDateChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.callPutComment}}
+      @label="Call Put Comment"
+      @value={{@deal.callPutComment}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.callPrice}}
+      @label="Call Price"
+      @value={{@deal.callPrice}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.totalFees}}
+      @label="Total Fees"
+      @value={{@deal.totalFees}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.mufees}}
+      @label="M&U Fees"
+      @value={{@deal.mufees}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.sellingConcession}}
+      @label="Selling Concession"
+      @value={{@deal.sellingConcession}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="selling_restrictions">Selling Restrictions</label>
+    <Textarea
+      id="selling_restrictions"
+      @value={{@deal.sellingRestrictions}}
+      class="form-control"
+    />
+  </div>
+  <div class="col-md-3">
+    <Igm-input
+      @errors={{@deal.errors.tefra}}
+      @label="Tefra"
+      @value={{@deal.tefra}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.denomMin}}
+      @label="Denom Min"
+      @value={{@deal.denomMin}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.denomIncrements}}
+      @label="Denom Increments"
+      @value={{@deal.denomIncrements}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.listing}}
+      @options={{this.listingOptions}}
+      @errors={{@deal.errors.listing}}
+      @label="Listing"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.listing)}}
+      @allowClear={{true}}
+      @search={{this.searchListingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.denom}}
+      @label="Denom"
+      @value={{@deal.denom}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.governingLaw}}
+      @options={{this.governingLawOptions}}
+      @errors={{@deal.errors.governingLaw}}
+      @label="Governing Law"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.governingLaw)}}
+      @allowClear={{true}}
+      @search={{this.searchGoverningLawOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.isin}}
+      @label="ISIN"
+      @value={{@deal.isin}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.cusip}}
+      @label="CUSIP"
+      @value={{@deal.cusip}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.figi}}
+      @label="FIGI"
+      @value={{@deal.figi}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.isinRegs}}
+      @label="ISIN RegS"
+      @value={{@deal.isinRegs}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.isin_144a}}
+      @label="ISIN 144A"
+      @value={{@deal.isin_144a}}
+    />
+  </div>
+  <div class="col-md-3">
+    <Igm-input
+      @errors={{@deal.errors.cusipRegs}}
+      @label="CUSIP RegS"
+      @value={{@deal.cusipRegs}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.cusip_144a}}
+      @label="CUSIP 144A"
+      @value={{@deal.cusip_144a}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.valoren}}
+      @label="Valoren"
+      @value={{@deal.valoren}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput @errors={{@deal.errors.wkn}} @label="WKN" @value={{@deal.wkn}} />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.otherSecId}}
+      @label="Other Sec ID"
+      @value={{@deal.otherSecId}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.sharesOffered}}
+      @label="Shares Offered"
+      @value={{@deal.sharesOffered}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.pfdParValue}}
+      @label="Pfd par value"
+      @value={{@deal.pfdParValue}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.dividendProt}}
+      @label="Dividend Prot"
+      @value={{@deal.dividendProt}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.dividendRate}}
+      @label="Dividend Rate"
+      @value={{@deal.dividendRate}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <label for="comments">Comments</label>
+    <Textarea
+      id="comments"
+      @value={{@deal.comments}}
+      class="form-control"
+      rows="10"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.xcvrd}}
+      @label="XCVRD"
+      @value={{@deal.xcvrd}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.bookSize}}
+      @label="Book Size"
+      @value={{@deal.bookSize}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.numberOfAccounts}}
+      @label="No. Accounts"
+      @value={{@deal.numberOfAccounts}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.peakBooks}}
+      @label="Peak Books"
+      @value={{@deal.peakBooks}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.nics}}
+      @label="NICs"
+      @value={{@deal.nics}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.igPostPricingSecondarySpread}}
+      @label="IG Post Pricing Secondary Spread"
+      @value={{@deal.igPostPricingSecondarySpread}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.hyPostPricingSecondaryPrice}}
+      @label="HY Post Pricing Secondary Price"
+      @value={{@deal.hyPostPricingSecondaryPrice}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.jlmInterest}}
+      @label="JLM Interest"
+      @value={{@deal.jlmInterest}}
+    />
+  </div>
+</div>
+
+{{#if (await this.showDistributionStats)}}
+  <DistributionForm @distribution={{@deal.distribution}} />
+  <br />
+{{else}}
+  <p>
+    <button type="button" {{on "click" this.addDistribution}}>Add Distribution
+      Statistics</button>
+  </p>
+{{/if}}
+
+<RelatedStories @deal={{@deal}} />
+
+<div class="btn-toolbar">
+  {{#unless @deal.isNew}}
+    <div class="btn-group">
+      <button
+        class="btn btn-default"
+        type="button"
+        {{on "click" this.clone}}
+      >Clone</button>
+      <button
+        class="btn btn-danger"
+        type="button"
+        {{on "click" this.delete}}
+      >Delete</button>
+    </div>
+  {{/unless}}
+
+  <div class="btn-group">
+    <button
+      class="btn btn-default"
+      type="button"
+      {{on "click" @preview}}
+    >Preview</button>
+    <button
+      class="btn btn-primary"
+      type="button"
+      {{on "click" (fn this.save false)}}
+    >Save</button>
+    <button
+      class="btn btn-success"
+      type="button"
+      {{on "click" (fn this.save true)}}
+    >Publish</button>
+  </div>
+
+  <div class="btn-group">
+    <LinkTo @route="author" class="btn btn-default">Cancel</LinkTo>
+  </div>
+</div>

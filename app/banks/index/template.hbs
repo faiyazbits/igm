@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-2">
+    <h1>Banks</h1>
+  </div>
+  <div class="col-md-10">
+    <div {{on 'click' this.back}} class="pull-right">
+      <i class="icon-close clickable"></i>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p><LinkTo @route="banks.new">Create a New Bank</LinkTo></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form class="form-inline">
+        <div class="form-group">
+            <div class="form-group ">
+                <label for="Filterbyname" class="control-label">
+                    Name
+                </label>
+                <div class="">
+                    <Input
+                        id="Filterbyname"
+                        @type="text"
+                        class="form-control"
+                        placeholder="Filter by Name"
+                        @value={{this.name}} 
+                        {{on 'keyup' this.searchFilter}}
+                    />
+                </div>
+            </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Full Name</th>
+                <th>Short Name</th>
+                <th>Euro Name</th>
+                <th>Merged To</th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.model as |bank|}}
+                <tr>
+                    <td><LinkTo @route="banks.edit" @model={{bank.id}}>{{bank.fullName}}</LinkTo></td>
+                    <td>{{bank.shortName}}</td>
+                    <td>{{bank.fullNameEur}}</td>
+                    <td>{{bank.mergerName}}</td>
+                    <td><button class="btn btn-default" type="button" {{on 'click' (fn this.delete bank)}} >Delete</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<PaginationButtons 
+    @currentPage={{this.page}} 
+    @totalPages={{this.totalPages}} 
+/>

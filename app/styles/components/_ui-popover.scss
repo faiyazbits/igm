@@ -1,0 +1,41 @@
+.ui-popover {
+  display: inline-block;
+  position: relative;
+  .ui-popover-toggle {
+    color: #64A0C8;
+    cursor: pointer;
+    :focus, :hover {
+      color: #3b7aa5;
+    }
+  }
+}
+
+.panel-action-maximize {
+  color: #64A0C8;
+    cursor: pointer;
+    :focus, :hover {
+      color: #3b7aa5;
+    }
+}
+
+.ui-popover-content {
+  margin-top: 10px;
+  position: absolute;
+  right: 0;
+  width: 300px;
+  z-index: 1;
+
+  .panel {
+    @include box-shadow($heavy-box-shadow);
+  }
+}
+
+.ui-popover-content-right {
+  left: 0;
+  right: inherit;
+}
+
+.ui-popover-content-inherit-width {
+  min-width: 300px;
+  width: inherit;
+}

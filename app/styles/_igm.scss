@@ -1,0 +1,186 @@
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+h5 {
+  font: $primary-font-sm;
+  color: $gray-light;
+}
+
+hr {
+  border-top: 1px solid $border-color;
+}
+
+// defaults to required margin when showing cookie notice
+// this value will be overridden in application controller
+// once the user accepts cookie policy
+.application-route {
+  margin-top: 113px;
+
+  @media (max-width: $screen-sm-max) {
+    margin-top: 163px;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.dashboard-notice-container {
+  padding: 25px;
+  width: 50%;
+}
+
+.eucookielawcontainer {
+  width: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+
+  .cookieblock {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 20px;
+    height: 75px;
+
+    @media (max-width: $screen-sm-max) {
+      height: 125px;
+    }
+
+    p {
+      margin-top: 15px;
+    }
+
+    .close-button {
+      cursor: pointer;
+
+      span {
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .eucookiebanner {
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #333;
+    color: #fff;
+    position: relative;
+    border: 0;
+    padding: 0px 15px;
+
+    .cookie-link {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+}
+
+.label {
+  border-radius: 40px;
+  display: inline-block; // see https://github.com/twbs/bootstrap/issues/13219 for rationale
+  font: $alt-font-xs;
+  margin: 3px 0px;
+  padding: 0.6em 1.2em;
+}
+
+.logo {
+  position: absolute;
+  padding-top: 23px;
+  left: 25px;
+}
+
+.logo img {
+  width: 80%;
+  height: 80%;
+  padding: 10px;
+}
+
+.logo-name {
+  color: $white;
+  display: none;
+  font-family: $font-family-serif;
+}
+
+.no-box-shadow {
+  box-shadow: none;
+}
+
+.sidebar-nav {
+  display: table-cell;
+  font-family: $alt-font-face;
+  font-weight: 300;
+  text-transform: uppercase;
+  vertical-align: top;
+
+  a {
+    color: $white;
+
+    &:hover,
+    &:focus {
+      color: $gray-lighter;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 150px 0 10px;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 12px;
+  }
+
+  i[class^="icon-"],
+  i[class*=" icon-"] {
+    top: 6px;
+    margin-right: 16px;
+    font-size: 24px;
+  }
+}
+
+.ember-power-select-trigger {
+  min-height: 38px !important;
+  border-radius: 2px !important;
+  border: 1px solid #ccc !important;
+  background-color: #f9f9f9 !important;
+  line-height: 1.5 !important;
+  overflow-x: unset !important;
+}
+
+.ember-power-select-selected-item,
+.ember-power-select-placeholder,
+.ember-power-select-multiple-options {
+  padding: 4px !important;
+}
+.ember-power-select-multiple-options .ember-power-select-multiple-option {
+  background: #1da7ee;
+  color: #fff;
+
+  b {
+    background: #1da7ee !important;
+    color: #fff !important;
+    font-size: inherit !important;
+    font-weight: normal !important;
+  }
+}
+.ember-power-select-multiple-options li input {
+  width: 100% !important;
+  background: #f9f9f9;
+  color: #333 !important;
+}
+
+.ember-power-select-status-icon {
+  border-color: grey transparent transparent !important;
+  border-width: 5px 5px 0 !important;
+  right: 15px !important;
+}

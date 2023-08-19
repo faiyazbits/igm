@@ -1,0 +1,169 @@
+<div class="row">
+  <div class="col-md-4">
+    <ul class="list-unstyled">
+      {{#if @deal.dateOffered}}
+        <li>
+          <span class="text-muted">Date: </span>
+          <span class="pull-right">{{@deal.displayDateOffered}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.issuer.name}}
+        <li>
+          <span class="text-muted">Issuer: </span>
+          <span class="pull-right">{{@deal.issuer.name}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.regions}}
+        <li>
+          <span class="text-muted">Regions: </span>
+          <span class="pull-right">
+            {{#each @deal.regions as |region index| }}
+              {{if index " / "}}{{region.displayName}}
+            {{/each}}
+          </span>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <ul class="list-unstyled">
+      {{#if @deal.totalDealSize}}
+        <li>
+          <span class="text-muted">Total Deal Size: </span>
+          <span class="pull-right">{{@deal.displayTotalDealSize}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.absAssetClass}}
+        <li>
+          <span class="text-muted">ABS Asset Class: </span>
+          <span class="pull-right">{{@deal.absAssetClass}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.assetClass}}
+        <li>
+          <span class="text-muted">Asset Class: </span>
+          <span class="pull-right">{{@deal.assetClass}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.dealOriginator}}
+        <li>
+          <span class="text-muted">Originator: </span>
+          <span class="pull-right">{{@deal.dealOriginator.name}}</span>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+    <ul class="list-unstyled">
+      {{#if @deal.collateral}}
+        <li>
+          <span class="text-muted">Collateral: </span>
+          <span class="pull-right">{{@deal.collateral}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.format}}
+        <li>
+          <span class="text-muted">Format: </span>
+          <span class="pull-right">{{@deal.format}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.settlementDate}}
+        <li>
+          <span class="text-muted">Settlement Date: </span>
+          <span class="pull-right">{{@deal.displaySettlementDatefunction}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.usRiskRetentionCompliant}}
+        <li>
+          <span class="text-muted">US Risk Retention Compliant: </span>
+          <span class="pull-right">{{@deal.usRiskRetentionCompliant}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.euRiskRetentionCompliant}}
+        <li>
+          <span class="text-muted">EU Risk Retention Compliant: </span>
+          <span class="pull-right">{{@deal.euRiskRetentionCompliant}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.stsCompliant}}
+        <li>
+          <span class="text-muted">STS Compliant: </span>
+          <span class="pull-right">{{@deal.stsCompliant}}</span>
+        </li>
+      {{/if}}
+      {{#if @deal.esgSriDealType}}
+        <li>
+          <span class="text-muted">ESG/SRI Deal Type: </span>
+          <span class="pull-right">{{@deal.esgSriDealType}}</span>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+</div>
+
+<table class="table table-condensed no-box-shadow">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Size</th>
+      <th>Ratings</th>
+      <th>C/E</th>
+      <th>WAL</th>
+      <th>LFM</th>
+      <th>Talk</th>
+      <th>Coupon</th>
+      <th>IP</th>
+      <th>DM</th>
+      <th>Yield</th>
+      <th>Spread</th>
+      <th>ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @deal.sortedTranches as |tranche|}}
+    <tr>
+      <td>{{tranche.className}}</td>
+      <td>{{tranche.currency}}{{tranche.displayAmount}}</td>
+      <td>{{tranche.displayRatings}}</td>
+      <td>{{tranche.creditEnhancement}}</td>
+      <td>{{tranche.averageLife}}</td>
+      <td>{{format-date tranche.legalMaturity customFormat="MMM-D-YYYY"}}</td>
+      <td>{{tranche.priceTalk}}</td>
+      <td>{{tranche.coupon}}</td>
+      <td>{{tranche.issuePrice}}</td>
+      <td>{{tranche.discountMargin}}</td>
+      <td>{{tranche.yield}}</td>
+      <td>{{tranche.spread}}</td>
+      <td>
+        {{!-- <LinkTo @route='deal.tranche' @model={{tranche}}>{{tranche.id}}</LinkTo> --}}
+        {{tranche.id}}
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col-md-12">
+    {{#if @deal.comments}}
+      <span class="text-muted">Comments: </span>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{#if @deal.comments}}
+      <p>{{@deal.comments}}</p>
+    {{/if}}
+  </div>
+</div>
+{{#if @deal.commentaryFileUrl}}
+  <div class="row">
+    <div class="col-md-12">
+      <span class="text-muted">Commentary File: </span>
+      <a href="{{@deal.commentaryFileUrl}}" target="_blank">download</a>
+    </div>
+  </div>
+{{/if}}

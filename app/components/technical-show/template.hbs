@@ -1,0 +1,21 @@
+{{#if this.user.canEditTechnical}}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="pull-right">
+        <LinkTo @route='technicals.edit' @model={{@technical}}>Edit this Technical</LinkTo>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+<TechnicalShowPanel @technical={{@technical}} />
+
+{{#if this.commentaries}}
+  <div class="row">
+    <div class="col-md-12">
+      <h4>COMMENTARY</h4>
+    </div>
+  </div>
+  <TechnicalShowCommentary @commentaries={{this.commentaries}} />
+  <PaginationButtons @currentPage={{@commentsPage}} @totalPages={{this.commentsTotalPages}} />
+{{/if}}

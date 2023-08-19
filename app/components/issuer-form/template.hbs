@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="form-group col-md-3">
+    <IgmInput
+      @value={{@issuer.name}}
+      @label="Name"
+      @errors={{@issuer.errors.name}}
+    />
+  </div>
+  <div class="form-group col-md-3">
+    <IgmInput
+      @value={{@issuer.nickname}}
+      @label="Nickname"
+      @errors={{@issuer.errors.nickname}}
+    />
+  </div>
+  <div class="form-group col-md-3">
+    <IgmPowerSelect
+      @selection={{@issuer.country}}
+      @options={{@allCountries}}
+      @errors={{@issuer.errors.country}}
+      @label="Country"
+      @placeholder="Choose a country"
+      @optionLabelPath="name"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @issuer.country)}}
+      @allowClear={{true}}
+      @search={{this.searchCountryOptions}}
+    />
+  </div>
+  <div class="form-group col-md-3">
+    <label for="isEmergingMarket">Emerging Market</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@issuer.isEmergingMarket}}
+          @value={{true}}
+          @name="EmergingMarket"
+          @changed={{fn (mut @issuer.isEmergingMarket)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@issuer.isEmergingMarket}}
+          @value={{false}}
+          @name="EmergingMarket"
+          @changed={{fn (mut @issuer.isEmergingMarket)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-6">
+    <IgmPowerSelect
+      @selection={{@issuer.industry}}
+      @options={{@allIndustries}}
+      @errors={{@issuer.errors.industry}}
+      @label="Industry Name"
+      @placeholder="Search for Industry Name"
+      @optionLabelPath="displayName"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @issuer.industry)}}
+      @allowClear={{true}}
+      @search={{this.searchIndustriesOptions}}
+    />
+  </div>
+
+  <div class="form-group col-md-6">
+    {{#if this.canShowMergerControls}}
+      <label class="control-label">
+        Merger Name
+      </label>
+      <div class="merger-field">
+        <div class="col-md-6">
+          {{this.selectedMergerIssuer.name}}
+        </div>
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <a
+              href="javascript:void(0);"
+              {{on "click" this.changeMerger}}
+            >Change Merger</a>
+          </div>
+          <div class="col-md-6">
+            <a
+              href="javascript:void(0);"
+              {{on "click" this.removeMerger}}
+            >Remove Merger</a>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <IgmPowerSelect
+        @selection={{@issuer.merger}}
+        @options={{@allIssuers}}
+        @errors={{@issuer.errors.merger}}
+        @label="Merger Name"
+        @placeholder="Search for issuer"
+        @optionLabelPath="name"
+        @onChange={{this.onMergerChange}}
+        @searchEnabled={{true}}
+        @allowClear={{true}}
+        @search={{perform this.searchIssuers}}
+        @searchField="name"
+      />
+    {{/if}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-6">
+    <IgmInput
+      @value={{@issuer.ticker}}
+      @label="Ticker"
+      @errors={{@issuer.errors.ticker}}
+    />
+  </div>
+  <div class="form-group col-md-6">
+    <IgmInput
+      @value={{@issuer.lei}}
+      @label="LEI"
+      @errors={{@issuer.errors.lei}}
+    />
+  </div>
+</div>
+
+<button
+  class="btn btn-success"
+  type="button"
+  {{on "click" this.save}}
+>Save</button>

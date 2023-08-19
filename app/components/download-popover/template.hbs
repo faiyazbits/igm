@@ -1,0 +1,65 @@
+<div class="{{@class}} ui-popover">
+  {{#if @downloadEnabled}}
+    <UiPopoverToggle @toggle={{this.toggle}} @title="Download Results">
+      <i class={{@iconClass}}></i>
+    </UiPopoverToggle>
+  {{else}}
+    <i
+      class={{@iconClass}}
+      title="Not permissioned to download this content"
+    ></i>
+  {{/if}}
+
+  <UiPopoverContent
+    @rightPlacement={{this.rightPlacement}}
+    @isOpen={{this.isOpen}}
+    @close={{this.toggle}}
+    @title="Download Results"
+  >
+    <div class="download-popover-box">
+      <p>Select your choice of file types</p>
+      <IgmForm @submitForm={{this.send}}>
+        <ul class="download-popover-items">
+          <li>
+            <label>
+              <Input
+                @type="checkbox"
+                name="sendInCSV"
+                @checked={{this.sendInCSV}}
+              />
+              Send CSV
+            </label>
+          </li>
+          <li>
+            <label>
+              <Input
+                @type="checkbox"
+                name="sendInExcel"
+                @checked={{this.sendInExcel}}
+                value={{true}}
+              />
+              Send Excel .XLS
+            </label>
+          </li>
+          <li>
+            <label>
+              <Input
+                @type="checkbox"
+                name="sendInXLSX"
+                @checked={{this.sendInXLSX}}
+                value={{true}}
+              />
+              Send Excel .XLSX
+            </label>
+          </li>
+          <li>
+            <button type="submit" class="btn btn-success">Send</button>
+          </li>
+        </ul>
+        {{#if this.truncateExport}}
+          <p> Your exported results will be truncated at 5000 rows</p>
+        {{/if}}
+      </IgmForm>
+    </div>
+  </UiPopoverContent>
+</div>

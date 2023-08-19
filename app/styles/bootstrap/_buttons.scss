@@ -1,0 +1,98 @@
+.btn {
+  font-family: $alt-font-face;
+  background-image: none;
+  text-transform: uppercase;
+}
+
+.btn:focus, .btn:active, .btn:active:focus {
+  outline: none;
+}
+
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  text-shadow: none;
+  border: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  transition: all .3s;
+  border-width: 1px;
+  border-style: solid;
+
+  &.active,
+  &:active {
+    background-color: transparent;
+    @include box-shadow(none);
+  }
+
+  &.btn-default {
+    color: $gray;
+
+    &:hover, &:active {
+      background-color: $btn-default-bg;
+      color: $btn-outline-color-hover;
+    }
+  }
+
+  &.btn-primary {
+    color: $btn-primary-bg;
+
+    &:hover, &:active {
+      background-color : $btn-primary-bg;
+      color: $btn-outline-color-hover;
+    }
+  }
+
+  &.btn-success {
+    color: $btn-success-bg;
+
+    &:hover, &:active {
+      background-color : $btn-success-bg;
+      color: $btn-outline-color-hover;
+    }
+  }
+
+  &.btn-info {
+    color: $btn-info-bg;
+
+    &:hover, &:active {
+      background-color : $btn-info-bg;
+      color: $btn-outline-color-hover;
+    }
+  }
+
+  &.btn-warning {
+    color: $btn-warning-bg;
+
+    &:hover, &:active {
+      background-color : $btn-warning-bg;
+      color: $btn-outline-color-hover;
+    }
+  }
+
+  &.btn-danger {
+    color: $btn-danger-bg;
+
+    &:hover, &:active {
+      background-color : $btn-danger-bg;
+      color: $btn-outline-color-hover;
+    }
+  }
+}
+
+.btn-secondary {
+  background-color: $btn-secondary-bg;
+  border-color: $btn-secondary-border;
+  color: $btn-secondary-color;
+
+  &:hover,
+  &:active {
+    background-color: $btn-secondary-bg;
+    color: $btn-secondary-color;
+  }
+}

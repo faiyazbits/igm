@@ -1,0 +1,14 @@
+<div class={{this.conditionalClassName}}>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{@title}}
+
+      <span class="icon-close-sm pull-right span-toggle" {{on "click" this.close}}>
+        <i class="icon-close"></i>
+      </span>
+    </div>
+    <div class="panel-body">
+      {{yield}}
+    </div>
+  </div>
+</div>

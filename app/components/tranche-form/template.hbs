@@ -1,0 +1,474 @@
+<h3>Tranche</h3>
+
+<button
+  class="btn btn-default"
+  type="button"
+  {{on "click" this.clone}}
+>Clone</button>
+<button
+  class="btn btn-danger"
+  type="button"
+  {{on "click" this.delete}}
+>Delete</button>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@tranche.dateOffered}}
+      @errors={{@tranche.errors.dateOffered}}
+      @label="Date"
+      @onChange={{this.onDateOfferedChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <label for="guarantor">Guarantor</label>
+    <Textarea
+      id="guarantor"
+      @value={{@tranche.guarantor}}
+      class="form-control"
+      rows="1"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.className}}
+      @label="Class"
+      @value={{@tranche.className}}
+    />
+  </div>
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.amountOffered}}
+      @label="Amount"
+      @value={{@tranche.amountOffered}}
+    />
+  </div>
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.coupon}}
+      @label="Coupon"
+      @value={{@tranche.coupon}}
+    />
+  </div>
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.issuePrice}}
+      @label="Issue Price"
+      @value={{@tranche.issuePrice}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.yield}}
+      @label="Yield"
+      @value={{@tranche.yield}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.benchmark}}
+      @label="Benchmark"
+      @value={{@tranche.benchmark}}
+    />
+  </div>
+  <div class="col-md-3">
+    <label for="tranche_comments">Tranche Comments</label>
+    <Textarea
+      id="tranche_comments"
+      @value={{@tranche.trancheComments}}
+      class="form-control"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.isin}}
+      @label="ISIN"
+      @value={{@tranche.isin}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.cusip}}
+      @label="CUSIP"
+      @value={{@tranche.cusip}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.figi}}
+      @label="FIGI"
+      @value={{@tranche.figi}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.isinRegs}}
+      @label="ISIN RegS"
+      @value={{@tranche.isinRegs}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.isin_144a}}
+      @label="ISIN 144A"
+      @value={{@tranche.isin_144a}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.cusipRegs}}
+      @label="CUSIP RegS"
+      @value={{@tranche.cusipRegs}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.cusip_144a}}
+      @label="CUSIP 144A"
+      @value={{@tranche.cusip_144a}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@tranche.moodysRating}}
+      @options={{this.moodysRatingOptions}}
+      @errors={{@tranche.errors.moodysRating}}
+      @label="Moody's"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @tranche.moodysRating)}}
+      @allowClear={{true}}
+      @search={{this.searchMoodysRatingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@tranche.spRating}}
+      @options={{this.spRatingOptions}}
+      @errors={{@tranche.errors.spRating}}
+      @label="S&P"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @tranche.spRating)}}
+      @allowClear={{true}}
+      @search={{this.searchSpRatingOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@tranche.fitchRating}}
+      @options={{this.fitchRatingOptions}}
+      @errors={{@tranche.errors.spRating}}
+      @label="Fitch"
+      @placeholder="Choose a Fitch"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @tranche.fitchRating)}}
+      @allowClear={{true}}
+      @search={{this.searchFitchRatingOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.dbrsRating}}
+      @label="DBRS"
+      @value={{@tranche.dbrsRating}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.kroll}}
+      @label="Kroll"
+      @value={{@tranche.kroll}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.morningstar}}
+      @label="Morningstar"
+      @value={{@tranche.morningstar}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@tranche.currency}}
+      @options={{this.currencyOptions}}
+      @errors={{@tranche.errors.currency}}
+      @label="Currency"
+      @placeholder="Choose a Currency"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @tranche.currency)}}
+      @allowClear={{true}}
+      @search={{this.searchCurrencyOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <LinkTo @route="banks.index" class="btn btn-default btn-xs pull-right">
+      <i class="icon-edit"></i>
+    </LinkTo>
+    <IgmPowerSelect
+      @selection={{await @tranche.bookManagerBanks}}
+      @errors={{@tranche.errors.bookManagerBanks}}
+      @label="Book Managers"
+      @multiple={{true}}
+      @optionLabelPath="shortName"
+      @placeholder="Choose a manager"
+      @onChange={{this.onBookManagerBankChange}}
+      @searchEnabled={{true}}
+      @searchField="shortName"
+      @search={{perform this.searchBookBanks}}
+      @closeOnSelect={{false}}
+    />
+  </div>
+  <div class="col-md-3">
+    <LinkTo @route="banks.index" class="btn btn-default btn-xs pull-right">
+      <i class="icon-edit"></i>
+    </LinkTo>
+    <IgmPowerSelect
+      @selection={{await @tranche.otherManagerBanks}}
+      @errors={{@tranche.errors.otherManagerBanks}}
+      @label="Other Managers"
+      @multiple={{true}}
+      @optionLabelPath="shortName"
+      @placeholder="Choose a manager"
+      @onChange={{this.otherManagerBankChange}}
+      @searchEnabled={{true}}
+      @searchField="shortName"
+      @search={{perform this.searchOtherBanks}}
+      @closeOnSelect={{false}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@tranche.expectedMaturity}}
+      @label="Expected Maturity"
+      @onChange={{this.onExpectedMaturityChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@tranche.legalMaturity}}
+      @label="Legal Maturity"
+      @onChange={{this.onLegalMaturityChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.averageLife}}
+      @label="Average Life"
+      @value={{@tranche.averageLife}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+
+    <IgmPowerSelect
+      @selection={{@tranche.couponType}}
+      @options={{this.couponTypeOptions}}
+      @errors={{@tranche.errors.couponType}}
+      @label="Coupon Type"
+      @placeholder="Choose a Coupon Type"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @tranche.couponType)}}
+      @allowClear={{true}}
+      @search={{this.searchCouponTypeOptions}}
+    />
+  </div>
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.spread}}
+      @label="Spread"
+      @value={{@tranche.spread}}
+    />
+  </div>
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.priceTalk}}
+      @label="Price Talk"
+      @value={{@tranche.priceTalk}}
+    />
+  </div>
+  <div class="col-md-2">
+
+    <IgmPowerSelect
+      @selection={{await @tranche.regions}}
+      @options={{this.destinations.regionsAndNotAmerica}}
+      @errors={{@tranche.errors.destinations}}
+      @label="Tranche Region"
+      @placeholder="Choose a Tranche Region"
+      @multiple={{true}}
+      @optionLabelPath="displayName"
+      @onChange={{this.onDealRegionChange}}
+      @searchEnabled={{true}}
+      @searchField="displayName"
+      @closeOnSelect={{false}}
+      @search={{this.searchTranchRegionOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <label for="call_comment">Call Comment</label>
+    <Textarea
+      id="call_comment"
+      @value={{@tranche.callComment}}
+      class="form-control"
+    />
+  </div>
+  <div class="col-md-2">
+    <IgmDatetimePicker @date={{@tranche.callDate}} @label="Call Date" />
+  </div>
+  <div class="col-md-2">
+    <label for="call_option">Call Option</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@tranche.callOption}}
+          @value={{true}}
+          @name="CallOption"
+          @changed={{fn (mut @tranche.callOption)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@tranche.callOption}}
+          @value={{false}}
+          @name="CallOption"
+          @changed={{fn (mut @tranche.callOption)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.callProtection}}
+      @label="CallProtection"
+      @value={{@tranche.callProtection}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    <IgmInput
+      @errors={{@tranche.errors.fpr}}
+      @label="FPR"
+      @value={{@tranche.fpr}}
+    />
+  </div>
+  <div class="col-md-2">
+    <label for="rank">Rank</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@tranche.rank}}
+          @value={{true}}
+          @name="Rank"
+          @changed={{fn (mut @tranche.rank)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@tranche.rank}}
+          @value={{false}}
+          @name="Rank"
+          @changed={{fn (mut @tranche.rank)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <label for="retained">Retained</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@tranche.retained}}
+          @value={{true}}
+          @name="Retained"
+          @changed={{fn (mut @tranche.retained)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@tranche.retained}}
+          @value={{false}}
+          @name="Retained"
+          @changed={{fn (mut @tranche.retained)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <IgmPowerSelect
+      @selection={{@tranche.rating}}
+      @options={{this.ratingOptions}}
+      @errors={{@tranche.errors.rating}}
+      @label="Rating"
+      @placeholder="Choose a Rating"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @tranche.rating)}}
+      @allowClear={{true}}
+      @search={{this.searchRatingOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.window}}
+      @label="Window"
+      @value={{@tranche.window}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.creditEnhancement}}
+      @value={{@tranche.creditEnhancement}}
+      @label="Credit Enhancement"
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@tranche.errors.discountMargin}}
+      @label="Discount Margin"
+      @value={{@tranche.discountMargin}}
+    />
+  </div>
+</div>

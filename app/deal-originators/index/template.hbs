@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-sm-2">
+    <h1>Originators</h1>
+  </div>
+  <div class="col-md-10">
+    <div {{on 'click' this.back}} class="pull-right">
+      <i class="icon-close clickable"></i>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p><LinkTo @route='deal-originators.new'>Create a New Originator</LinkTo></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group ">
+        <label for="Filterbyname" class="control-label">
+            Filter by name
+        </label>
+        <Input
+            id="Filterbyname"
+            @type="text"
+            class="form-control"
+            placeholder="Filter by name"
+            @value={{this.name}} 
+            {{on 'keyup' this.searchFilter}}
+        />
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Merger Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.model as |dealOriginator|}}
+          <tr>
+            <td><LinkTo @route='deal-originators.edit' @model={{dealOriginator.id}}>{{dealOriginator.name}}</LinkTo></td>
+            <td>{{dealOriginator.merger.name}}</td>
+            <td><button class="btn btn-default" type="button" {{on 'click' (fn this.delete dealOriginator)}}>Delete</button></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <PaginationButtons
+    @currentPage={{this.page}}
+    @totalPages={{this.totalPages}}
+    />
+</div>

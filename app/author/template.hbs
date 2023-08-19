@@ -1,0 +1,81 @@
+{{page-title "Author"}}
+
+<TopNav>
+  <AuthorNav>
+    <div class="nav navbar-nav navbar-right">
+      <LinkTo
+        @route="author"
+        @query={{hash authorId=""}}
+        class="btn btn-default navbar-btn"
+      >All Content</LinkTo>
+      <LinkTo
+        @route="author"
+        @query={{hash authorId=(get (await this.session.currentUser) "id")}}
+        class="btn btn-default navbar-btn"
+      >My Content</LinkTo>
+    </div>
+    <form class="navbar-form navbar-right" role="search">
+      <div class="form-group">
+        <label for="author-search"></label>
+        <Input
+          @type="text"
+          id="author-search"
+          placeholder="Filter by Author"
+          class="form-control"
+          @value={{this.name}}
+          {{on "keyup" this.searchFilter}}
+        />
+      </div>
+    </form>
+  </AuthorNav>
+</TopNav>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date Updated</th>
+          <th>Date Created</th>
+          <th>Headline</th>
+          <th>Status</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each this.sortedStories as |story|}}
+          <tr>
+            <td>{{format-date story.updatedAt}}</td>
+            <td>{{format-date story.createdAt}}</td>
+            <td><LinkTo
+                @route="stories.edit"
+                @model={{story}}
+              >{{story.headline}}</LinkTo></td>
+            <td>
+              {{#if story.isEmbargoed}}
+                Embargoed until:
+                {{format-date story.publishedAt}}
+              {{else}}
+                {{#if story.publishedAt}}
+                  Published
+                {{else}}
+                  Draft
+                {{/if}}
+              {{/if}}
+            </td>
+            <td>{{story.user.fullName}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4"></td>
+            <td><PaginationButtons
+              @currentPage={{this.page}}
+              @totalPages={{this.totalPages}}
+            /></td>
+
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

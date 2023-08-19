@@ -1,0 +1,17 @@
+<div class="panel-section clearfix">
+  <div class="pull-left">SUPPORT &amp; RESISTANCE</div>
+  <div class="pull-right"><b>KEY: [ ] = OBJECTIVE</b>, ( ) = STOP-LOSS</div>
+</div>
+<div class="panel-body technical-chart" style="padding: 0;">
+  <table class="table table-striped">
+    <tbody>
+      {{#each @technical.table.displayableRows as |row|}}
+        <tr class="{{if row.isPriceRow 'price-row'}}">
+          <td><b>{{row.rowType}}</b></td>
+          <td>{{{format-technical-string row.valueCell}}}</td>
+          <td>{{{format-technical-string row.commentCell}}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

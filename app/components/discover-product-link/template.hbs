@@ -1,0 +1,18 @@
+{{#if this.enabled}}
+  <LinkTo @route={{@link}} @query={{hash category=@category name=@paramName}} >
+    <div class="product-link {{@category}}" data-t="discover-product-title">
+      {{@name}}
+    </div>
+  </LinkTo>
+{{else}}
+  <IgmTooltip @title="Not permissioned for this content"
+      @triggerEvent="click"
+      @delay="0"
+      @side="top">
+    <div class="product-link-disabled">
+      <div class="product-link {{@category}} disabled" data-t="discover-product-title">
+        {{@name}}
+      </div>
+    </div>
+  </IgmTooltip>
+{{/if}}

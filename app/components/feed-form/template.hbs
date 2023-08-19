@@ -1,0 +1,88 @@
+<div class="panel-body">
+  <IgmForm @for={{@feed}} @submitForm={{this.save}}>
+    <IgmInput
+      @value={{@feed.title}}
+      @errors={{@feed.errors.title}}
+      @label="Title"
+    />
+
+    <p>
+      All these destinations
+      <IgmTooltip
+        @title="Return content in your feed that matches ALL of the
+        tags you have selected (i.e. that exact combination)"
+        @position="right"
+        class="all-and-any-destinations"
+        @offsetY="2.5"
+      >
+        (<a href="#" {{on "click" this.toggleAndDestinations}}>Select
+          destinations</a>)
+      </IgmTooltip>
+    </p>
+    <ul>
+      {{#each @feed.andDestinations as |destination|}}
+        <li>{{destination.displayName}}</li>
+      {{else}}
+        <li>None selected</li>
+      {{/each}}
+    </ul>
+    {{#if this.isShowingAndDestinations}}
+      <ModalDialog
+        @onClose={{this.toggleAndDestinations}}
+        @translucentOverlay={{true}}
+      >
+        <FeedDestinationsPicker @feed={{@feed}} @destinationType="and" @close={{this.toggleAndDestinations}}/>
+      </ModalDialog>
+    {{/if}}
+
+    <p>
+      Any of these destinations
+      <IgmTooltip
+        @title="Similar to “OR”, filter your feed for content that
+        matches any one or more of the tags you have selected"
+        @position="right"
+        class="all-and-any-destinations"
+        @offsetY="2.5"
+      >
+        (<a href="#" {{on "click" this.toggleOrDestinations}}>Select
+          destinations</a>)
+      </IgmTooltip>
+    </p>
+    <ul>
+      {{#each @feed.orDestinations as |destination|}}
+        <li>{{destination.displayName}}</li>
+      {{else}}
+        <li>None selected</li>
+      {{/each}}
+    </ul>
+    {{#if this.isShowingOrDestinations}}
+      <ModalDialog
+        @onClose={{this.toggleOrDestinations}}
+        @translucentOverlay={{true}}
+      >
+      <FeedDestinationsPicker @feed={{@feed}} @destinationType="or" @close={{this.toggleOrDestinations}}/>
+      </ModalDialog>
+      {{!-- {{#modal-dialog
+        close='toggleOrDestinations'
+        translucentOverlay=true
+      }} --}}
+      {{!-- {{feed-destinations-picker
+          selectedDestinations=feed.orDestinations
+          addDestination='addOrDestination'
+          removeDestination='removeOrDestination'
+          close='toggleOrDestinations'
+        }} --}}
+      {{!-- {{/modal-dialog}} --}}
+    {{/if}}
+
+    <LinkTo @route={{@afterCancelRoute}} class="btn btn-default">Cancel</LinkTo>
+    {{#unless @feed.isNew}}
+      <button
+        type="button"
+        {{on "click" (fn this.delete @feed.id)}}
+        class="btn btn-danger"
+      >Delete</button>
+    {{/unless}}
+    <button type="submit" class="btn btn-success">Save</button>
+  </IgmForm>
+</div>

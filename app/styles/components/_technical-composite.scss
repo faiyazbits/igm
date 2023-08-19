@@ -1,0 +1,18 @@
+.tech-composite-landing {
+  border-top: 1px solid $table-border-color;
+}
+
+.technical-composite-route {
+  .wide-cell {
+    margin: 100px;
+  }
+  tr.clear-border-top > th {
+    border-top: none;
+  }
+  table {
+    box-shadow: none;
+  }
+  .table {
+    margin-top: 12px;
+  }
+}

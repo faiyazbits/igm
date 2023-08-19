@@ -1,0 +1,42 @@
+.related-stories-divider {
+  margin: 25px -16px 0;
+}
+
+.related-stories-header {
+  font-size: 18px;
+  margin: 20px 0 20px -20px;
+}
+
+.related-stories-nav-icon {
+  margin-left: 10px;
+}
+
+.related-stories-container {
+  background-color: $body-bg;
+  box-shadow: $default-box-shadow;
+  margin: 0 -16px -16px;
+  overflow: scroll;
+}
+
+.related-stories-table {
+  background-color: $body-bg;
+  border: none;
+  box-shadow: none;
+  margin: 20px 0 20px 20px;
+}
+
+.related-story-card {
+  background-color: $panel-footer-bg;
+  box-shadow: $default-box-shadow;
+  margin-right: 20px;
+  padding: 25px;
+  width: 625px;
+  height: 390px;
+}
+
+.related-story-body {
+  height: 200px;
+  margin: 2% 0;
+  overflow: hidden;
+  width: 575px;
+}

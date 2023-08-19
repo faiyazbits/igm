@@ -1,0 +1,31 @@
+{{#each this.sortedDashboardItems as |dashboardItem|}}
+  {{#if (await (get dashboardItem "isTechnicalFeed"))}}
+    <div class="technicals col-sm-12 col-lg-6">
+      <FeedPanel
+        @feed={{get dashboardItem "dashboardable"}}
+        @isAddableFeed={{true}}
+      />
+    </div>
+  {{else if (await (get dashboardItem "isTechCompositeFeed"))}}
+    <div class="col-sm-12">
+      <FeedPanel
+        @feed={{get dashboardItem "dashboardable"}}
+        @isAddableFeed={{true}}
+      />
+    </div>
+  {{else if (await (get dashboardItem "isDealFeed"))}}
+    <div class="col-sm-12">
+      <FeedPanel
+        @feed={{get dashboardItem "dashboardable"}}
+        @isAddableFeed={{true}}
+      />
+    </div>
+  {{else if (await (get dashboardItem "isFeed"))}}
+    <div class="col-sm-12 col-md-6">
+      <FeedPanel
+        @feed={{get dashboardItem "dashboardable"}}
+        @isAddableFeed={{true}}
+      />
+    </div>
+  {{/if}}
+{{/each}}

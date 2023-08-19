@@ -1,0 +1,123 @@
+<div class="{{@class}} ui-popover" {{did-insert this.initAlertPopover}}>
+  <UiPopoverToggle @title={{this.title}} @toggle={{this.toggle}}>
+    <i class={{@iconClass}}></i>
+
+  </UiPopoverToggle>
+
+  <UiPopoverContent
+    @title={{this.title}}
+    @isOpen={{this.isOpen}}
+    @close={{this.toggle}}
+    @rightPlacement={{false}}
+  >
+    <p>Receive email whenever new content is created that matches this search.</p>
+    <IgmForm @for={{this.alert}} @submitForm={{this.save}}>
+      {{#unless this.isMtn}}
+        <div class="radio">
+          <label>
+            <RadioButton
+              @groupValue={{this.alert.alertType}}
+              @value="instant"
+              @name="rank"
+              @changed={{this.alertTypeChanged}}
+            />
+            Instant
+          </label>
+        </div>
+      {{/unless}}
+      <div class="radio">
+        <label>
+          <RadioButton
+            @groupValue={{this.alert.alertType}}
+            @value="digest"
+            @name="rank"
+            @changed={{this.alertTypeChanged}}
+          />
+          Digest
+        </label>
+      </div>
+      <label>Time zone</label>
+      {{this.alert.timeZone}}
+
+      {{#if this.isInstant}}
+        <br />
+        <label>Time Range</label>
+        {{this.instantTimeRange.label}}
+
+        <IgmPowerSelect
+          @selection={{this.instantTimeRange.startAtOption}}
+          @options={{this.instantTimeRange.timeOptions}}
+          @label="Start Time"
+          @searchEnabled={{true}}
+          @onChange={{this.onInstantTimeRangeStartChange}}
+          @allowClear={{true}}
+          @renderInPlace={{true}}
+          @optionLabelPath="label"
+          @searchField="label"
+          @search={{this.searchOptions}}
+        />
+
+        <IgmPowerSelect
+          @selection={{this.instantTimeRange.endAtOption}}
+          @options={{this.instantTimeRange.timeOptions}}
+          @label="End Time"
+          @searchEnabled={{true}}
+          @onChange={{this.onInstantTimeRangeEndChange}}
+          @allowClear={{true}}
+          @renderInPlace={{true}}
+          @optionLabelPath="label"
+          @searchField="label"
+          @search={{this.searchOptions}}
+        />
+      {{else}}
+        <table class="table table-one-line">
+          <thead>
+            <tr>
+              <th>Send at</th>
+              <th>Time range</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each this.digestTimeRanges as |timeRange|}}
+              {{#if this.isMtn}}
+                {{#if timeRange.endAtTenPmUtc}}
+                  <tr>
+                    <td>
+                      <label>
+                        <Input
+                          @type="checkbox"
+                          name="digest"
+                          @checked={{timeRange.enabled}}
+                        />
+                        {{timeRange.localEnd}}
+                      </label>
+                    </td>
+                    <td>{{timeRange.label}}</td>
+                  </tr>
+                {{/if}}
+              {{else}}
+                <tr>
+                  <td>
+                    <label>
+
+                      <Input
+                        @type="checkbox"
+                        name="digest"
+                        @checked={{timeRange.enabled}}
+                      />
+                      {{timeRange.localEnd}}
+                    </label>
+                  </td>
+                  <td>{{timeRange.label}}</td>
+                </tr>
+              {{/if}}
+            {{/each}}
+          </tbody>
+        </table>
+      {{/if}}
+      <button type="submit" class="btn btn-success">Save</button>
+
+    </IgmForm>
+
+  </UiPopoverContent>
+</div>

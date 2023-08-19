@@ -1,0 +1,107 @@
+<div class="list-group">
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash contentType="All"}}
+  >
+    <i class="on-left icon-grid"></i>
+    ALL ({{if @totalCount @totalCount 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash contentType="Story"}}
+  >
+    <i class="on-left icon-pulse"></i>
+    News Stories ({{if @typeFilters.Story @typeFilters.Story 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash contentType="Deal"}}
+  >
+    <i class="on-left icon-grid"></i>
+    Deals ({{if @typeFilters.Deal @typeFilters.Deal 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash contentType="Technical"}}
+  >
+    <i class="on-left icon-technical"></i>
+    Technicals ({{if @typeFilters.Technical @typeFilters.Technical 0}})
+  </LinkTo>
+</div>
+
+<div class="list-group">
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash destinations=@noDestination}}
+  >
+    <i class="on-left icon-grid"></i>
+    ALL Products ({{if @totalCount @totalCount 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash destinations=@creditDestination}}
+  >
+    <i class="on-left icon-grid-1"></i>
+    Credit ({{if @productFilters.credit @productFilters.credit 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash destinations=@fxDestination}}
+  >
+    <i class="on-left icon-grid-1"></i>
+    FX ({{if @productFilters.fx @productFilters.fx 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash destinations=@ratesDestination}}
+  >
+    <i class="on-left icon-grid-1"></i>
+    Rates ({{if @productFilters.rates @productFilters.rates 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash destinations=@iiiaDestination}}
+  >
+    <i class="on-left icon-grid-1"></i>
+    IIIA ({{if @productFilters.iiia @productFilters.iiia 0}})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash destinations=@g10FxPlaybookDestination}}
+  >
+    <i class="on-left icon-grid-1"></i>
+    G10 FX PLAYBOOK ({{if
+      (get @productFilters "g10 fx playbook")
+      (get @productFilters "g10 fx playbook")
+      0
+    }})
+  </LinkTo>
+
+  <LinkTo
+    @route="search"
+    class="list-group-item search-filter"
+    @query={{hash destinations=@clDestination}}
+  >
+    <i class="on-left icon-grid-1"></i>
+    中文产品 ({{if @productFilters.cl @productFilters.cl 0}})
+  </LinkTo>
+</div>

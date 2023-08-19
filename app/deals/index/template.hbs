@@ -1,0 +1,65 @@
+{{#if this.isValidDestinationParams}}
+    <div class="deal-index-panel">
+        <DealIndexTable 
+            @deals={{this.model}}
+            @destinations= {{this.destinations}}
+            @status={{this.status}}
+            @dealType={{this.dealType}}
+            @title={{this.title}}
+            @route={{this.route}}
+            @indexPageView={{true}}
+        />
+
+        <div class="deal-index-pagination">
+            <PaginationButtons
+                @currentPage={{this.page}}
+                @totalPages={{this.totalPages}}
+            />
+        </div>
+    </div>
+{{else}}
+    <h3>All Deals</h3>
+    <table class="table table-one-line">
+        <thead>
+            <tr>
+                <th>Offered</th>
+                <th>Modified</th>
+                <th>Author</th>
+                <th>Currency</th>
+                <th>Size</th>
+                <th>Issuer Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this.model as |deal|}}
+            <tr>
+                <td>{{format-date deal.dateOffered customFormat="MMM-D-YYYY"}}</td>
+                <td>{{format-date deal.updatedAt customFormat="MMM-D-YYYY"}}</td>
+                <td>{{deal.user.fullName}}</td>
+                <td>{{deal.currency}}</td>
+                <td>
+                    {{#if deal.isSF}}
+                    {{deal.displayTotalDealSize}}
+                    {{else}}
+                    {{deal.displayAmount}}
+                    {{/if}}
+                </td>
+                <td>
+                    <LinkTo @route="deals.edit" @model={{deal.id}}>{{ deal.issuer.name }}</LinkTo>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5"></td>
+                <td>
+                    <PaginationButtons
+                        @currentPage={{this.page}}
+                        @totalPages={{this.totalPages}}
+                    />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+{{/if}}

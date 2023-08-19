@@ -1,0 +1,21 @@
+<div class="form-group {{if @hasError 'has-error'}}">
+
+  <label for={{this.uid}} class="control-label">
+    {{@label}}
+  </label>
+
+  {{! template-lint-disable no-inline-styles }}
+  <FroalaEditor
+    @on-image.beforeUpload={{this.beforeImageUpload}}
+    @on-image.uploaded={{this.imageUploaded}}
+    @on-file.beforeUpload={{this.beforeUpload}}
+    @on-file.uploaded={{this.fileInserted}}
+    @content={{this.safeValue}}
+    @update={{this.update}}
+    @options={{this.options}}
+  />
+
+  {{#each this.errors as |error|}}
+    <span class="help-block">{{error.message}}</span>
+  {{/each}}
+</div>

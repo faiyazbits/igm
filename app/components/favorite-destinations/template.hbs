@@ -1,0 +1,51 @@
+{{#if this.isEditing}}
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">Favorite Destination Groups</h3>
+    </div>
+
+    <div class="panel-body">
+      {{#each @destinationGroups as |destinationGroup|}}
+        <DestinationGroupForm
+          @destinationGroup={{destinationGroup}}
+          @delete={{this.deleteDestinationGroup}}
+          @save={{this.saveDestinationGroup}}
+        />
+      {{/each}}
+    </div>
+
+    <div class="panel-footer">
+      <button type="button" {{on "click" this.done}} class="btn btn-primary">
+        Done
+      </button>
+
+      <button
+        type="button"
+        {{on "click" this.addDestinationGroup}}
+        class="btn btn-default"
+      >
+        Add Destination Group
+      </button>
+    </div>
+  </div>
+{{else}}
+  <h5>
+    Favorite Destinations
+    <small><a
+        href="javascript:void(0)"
+        {{on "click" this.toggleIsEditing}}
+      >Edit</a></small>
+  </h5>
+
+  <div class="list-group">
+    {{#each @destinationGroups as |destinationGroup|}}
+      <a
+        href="javascript:void(0)"
+        class="list-group-item destination-group-item"
+        {{on "click" (fn @selectDestinationGroup destinationGroup)}}
+      >
+        {{destinationGroup.name}}
+      </a>
+    {{/each}}
+  </div>
+{{/if}}

@@ -1,0 +1,90 @@
+{{#if this.hasInvestorTypeStats}}
+  <br>
+  <li>
+    <span class="text-muted">Stats by Investor Type</span>
+  </li>
+  {{#if @deal.distribution.centralBanksOis}}
+    <li>
+      <span class="text-muted">Central Banks/OIs: </span>
+      <span class="pull-right">{{@deal.distribution.centralBanksOis}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.fundAssetManagers}}
+    <li>
+      <span class="text-muted">Fund/Asset Managers: </span>
+      <span class="pull-right">{{@deal.distribution.fundAssetManagers}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.pensionsInsurance}}
+    <li>
+      <span class="text-muted">Pensions/Insurance: </span>
+      <span class="pull-right">{{@deal.distribution.pensionsInsurance}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.pensions}}
+    <li>
+      <span class="text-muted">Pensions: </span>
+      <span class="pull-right">{{@deal.distribution.pensions}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.insurance}}
+    <li>
+      <span class="text-muted">Insurance: </span>
+      <span class="pull-right">{{@deal.distribution.insurance}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.banksPrivateBanks}}
+    <li>
+      <span class="text-muted">Banks/Private Banks: </span>
+      <span class="pull-right">{{@deal.distribution.banksPrivateBanks}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.banks}}
+    <li>
+      <span class="text-muted">Banks: </span>
+      <span class="pull-right">{{@deal.distribution.banks}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.bankTreasuries}}
+    <li>
+      <span class="text-muted">Bank Treasuries: </span>
+      <span class="pull-right">{{@deal.distribution.bankTreasuries}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.privateBanksRetail}}
+    <li>
+      <span class="text-muted">Private Banks/Retail: </span>
+      <span class="pull-right">{{@deal.distribution.privateBanksRetail}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.privateBanks}}
+    <li>
+      <span class="text-muted">Private Banks: </span>
+      <span class="pull-right">{{@deal.distribution.privateBanks}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.retail}}
+    <li>
+      <span class="text-muted">Retail: </span>
+      <span class="pull-right">{{@deal.distribution.retail}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.corporates}}
+    <li>
+      <span class="text-muted">Corporates: </span>
+      <span class="pull-right">{{@deal.distribution.corporates}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.hedgeFunds}}
+    <li>
+      <span class="text-muted">Hedge Funds: </span>
+      <span class="pull-right">{{@deal.distribution.hedgeFunds}}</span>
+    </li>
+  {{/if}}
+  {{#if @deal.distribution.typeOther}}
+    <li>
+      <span class="text-muted">Other: </span>
+      <span class="pull-right">{{@deal.distribution.typeOther}}</span>
+    </li>
+  {{/if}}
+{{/if}}

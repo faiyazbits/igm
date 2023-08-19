@@ -1,0 +1,39 @@
+<IgmForm @for={{this.technical}} @submitForm={{this.save}}>
+
+  <div class="row">
+    <div class="form-group col-md-3">
+      <label for="issuer">Name</label>
+      <Input
+        id="issuer"
+        @type="text"
+        @value={{this.model.name}}
+        class="form-control"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <IgmPowerSelect
+        @selection={{this.technical.destinations}}
+        @options={{this.allDestinations}}
+        @errors={{this.technical.errors.destinations}}
+        @label="Destinations"
+        @placeholder="Choose some destinations"
+        @optionLabelPath="name"
+        @multiple={{true}}
+        @onChange={{this.onDestinationChange}}
+        @searchEnabled={{true}}
+        @closeOnSelect={{false}}
+        @search={{this.searchDestinationOptions}}
+      />
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-default"
+    {{on "click" this.save}}
+  >Save</button>
+
+</IgmForm>

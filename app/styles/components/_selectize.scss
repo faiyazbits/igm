@@ -1,0 +1,17 @@
+span.ember-power-select-selected-item {
+  vertical-align: baseline;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  padding: 8px !important;
+}
+
+span.ember-power-select-status-icon {
+  display: none;
+}
+
+span.ember-power-select-clear-btn {
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}

@@ -1,0 +1,214 @@
+/*
+	Icon font
+*/
+#modal-box,
+#modal-box {
+  // position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#modal {
+  z-index: 1054 !important;
+}
+#modal {
+  position: relative;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 0;
+  background: #fff;
+  color: #000;
+  font-size: 14px !important;
+  font-family: 'Roboto', Verdana, Tahoma, sans-serif;
+  // box-shadow: 0 1px 70px rgba(0, 0, 0, 0.5);
+}
+
+.redactor-editor p {
+  color: $gray-dark;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+}
+
+.fr-buttons #popupClose-1{
+  position: relative;
+  width: 50%;
+  padding: 14px 16px;
+  margin: 0;
+  outline: 0;
+  border: none;
+  background-color: #ddd;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: Roboto,Verdana,Tahoma,sans-serif;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fr-buttons #popupInsert-1{
+  position: relative;
+  width: 50%;
+  padding: 14px 16px;
+  margin: 0;
+  outline: 0;
+  border: none;
+  background: #2461B5;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: Roboto,Verdana,Tahoma,sans-serif;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fr-buttons #popupCloseButton-1{
+  bottom: 404px;
+  right: 55px;
+  z-index: 1060;
+}
+
+.customPop{
+  border: 1px solid #A1A1A1;
+  width: fit-content;
+}
+
+#modal header {
+  padding: 30px 40px 5px 40px;
+  font-size: 18px;
+  font-weight: bold;
+}
+#modal section {
+  padding: 30px 40px 50px 40px;
+}
+#modal label {
+  display: block;
+  float: none !important;
+  margin: 15px 0 3px 0 !important;
+  padding: 0;
+}
+#modal input[type="radio"],
+#modal input[type="checkbox"] {
+  position: relative;
+  top: -1px;
+}
+#modal select {
+  width: 100%;
+}
+#modal input[type="text"],
+#modal input[type="password"],
+#modal input[type="email"],
+#modal input[type="url"],
+#modal textarea {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 5px 4px;
+  height: 28px;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+  color: #333;
+  width: 100%;
+  font-size: 14px;
+  font-family: 'Roboto', Verdana, Tahoma, sans-serif;
+  -moz-transition: border 0.3s ease-in;
+  transition: border 0.3s ease-in;
+}
+#modal input[type="text"]:focus,
+#modal input[type="password"]:focus,
+#modal input[type="email"]:focus,
+#modal input[type="url"]:focus,
+#modal textarea:focus {
+  outline: none;
+  border-color: #5ca9e4;
+  box-shadow: 0 0 0 2px rgba(70, 161, 231, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#modal input[type="text"].redactor-input-error,
+#modal input[type="password"].redactor-input-error,
+#modal input[type="email"].redactor-input-error,
+#modal input[type="url"].redactor-input-error,
+#modal textarea.redactor-input-error {
+  border-color: #e82f2f;
+  box-shadow: 0 0 0 2px rgba(232, 47, 47, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+}
+#modal textarea {
+  display: block;
+  margin-top: 4px;
+  line-height: 1.4em;
+}
+#modal footer button {
+  position: relative;
+  width: 100%;
+  padding: 14px 16px;
+  margin: 0;
+  outline: none;
+  border: none;
+  background-color: #ddd;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12px;
+  font-family: 'Roboto', Verdana, Tahoma, sans-serif;
+  line-height: 1;
+  cursor: pointer;
+}
+#modal footer button:hover {
+  color: #777;
+  background: none;
+  background: #bbb;
+  text-decoration: none;
+}
+#modal footer button.modal-delete-btn {
+  background: none;
+  color: #fff;
+  background-color: #b52525;
+}
+#modal footer button.modal-delete-btn:hover {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #881b1b;
+}
+#modal footer button.modal-action-btn {
+  background: none;
+  color: #fff;
+  background-color: #2461b5;
+}
+#modal footer button.modal-action-btn:hover {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #1a4580;
+}
+
+#modal #modal-list {
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+  max-height: 250px;
+  overflow-x: scroll;
+}
+#modal #modal-list li {
+  border-bottom: 1px solid #ddd;
+}
+#modal #modal-list li:last-child {
+  border-bottom: none;
+}
+#modal #modal-list a {
+  padding: 10px 5px;
+  color: #000;
+  text-decoration: none;
+  font-size: 13px;
+  display: block;
+  position: relative;
+}
+#modal #modal-list a:hover {
+  background-color: #eee;
+}
+
+

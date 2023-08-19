@@ -1,0 +1,19 @@
+{{#if this.enabled}}
+{{!-- <LinkTo @route="discover-page" (concat this.category "-" (dasherize this.name))> --}}
+<LinkTo @route="discover-page" @model={{concat @category "-"(dasherize @name)}}>
+  <div class="product-link {{@category}}" data-t="discover-product-title">
+  {{@name}}
+  </div>
+</LinkTo>
+{{else}}
+  <IgmTooltip title="Not permissioned for this content"
+      triggerEvent="click"
+      delay="0"
+      side="right">
+    <div class="product-link-disabled">
+      <div class="product-link {{@category}} disabled" data-t="discover-product-title">
+      {{@name}}
+      </div>
+    </div>
+  </IgmTooltip>
+{{/if}}

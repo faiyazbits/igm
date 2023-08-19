@@ -1,0 +1,11 @@
+<TopNav>
+  <AuthorNav />
+</TopNav>
+
+{{#if this.isPreview}}
+  <StoryPreview @story={{this.story}} @isPreview={{this.isPreview}} />
+
+  <button type="button" {{on "click" this.preview}} class="btn btn-default preview-back">Back to Author</button>
+{{else}}
+  <StoryForm @preview={{this.preview}}  @cancel={{this.back}} @story={{this.story}}  @destinationGroups={{this.destinationGroups}} />
+{{/if}}

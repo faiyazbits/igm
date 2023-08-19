@@ -1,0 +1,8 @@
+<h2>Editing {{this.dealOriginator.name}}</h2>
+
+<DealOriginatorForm
+    @dealOriginator={{this.dealOriginator}}
+    @dealOriginators={{this.dealOriginators}}
+/>
+
+<button class="btn btn-default" type="button" {{on 'click' (fn this.delete this.dealOriginator)}}>Delete</button>

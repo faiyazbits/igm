@@ -1,0 +1,439 @@
+<h1>Structured Finance Deal</h1>
+
+<div class="row">
+  <div class="col-md-3">
+    <LinkTo @route="issuers.index" class="btn btn-default btn-xs pull-right">
+      <i class="icon-edit"></i>
+    </LinkTo>
+    <IgmPowerSelect
+      @selection={{@deal.issuer}}
+      @errors={{@deal.errors.issuer}}
+      @label="Issuer"
+      @optionLabelPath="name"
+      @placeholder="Choose an issuer"
+      @onChange={{this.onIssuerChange}}
+      @search={{perform this.searchIssuers}}
+      @searchEnabled={{true}}
+      @allowClear={{true}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.dateOffered}}
+      @errors={{@deal.errors.dateOffered}}
+      @label="Date"
+      @onChange={{this.onDateOfferedChange}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <LinkTo
+      @route="deal-originators.index"
+      class="btn btn-default btn-xs pull-right"
+    >
+      <i class="icon-edit"></i>
+    </LinkTo>
+
+    <IgmPowerSelect
+      @selection={{@deal.dealOriginator}}
+      @errors={{@deal.errors.dealOriginator}}
+      @label="Originator"
+      @optionLabelPath="name"
+      @placeholder="Choose a Originator"
+      @onChange={{fn (mut @deal.dealOriginator)}}
+      @search={{perform this.searchDealOriginator}}
+      @searchEnabled={{true}}
+      @allowClear={{true}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.security}}
+      @options={{this.securitiesOptions}}
+      @errors={{@deal.errors.security}}
+      @label="Security Description"
+      @placeholder="Choose a Security Description"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.security)}}
+      @allowClear={{true}}
+      @search={{this.searchSecuritiesOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{await @deal.regions}}
+      @options={{this.destinations.regionsAndNotAmerica}}
+      @errors={{@deal.errors.destinations}}
+      @label="Deal Region"
+      @multiple={{true}}
+      @optionLabelPath="displayName"
+      @onChange={{this.onDealRegionChange}}
+      @searchEnabled={{true}}
+      @searchField="displayName"
+      @closeOnSelect={{false}}
+      @search={{this.searchDealRegion}}
+    />
+  </div>
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.assetClass}}
+      @options={{this.assetClassOptions}}
+      @errors={{@deal.errors.assetClass}}
+      @label="Asset Class"
+      @placeholder="Choose a Asset Class"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.assetClass)}}
+      @allowClear={{true}}
+      @search={{this.searchAssetClassOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.cdoType}}
+      @options={{this.cdoTypeOptions}}
+      @errors={{@deal.errors.cdoType}}
+      @label="CDO Type"
+      @placeholder="Choose a CDO Type"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.cdoType)}}
+      @allowClear={{true}}
+      @search={{this.searchCdoTypeOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.cdoAssetClass}}
+      @options={{this.cdoAssetClassOptions}}
+      @errors={{@deal.errors.cdoAssetClass}}
+      @label="CDO Asset Class"
+      @placeholder="Choose a CDO Asset Class"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.cdoAssetClass)}}
+      @allowClear={{true}}
+      @search={{this.searchCdoAssetClassOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.collateral}}
+      @options={{this.collateralOptions}}
+      @errors={{@deal.errors.collateral}}
+      @label="Collateral"
+      @placeholder="Choose a Collateral"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.collateral)}}
+      @allowClear={{true}}
+      @search={{this.searchCollateralOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.absAssetClass}}
+      @options={{this.absAssetClassOptions}}
+      @errors={{@deal.errors.absAssetClass}}
+      @label="ABS Asset Class"
+      @placeholder="Choose a ABS Asset Class"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.absAssetClass)}}
+      @allowClear={{true}}
+      @search={{this.searchAbsAssetClassOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="comments">Comments</label>
+    <Textarea
+      id="comments"
+      @value={{@deal.comments}}
+      class="form-control"
+      rows="5"
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.status}}
+      @options={{this.statusOptions}}
+      @errors={{@deal.errors.status}}
+      @label="Status"
+      @placeholder="Choose status"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.status)}}
+      @allowClear={{true}}
+      @search={{this.searchStatusOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmDatetimePicker
+      @date={{@deal.settlementDate}}
+      @label="Settlement Date"
+      @onChange={{this.onSettlementDateChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.market}}
+      @options={{this.marketOptions}}
+      @errors={{@deal.errors.market}}
+      @label="Market"
+      @placeholder="Choose a Market"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.market)}}
+      @allowClear={{true}}
+      @search={{this.searchMarketOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.currency}}
+      @options={{this.currencyOptions}}
+      @errors={{@deal.errors.currency}}
+      @label="Currency"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.currency)}}
+      @allowClear={{true}}
+      @search={{this.searchCurrencyOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.totalDealSize}}
+      @label="Total Deal Size"
+      @value={{@deal.totalDealSize}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+
+    <IgmPowerSelect
+      @selection={{@deal.format}}
+      @options={{this.formatOptions}}
+      @errors={{@deal.errors.format}}
+      @label="Format"
+      @placeholder="Choose Format"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.format)}}
+      @allowClear={{true}}
+      @search={{this.searchFormatOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput
+      @errors={{@deal.errors.totalTranches}}
+      @label="Total Tranches"
+      @value={{@deal.totalTranches}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="upped">Upped (Increased)</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.upped}}
+          @value={{true}}
+          @name="upped"
+          @changed={{fn (mut @deal.upped)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.upped}}
+          @value={{false}}
+          @name="upped"
+          @changed={{fn (mut @deal.upped)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="add_on">Add-On (Reopening/Tap)</label>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.addOn}}
+          @value={{true}}
+          @name="add_on"
+          @changed={{fn (mut @deal.addOn)}}
+        />
+        Yes
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <RadioButton
+          @groupValue={{@deal.addOn}}
+          @value={{false}}
+          @name="add_on"
+          @changed={{fn (mut @deal.addOn)}}
+        />
+        No
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.usRiskRetentionCompliant}}
+      @options={{this.usRiskRetentionCompliantOptions}}
+      @errors={{@deal.errors.usRiskRetentionCompliant}}
+      @label="US Risk Retention Compliant"
+      @placeholder="Choose a US Risk Retention Compliant"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.usRiskRetentionCompliant)}}
+      @allowClear={{true}}
+      @search={{this.searchUsRiskRetentionCompliantOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.euRiskRetentionCompliant}}
+      @options={{this.euRiskRetentionCompliantOptions}}
+      @errors={{@deal.errors.euRiskRetentionCompliant}}
+      @label="EU Risk Retention Compliant"
+      @placeholder="Choose a EU Risk Retention Compliant"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.euRiskRetentionCompliant)}}
+      @allowClear={{true}}
+      @search={{this.searchEuRiskRetentionCompliantOptions}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.stsCompliant}}
+      @options={{this.stsCompliantOptions}}
+      @errors={{@deal.errors.stsCompliant}}
+      @label="STS Compliant"
+      @placeholder="Choose a STS Compliant"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.stsCompliant)}}
+      @allowClear={{true}}
+      @search={{this.searchStsCompliantOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <label for="servicer">Servicer</label>
+    <Textarea id="servicer" @value={{@deal.servicer}} class="form-control" />
+  </div>
+  <div class="col-md-3">
+    <label for="special_servicer">Special Servicer</label>
+    <Textarea
+      id="special_servicer"
+      @value={{@deal.specialServicer}}
+      class="form-control"
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@deal.esgSriDealType}}
+      @options={{this.esgSriDealTypeOptions}}
+      @errors={{@deal.errors.esgSriDealType}}
+      @label="ESG/SRI Deal Type"
+      @placeholder="Choose a ESG/SRI Deal Type"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @deal.esgSriDealType)}}
+      @allowClear={{true}}
+      @search={{this.searchEsgSriDealTypeOptions}}
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <IgmDatetimePicker 
+      @date={{@deal.eodDate}} 
+      @label="EOD Date" 
+      @onChange={{this.onEodDateChange}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmInput @errors={{@deal.errors.eod}} @label="EOD" @value={{@deal.eod}} />
+  </div>
+</div>
+
+{{#each (await @deal.sortedTranches) as |tranche|}}
+  <TrancheForm
+    @tranche={{tranche}}
+    @regions={{await this.destinationsFilteredByRegion}}
+    @clone={{this.cloneTranche}}
+  />
+{{/each}}
+
+<p><button
+    class="btn btn-default"
+    type="button"
+    {{on "click" this.addTranche}}
+  >Add a Tranche</button></p>
+
+<RelatedStories @deal={{@deal}} />
+
+<div class="btn-toolbar">
+  {{#unless @deal.isNew}}
+    <div class="btn-group">
+      <button
+        class="btn btn-default"
+        type="button"
+        {{on "click" this.clone}}
+      >Clone</button>
+      <button
+        class="btn btn-danger"
+        type="button"
+        {{on "click" this.delete}}
+      >Delete</button>
+    </div>
+  {{/unless}}
+
+  <div class="btn-group">
+    <button
+      class="btn btn-default"
+      type="button"
+      {{on "click" @preview}}
+    >Preview</button>
+    <button
+      class="btn btn-primary"
+      type="button"
+      {{on "click" (fn this.save false)}}
+    >Save</button>
+    <button
+      class="btn btn-success"
+      type="button"
+      {{on "click" (fn this.save true)}}
+    >Publish</button>
+  </div>
+
+  <div class="btn-group">
+    <LinkTo @route="author" class="btn btn-default">Cancel</LinkTo>
+  </div>
+</div>

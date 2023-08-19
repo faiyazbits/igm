@@ -1,0 +1,174 @@
+<div class="l-sidebar-wrapper">
+  <LinkTo @route="my-igm" class="logo">
+    <img
+      src="/assets/images/igm-logo-white-2.png"
+      width="200"
+      height="88"
+      alt="'IGM logo'"
+    />
+  </LinkTo>
+
+  <nav class="sidebar-nav">
+    <ul>
+      <li>
+        <IgmTooltip @text="myIGM">
+          <LinkTo @route="my-igm">
+            <i class="icon-dashboard"></i>
+            Dashboard
+          </LinkTo>
+        </IgmTooltip>
+      </li>
+      <li>
+        <IgmTooltip @text="Filter content by area of specialism">
+          <LinkTo @route="discover">
+            <i class="icon-grid"></i>
+            Discover
+          </LinkTo>
+        </IgmTooltip>
+
+      </li>
+      <li>
+        <LinkTo @route="search">
+          <i class="icon-search"></i>
+          Search
+        </LinkTo>
+      </li>
+
+      <li>
+        {{#if
+          (get
+            (await this.session.currentUser) "canAccessDealVolumeLeagueSearch"
+          )
+        }}
+          <LinkTo @route="deal-search">
+            <i class="icon-window-list"></i>
+            Deal Search
+          </LinkTo>
+        {{else}}
+          <IgmTooltip
+            @text="Not permissioned for DEAL SEARCH"
+            @event="click"
+            @delay={{0}}
+            @position="top"
+          >
+            <div>
+              <i class="icon-window-list"></i>
+              Deal Search
+            </div>
+          </IgmTooltip>
+        {{/if}}
+      </li>
+      <li>
+        {{#if
+          (get
+            (await this.session.currentUser) "canAccessDealVolumeLeagueSearch"
+          )
+        }}
+          <LinkTo @route="volume-report-search">
+            <i class="icon-bar-chart"></i>
+            Volume Reports
+          </LinkTo>
+        {{else}}
+          <IgmTooltip
+            @text="Not permissioned for VOLUME REPORTS"
+            @event="click"
+            @delay={{0}}
+            @position="top"
+          >
+            <div>
+              <i class="icon-bar-chart"></i>
+              Volume Reports
+            </div>
+          </IgmTooltip>
+        {{/if}}
+      </li>
+      <li>
+        {{#if
+          (get
+            (await this.session.currentUser) "canAccessDealVolumeLeagueSearch"
+          )
+        }}
+          <LinkTo @route="index">
+            <i class="icon-table"></i>
+            League Tables
+          </LinkTo>
+        {{else}}
+          <IgmTooltip
+            @text="Not permissioned for LEAGUE TABLES"
+            @event="click"
+            @delay={{0}}
+            @position="top"
+          >
+            <div>
+              <i class="icon-table"></i>
+              League Tables
+            </div>
+          </IgmTooltip>
+        {{/if}}
+      </li>
+      <li>
+        <LinkTo @route="index">
+          <i class="icon-bell"></i>
+          Alerts
+        </LinkTo>
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href="https://informaconnect.com/finance/"
+          rel="noopener noreferrer"
+        >
+          <i class="icon-calendar"></i>
+          Connect Events
+        </a>
+      </li>
+      <li>
+        <IgmTooltip
+          @text="Manage alerts, feeds, & saved searches.
+        Access account info & get in touch with IGM"
+        >
+          <LinkTo @route="index">
+            <i class="icon-gear"></i>
+            Settings
+          </LinkTo>
+        </IgmTooltip>
+      </li>
+      <li>
+        <LinkTo @route="help">
+          <i class="icon-question-circle"></i>
+          Help &amp; Support
+        </LinkTo>
+      </li>
+      {{#if (get (await this.session.currentUser) "canAuthor")}}
+        <li>
+          <LinkTo @route="author">
+            <i class="icon-publication"></i>
+            Author
+          </LinkTo>
+        </li>
+      {{/if}}
+      {{#if (get (await this.session.currentUser) "canAdmin")}}
+        <li>
+          <LinkTo @route="index">
+            <i class="icon-gear-solid"></i>
+            Admin
+          </LinkTo>
+        </li>
+      {{/if}}
+      <li>
+        {{#if (get (await this.session.currentUser) "canViewCls")}}
+          <LinkTo @route="index">
+            <i class="icon-cls"></i>
+            中文产品
+          </LinkTo>
+        {{/if}}
+      </li>
+      <li>
+        <LinkTo @route="index">
+          <i class="icon-log-out"></i>
+          Logout
+        </LinkTo>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,109 @@
+<div class="panel deal-table-panel" {{did-insert this.dealIndexInserted}}>
+  <div class="panel-heading">
+    <ul class="panel-actions">
+      {{#unless this.feedPageView}}
+        <li>
+          <AddFeedPopover
+            @feed={{await this.feed}}
+            @save={{this.saveFeed}}
+            @iconClass="icon-plus"
+          />
+        </li>
+      {{/unless}}
+
+      <li>
+        <DownloadPopover
+          @exportData={{this.exportData}}
+          @sendInCSV={{this.sendInCSV}}
+          @sendInExcel={{this.sendInExcel}}
+          @sendInXLSX={{this.sendInXLSX}}
+          @downloadEnabled={{this.downloadEnabled}}
+          @class="panel-icon-pull-down"
+          @iconClass="icon-in pull-right"
+        />
+      </li>
+      <li>
+        {{#if (await this.feed)}}
+          <AlertPopover
+            @alertable={{this.feed}}
+            @class="pull-right"
+            @iconClass="icon-bell-solid pull-right"
+          />
+        {{/if}}
+      </li>
+    </ul>
+    <div class="panel-title">
+      {{#if this.features.realtimeFeeds}}
+        <span class="feed-content-type">{{await this.titleLink}}</span>
+        -
+        <span class="feed-title">
+          {{#if this.landingPageView}}
+            <LinkTo @route="deals" @query={{hash destinations=@destinations title=@title}}>{{@title}}</LinkTo>
+          {{else}}
+            {{@title}}
+          {{/if}}
+        </span>
+      {{else}}
+        {{#if this.landingPageView}}
+          <LinkTo @route="deals" @query={{hash destinations=@destinations title=@title}}>{{@title}}</LinkTo>
+        {{else if this.feedPageView}}
+          <span class="feed-content-type">{{await this.titleLink}}</span>
+          -
+          <span class="feed-title">
+            {{@title}}
+          </span>
+        {{else}}
+          {{@title}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="deal-table-all {{if this.indexPageView 'deal-index-table'}}">
+    {{#if this.rows}}
+      <table class="table">
+        <thead>
+          <tr class="deal-landing-row">
+            {{#each (await this.headers) as |header|}}
+              <th
+                class="{{if
+                    (or
+                      (eq header 'Date')
+                      (eq header 'Maturity')
+                      (eq header 'Issuer')
+                    )
+                    'deal-index-wide-column'
+                    'deal-index-other-column'
+                  }}"
+              >{{header}}</th>
+            {{/each}}
+          </tr>
+        </thead>
+        <tbody>
+          {{#each (await this.rows) as |row|}}
+            <tr class="deal-landing-row">
+              {{#each row.columns as |column|}}
+                <td>
+                  {{#if column.isIssuer}}
+                    <LinkTo
+                      @route={{await @route}}
+                      @model={{(get (await column.deal "id"))}}
+                    >{{column.value}}</LinkTo>
+                  {{else if column.isBookManager}}
+                    {{#each column.value as |value index|}}
+                      {{if index " / "}}
+                      {{value.shortName}}
+                    {{/each}}
+                  {{else}}
+                    {{column.value}}
+                  {{/if}}
+                </td>
+              {{/each}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      No content or you are not permissioned to see this content
+    {{/if}}
+  </div>
+</div>

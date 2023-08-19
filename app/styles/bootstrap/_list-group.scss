@@ -1,0 +1,55 @@
+//
+// List groups
+// --------------------------------------------------
+
+.list-group-item {
+  font-family: $alt-font-face;
+  font-weight: 300;
+  padding: 10px 24px;
+
+  &.active,
+  &.active:hover,
+  &.active:focus {
+    background-image: none;
+  }
+
+  &:hover {
+    .list-group-item-actions {
+      display: block;
+    }
+  }
+}
+
+// Size Modifiers
+
+.list-group-item-large {
+  padding: 24px 24px;
+}
+
+// Actions
+
+.list-group-item-actions {
+  display: none;
+  float: right;
+}
+
+.list-group-item.technical-link.active{
+  color: #555;
+  background-color: #fff;
+  border: 1px solid $gray-lightest;
+}
+
+.list-group-item.technical-link.active:hover{
+  text-decoration: none;
+  color: #555;
+  background-color: #f5f5f5;
+}
+
+.list-group-item.technical-link.active:focus{
+  text-decoration: none;
+  color: #555;
+  background-color: #f5f5f5;
+  outline: dotted thin;
+  outline: -webkit-focus-ring-color auto 5px;
+  outline-offset: -2px;
+}

@@ -1,0 +1,83 @@
+{{#if this.isValidComponent}}
+  <div class="panel">
+    {{#unless this.isDeal}}
+    <div class="panel-heading">
+      <ul class="panel-actions">
+        {{#if this.isStory}}
+          <li>
+            <span {{on 'click' this.toggleIsShowingStoryBody}} class="panel-action-maximize"><i class="icon-maximize"></i></span>
+          </li>
+        {{/if}}
+        {{#unless this.isMtn}}
+          <li>
+             <AddFeedPopover
+                  @feed={{this.feed}}
+                  @save={{this.saveFeed}}
+                  @iconClass="icon-plus"
+                />
+          </li>
+        {{/unless}}
+
+        {{#if this.isMtn}}
+          <li>
+            <DownloadPopover
+              @exportData={{this.exportData}}
+              @sendInCSV={{this.sendInCSV}}
+              @sendInExcel={{this.sendInExcel}}
+              @sendInXLSX={{this.sendInXLSX}}
+              @totalCount={{this.totalCount}}
+              @class='panel-icon-pull-down'
+              @iconClass='icon-in pull-right'
+              />
+          </li>
+        {{/if}}
+
+        {{#unless this.isNotAlertable}}
+          <li>
+            <AlertPopover
+                @alertable={{this.feed}}
+                @iconClass="icon-bell-solid"
+              />
+            {{!-- {{alert-popover alertable=feed class='pull-right' iconClass='icon-bell-solid pull-right' isMtn=(if isMtn true)}} --}}
+          </li>
+        {{/unless}}
+      </ul>
+      <div class="panel-title">
+        {{#if this.isLinkable}}
+        <LinkTo @route={{this.titleLink}} @query={{hash destinations=@destinations period=@period title=@title}}>{{@title}}</LinkTo>
+          {{!-- {{link-to attrs.title titleLink (query-params destinations=attrs.destinations period=attrs.period title=attrs.title)}} --}}
+        {{else}}
+          {{@title}}
+        {{/if}}
+      </div>
+    </div>
+    {{/unless}}
+    {{#if (and this.isValidType this.isDeal)}}
+      {{#if this.dataLoaded}}
+      {{!-- deal-index-table --}}
+        <DealIndexTable
+          @deals={{this.items}}
+          @destinations={{@destinations}}
+          @status={{this.status}}
+          @dealType={{this.dealType}}
+          @title={{@title}}
+          @route="deal"
+          @landingPageView={{true}}/>
+      {{/if}}
+    {{else}}
+      {{#if this.isValidType}}
+      <MtnLanding @items={{this.items}} @isShowingStoryBody={{this.isShowingStoryBody}}/>
+      {{/if}}
+    {{/if}}
+    <div class="panel-footer">
+      <div>
+        {{#if this.hasPreviousPage}}
+          <span class="span-toggle" {{on 'click' this.previous }}><i class="icon-arrow-left"></i></span>
+        {{/if}}
+        {{#if this.hasNextPage}}
+          <span class="span-toggle" {{on 'click' this.next }}><i class="icon-arrow-right"></i></span>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,69 @@
+// Content Block
+//
+// Example:
+//
+// <div class="content-block">
+//   <div class="content-block-meta">
+//     Ryan Tremaine
+//   </div>
+//
+//   <div class="content-block-heading">
+//     <h4 class="content-block-title">
+//       This was a great article
+//     </h4>
+//   </div>
+//
+//   <div class="content-block-summary">
+//     This article is awesome and really helpful to anybody trying to learn.
+//   </div>
+// </div>
+
+.content-block {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.content-block-meta {
+  color: $gray-lighter;
+  font-size: $font-size-small;
+  margin-bottom: $padding-base-vertical;
+}
+
+.content-block-heading {
+  color: $gray-dark;
+  font-size: $font-size-base;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content-block-date {
+  color: $gray;
+  float: left;
+  width: 120px;
+}
+
+.content-block-headline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content-block-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.content-block-summary {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: $line-height-base;         /* fallback */
+  max-height: $line-height-base * 2;      /* fallback */
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+
+  color: $gray-light;
+}

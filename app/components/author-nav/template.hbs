@@ -1,0 +1,48 @@
+<div class="collapse navbar-collapse" id="navbar-collapse">
+  <ul class="nav navbar-nav">
+    <li>
+      <LinkTo @route="stories.new" class="nav-link">
+        Create Story
+      </LinkTo>
+    </li>
+    <li>
+      <LinkTo @route="deals" class="nav-link">
+        View All Deals
+      </LinkTo>
+    </li>
+    <li class="dropdown">
+      <a
+        href="#"
+        class="dropdown-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-expanded="false"
+      >Create<span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li><LinkTo @route="deals.new" @query={{hash dealIdentifier="sf"}} class="nav-link">
+            SF
+          </LinkTo>
+        </li>
+        <li>
+          <LinkTo @route="deals.new" @query={{hash dealIdentifier=null}} class="nav-link">
+            Corporate
+          </LinkTo>
+        </li>
+        {{#if (get (await this.session.currentUser) "isAdmin")}}
+          <li>
+            <LinkTo @route="technicals.new" class="nav-link">
+              Technical page
+            </LinkTo>
+          </li>
+        {{/if}}
+      </ul>
+    </li>
+    <li>
+      <LinkTo @route="technicals.index" class="nav-link">
+        Update Technical Page
+      </LinkTo>
+    </li>
+  </ul>
+
+  {{yield}}
+</div>

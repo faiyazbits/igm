@@ -1,0 +1,59 @@
+<div class="{{if this.dealSearchRoute 'deal-search-result-list-panel' 'search-deal-result-list-panel'}}">
+  {{#if @isCorporate}}
+    <table class="table">
+      <tr class="deal-results-row">
+        <th class="deal-results-date">Date</th>
+        <th class="deal-results-comments"></th>
+        <th class="deal-results-issuer">Issuer</th>
+        <th class="deal-results-currency">CCY</th>
+        <th>Amount</th>
+        <th>Coupon</th>
+        <th class="deal-results-date">Maturity</th>
+        <th>Benchmark</th>
+        <th class="deal-results-spread">Spread</th>
+        <th>Book Managers</th>
+        <th {{on 'click' this.popOut}}>Status</th>
+      </tr>
+
+      {{#each @results as |result|}}
+      <tr class="deal-results-row">
+        <td class="deal-results-date">{{result.searchable.displayDateOffered}}</td>
+        <td><DealComments @urls={{result.searchable.commentaryUrls}} @rightPlacement={{true}} /></td>
+        <td class="deal-results-issuer"><LinkTo @route={{result.routeForLink}} @model={{result.searchable.id}}>{{result.searchable.issuer.name}}</LinkTo></td>
+        <td>{{result.searchable.currency}}</td>
+        <td>{{result.searchable.displayAmount}}</td>
+        <td>{{result.searchable.coupon}}</td>
+        <td class="deal-results-date">{{result.searchable.displayMaturity}}</td>
+        <td>{{result.searchable.benchmark}}</td>
+        <td class="deal-results-spread">{{result.searchable.spread}}</td>
+        <td>{{result.searchable.bookManagerBanksList}}</td>
+        <td>{{result.searchable.status}}</td>
+      </tr>
+      {{/each}}
+    </table>
+  {{else}}
+    <table class="table">
+      <tr class="deal-results-row">
+        <th>Date</th>
+        <th class="deal-results-comments"></th>
+        <th class="deal-results-issuer">Issuer</th>
+        <th>Total Deal Size</th>
+        <th>Asset Class</th>
+        <th>Bookmanagers</th>
+        <th>Status</th>
+      </tr>
+
+      {{#each @results as |result|}}
+      <tr class="deal-results-row">
+        <td>{{result.searchable.displayDateOffered}}</td>
+        <td><DealComments @urls={{result.searchable.commentaryUrls}} @rightPlacement={{true}} /></td>
+        <td class="deal-results-issuer"><LinkTo @route={{result.routeForLink}} @model={{result.searchable.id}}>{{result.searchable.issuer.name}}</LinkTo></td>
+        <td>{{result.searchable.displayTotalDealSize}}</td>
+        <td>{{result.searchable.assetClass}}</td>
+        <td>{{result.searchable.trancheBookManagers}}</td>
+        <td>{{result.searchable.status}}</td>
+      </tr>
+      {{/each}}
+    </table>
+  {{/if}}
+</div>

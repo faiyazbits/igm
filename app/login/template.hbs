@@ -1,0 +1,86 @@
+{{page-title "Login"}}
+
+<div class="login-container">
+  <div class="row bg-igm-darker yellow login-form">
+    <div class="col-md-4 logo-container">
+      <img src="assets/images/igm-logo-white-2.png" alt="'IGM logo'" />
+    </div>
+    <div class="col-md-4">
+      <h3>IGM sign in</h3>
+      <form>
+        <div class="controls form-group">
+          {{! template-lint-disable require-input-label }}
+          <Input
+            @type="text"
+            @value={{this.email}}
+            placeholder="Email Address"
+            class="form-control"
+          />
+          {{#each this.errors as |error|}}
+            <small class="help-block">{{error}}</small>
+          {{/each}}
+        </div>
+
+        <div class="controls form-group">
+          {{! template-lint-disable require-input-label }}
+          <Input
+            @type="password"
+            placeholder="Password"
+            @value={{this.password}}
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <button
+            type="button"
+            {{on "click" this.authenticate}}
+            class="btn btn-success home-login-button"
+          >Sign In</button>
+        </div>
+
+        <div class="form-group">
+          <LinkTo @route="forgot-password" class="home-login-link">
+            Forgot Password
+          </LinkTo>
+
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  <div class="title-wrapper">
+    <div class="title">
+      <p class="header">Insightful Commentary. Intelligent Analysis. Always
+        Connected.</p>
+      <p class="body">Premium data and actionable insights that enable you to
+        make smarter decisions</p>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <p class="title">You must be an IGM subscriber to access this site</p>
+          <p>
+            <a
+              class="btn btn-success btn-lg home-login-button learn-more-button"
+              href="https://informaconnect.com/igm/"
+            >
+              LEARN MORE
+            </a>
+            <a
+              class="btn btn-success btn-lg home-login-button contact-us-button"
+              href="https://informaconnect.com/igm/contact-igm/"
+            >
+              CONTACT US
+            </a>
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
+</div>

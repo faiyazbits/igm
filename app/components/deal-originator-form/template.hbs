@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="form-group col-md-3">
+    <IgmInput
+      @value={{@dealOriginator.name}}
+      @label="Name"
+      @errors={{@model.errors.name}}
+    />
+  </div>
+  <div class="col-md-3">
+    <IgmPowerSelect
+      @selection={{@dealOriginator.merger}}
+      @options={{@dealOriginators}}
+      @errors={{@dealOriginator.errors.merger}}
+      @label="Merger Name"
+      @placeholder="Merger Name"
+      @optionLabelPath="name"
+      @searchEnabled={{true}}
+      @onChange={{fn (mut @dealOriginator.merger)}}
+      @allowClear={{true}}
+      @search={{this.searchDealOriginatorOptions}}
+    />
+  </div>
+</div>
+
+<button
+  class="btn btn-success"
+  type="button"
+  {{on "click" this.save}}
+>Save</button>

@@ -1,0 +1,63 @@
+<div class="form-group {{if this.hasError 'has-error'}}">
+  <label for={{this.uid}} class="control-label">
+    {{@label}}
+  </label>
+
+  {{#if this.multiple}}
+
+    <PowerSelectMultiple
+      @options={{@options}}
+      @onChange={{this.onChange}}
+      @onKeydown={{this.onKeyDown}}
+      @selected={{this.selection}}
+      @placeholder={{this.placeholder}}
+      @allowClear={{@allowClear}}
+      @searchEnabled={{@searchEnabled}}
+      @search={{@search}}
+      @searchField={{@searchField}}
+      @closeOnSelect={{@closeOnSelect}}
+      @loadingMessage={{this.loadingMessage}}
+      @verticalPosition={{this.verticalPosition}}
+      as |option select|
+    >
+      {{#if this.optionLabelPath}}
+        {{highlight-substr
+          (get option this.optionLabelPath)
+          select.lastSearchedText
+        }}
+      {{else}}
+        {{highlight-substr option select.lastSearchedText}}
+      {{/if}}
+    </PowerSelectMultiple>
+  {{else}}
+
+    <PowerSelect
+      @options={{@options}}
+      @onChange={{this.onChange}}
+      @selected={{this.selection}}
+      @placeholder={{this.placeholder}}
+      @allowClear={{@allowClear}}
+      @searchEnabled={{@searchEnabled}}
+      @search={{@search}}
+      @searchField={{@searchField}}
+      @closeOnSelect={{@closeOnSelect}}
+      @loadingMessage={{this.loadingMessage}}
+      @verticalPosition={{this.verticalPosition}}
+      @renderInPlace={{this.renderInPlace}}
+      as |option select|
+    >
+      {{#if this.optionLabelPath}}
+        {{highlight-substr
+          (get option this.optionLabelPath)
+          select.lastSearchedText
+        }}
+      {{else}}
+        {{highlight-substr option select.lastSearchedText}}
+      {{/if}}
+    </PowerSelect>
+  {{/if}}
+
+  {{#each @errors as |error|}}
+    <span class="help-block">{{error.message}}</span>
+  {{/each}}
+</div>

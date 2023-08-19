@@ -1,0 +1,41 @@
+<IRibbon @anchorToTop={{(not this.showCookiePolicy)}} />
+
+{{#if this.session.isAuthenticated}}
+  <div class="{{this.classesForCurrentRoute}}" style={{this.topStyle}}>
+    <div class="l-wrapper">
+      <LeftNav />
+
+      <div id="destination" class="l-secondary-sidebar-wrapper">
+      </div>
+      <div class="l-page-content-wrapper">
+        <div class="l-page-content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12 browser-height">
+                {{outlet}}
+              </div>
+              <footer>
+                <Footer />
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!-- {{#if session.isImpersonated}}
+      <div class="impersonation-banner">
+        You are currently impersonating {{session.currentUser.email}}.
+      </div>
+    {{/if}} --}}
+  </div>
+{{else}}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        {{outlet}}
+      </div>
+    </div>
+  </div>
+{{/if}}
+<EmberNotify @closeAfter={{5000}} @messageStyle="bootstrap" />

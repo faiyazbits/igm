@@ -1,0 +1,212 @@
+<IgmForm @for={{@story}} @submitForm={{this.save}}>
+
+  <div class="row">
+    <div class="col-md-12">
+      <FavoriteDestinations
+        @destinationGroups={{@destinationGroups}}
+        @selectDestinationGroup={{this.selectDestinationGroup}}
+      />
+      <IgmPowerSelect
+        @selection={{@story.destinations}}
+        @options={{this.destinations.storyDestinations}}
+        @errors={{@story.errors.destinations}}
+        @label="Destinations"
+        @placeholder="Choose destinations"
+        @multiple={{true}}
+        @optionLabelPath="displayName"
+        @onChange={{this.onDestinationChange}}
+        @searchEnabled={{true}}
+        @search={{this.searchDestinations}}
+        @searchField="displayName"
+        @closeOnSelect={{false}}
+      />
+
+      <IgmInput
+        @value={{@story.headline}}
+        @errors={{@story.errors.headline}}
+        @label="Headline"
+      />
+
+      <IgmFroalaEditor
+        @label="Body"
+        @value={{@story.body}}
+        @update={{this.updateBody}}
+      />
+
+      {{#if (get (await this.session.currentUser) "canEditTags")}}
+        <LinkTo @route="tags.index" class="btn btn-default btn-xs pull-right">
+          <i class="icon-edit"></i>
+        </LinkTo>
+      {{/if}}
+
+      <IgmPowerSelect
+        @selection={{@story.tags}}
+        @options={{this.tags}}
+        @errors={{@story.errors.tags}}
+        @label="Tags"
+        @multiple={{true}}
+        @optionLabelPath="name"
+        @onChange={{this.onTagsChange}}
+        @searchEnabled={{true}}
+        @searchField="name"
+        @search={{this.searchTag}}
+        @closeOnSelect={{false}}
+      />
+
+    </div>
+  </div>
+
+  {{#if this.isTopStory}}
+    <div class="row">
+      <div class="col-md-12">
+        <IgmInput
+          @value={{@story.description}}
+          @errors={{@story.errors.description}}
+          @label="Description"
+          @maxlength="160"
+        />
+      </div>
+    </div>
+  {{/if}}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-group pull-left">
+        <button
+          type="button"
+          {{on "click" @cancel}}
+          class="btn btn-default"
+        >Cancel</button>
+        <button
+          type="button"
+          {{on "click" @preview}}
+          class="btn btn-default"
+        >Preview</button>
+      </div>
+      <div class="btn-group pull-right">
+        {{#if @story.isPublished}}
+          <button
+            type="button"
+            {{on "click" this.save}}
+            class="btn btn-success"
+          >Publish Changes</button>
+        {{else}}
+          {{#if this.publishedAt}}
+            <button
+              type="button"
+              {{on "click" this.revertToDraft}}
+              class="btn btn-primary"
+            >Revert to Draft</button>
+            <button
+              type="button"
+              {{on "click" this.publishNow}}
+              class="btn btn-success"
+            >Publish Now</button>
+            <button
+              type="button"
+              {{on "click" this.publishLater}}
+              class="btn btn-success"
+            >Publish Later</button>
+          {{else}}
+            <button
+              type="button"
+              {{on "click" this.save}}
+              class="btn btn-primary"
+            >Save Draft</button>
+            <button
+              type="button"
+              {{on "click" this.publishNow}}
+              class="btn btn-success"
+            >Publish Now</button>
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-push-9">
+      <div class="clearfix">
+        <label class="pull-right">
+          Send to Vendors?
+          <Input
+            @type="checkbox"
+            name="sendToVendors"
+            @checked={{@story.sendToVendors}}
+          />
+        </label>
+      </div>
+    </div>
+  </div>
+
+  {{#if @story.isPublished}}
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
+        <div class="clearfix">
+          <div class="text-right">
+            <label>
+              Resend alerts?
+              <Input
+                @type="checkbox"
+                name="resendAlerts"
+                @checked={{@story.resendAlerts}}
+              />
+            </label>
+          </div>
+          <div class="text-right">
+            Published on
+            {{format-date @story.publishedAt}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{else}}
+
+    <div class="row">
+      <div class="col-md-4 col-md-push-8">
+        <div class="clearfix">
+          {{#if this.isShowingEmbargo}}
+            <IgmInput
+              @value={{this.publishedAtText}}
+              @label="Embargo date"
+              @errors={{@story.errors.publishedAt}}
+            />
+            Embargoed until:
+            {{format-date this.publishedAt}}
+          {{else}}
+            <button
+              type="button"
+              {{on "click" this.setEmbargo}}
+              class="btn btn-success pull-right"
+            >Set Embargo</button>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#unless @story.isNew}}
+    <div class="row">
+      <div class="col-md-12">
+        <br />
+        <div class="btn-group">
+          <LinkTo @route="stories.new" class="btn btn-default">New</LinkTo>
+          <button
+            type="button"
+            {{on "click" this.clone}}
+            class="btn btn-default"
+          >Clone</button>
+          <button
+            type="button"
+            {{on "click" this.delete}}
+            class="btn btn-danger"
+          >Delete</button>
+        </div>
+        <LinkTo @route="stories.versions" @model={{@story.id}}>
+          View Revisions
+        </LinkTo>
+      </div>
+    </div>
+  {{/unless}}
+
+</IgmForm>

@@ -1,0 +1,19 @@
+<div class="panel-heading">
+  <div class="split">
+    <div class="split-left">
+      <h3 class="panel-title secondary-sidebar-title">Create a new feed</h3>
+    </div>
+    <div class="split-right">
+      <LinkTo @route="discover" active="false" class="secondary-sidebar-close">
+        <i class="icon-close"></i>
+      </LinkTo>
+    </div>
+  </div>
+</div>
+
+<FeedForm
+  @feed={{this.model}}
+  @save={{this.model}}
+  @delete={{this.delete}}
+  @afterCancelRoute="discover"
+/>

@@ -1,0 +1,27 @@
+@media print {
+  .l-wrapper {
+    padding-left: 0px;
+  }
+
+  .l-sidebar-wrapper {
+    display: none;
+  }
+
+  .l-secondary-sidebar-wrapper {
+    display: none;
+  }
+
+  .my-igm-route,
+  .stories-show-route,
+  .search-route {
+    .l-page-content {
+      padding-top: 16px;
+    }
+  }
+
+  .stories-show-route {
+    .btn-round-lg {
+      display: none;
+    }
+  }
+}

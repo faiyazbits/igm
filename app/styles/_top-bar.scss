@@ -1,0 +1,30 @@
+.top-bar {
+  display: table;
+  padding: 0 24px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 70px;
+  background: #FFFFFF;
+  font-family: $alt-font-face;
+  font-weight: 300;
+  font-size: $font-size-large;
+  text-transform: none;
+  @include box-shadow(0 0 2px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.24));
+}
+
+.top-bar-content {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.top-bar-content-full {
+  width: 100%;
+}
+
+.top-bar-action {
+  padding-left: 24px;
+  border-left: 1px solid #E0E0E0;
+  text-align: right;
+}
+
