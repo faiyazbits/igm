@@ -1,3 +1,5 @@
+// app/router.js
+
 import EmberRouter from '@ember/routing/router';
 import config from 'igm-upgrade/config/environment';
 
@@ -19,6 +21,9 @@ Router.map(function () {
   this.route('about');
   this.route('help');
   this.route('author');
+
+  this.route('alerts', { path: 'alerts/:alert_id' }); // Updated 'alert' route
+
   this.route('landing-page');
   this.route('mtns');
   this.route('deal', { path: 'deals/:deal_id' }, function () {
@@ -76,8 +81,10 @@ Router.map(function () {
   this.route('league-tables');
 
   this.route('settings', function () {
-    // this.route('account');
-    // this.route('alerts');
+    this.route('account');
+    this.route('alerts', function () {
+      this.route('alert', { path:'/:19' });
+    });
     this.route('feeds', function () {
       // this.route('new');
       this.route('edit', { path: ':feed_id/edit' });
