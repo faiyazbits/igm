@@ -12,64 +12,23 @@
       />
     </div>
 
-    <div class="search-bar-actions">
-      {{#if this.pendingSearch}}
-        <button type="button" {{on "click" this.findLeagueTable}} class="btn btn-success">Run League Table</button>
-     {{/if}}
-        <IgmTooltip
-          @title="Save your search term to rerun in the future"
-          @side="bottom"
-        >
-          <button
-            type="button"
-            {{on "click" this.saveSearch}}
-            class="btn btn-success"
-          >Save</button>
-        </IgmTooltip>
-        {{#if savedLeagueSearches}}
-        <div class="dropdown">
-            <button
-            {{on "click" (fn this.setIsSavedSearchOpen true)}}
-             class="btn btn-success dropdown-toggle" type="button">
-              Saved League Tables
-              <span class="caret"></span>
-            </button>
-            {{#if isSavedSearchOpen}}
-              <div class="addAssets">
-              <SavedSearchesList
-                @searchTitle="Saved League Tables"
-                @searches={{this.savedLeagueSearches}}
-                @delete={{this.deleteSearch}}
-                @setSearchOpen={{this.setIsSavedSearchOpen}}
-                @selectSearch={{this.goToSavedSearch}}
-              />
-              </div>
-            {{/if}}
-          </div>
-     {{/if}}
-  <button
-  type="button"
-   {{on "click" this.resetFilters}}
-    class="btn btn-success">Reset Filters</button>
-      {{#if this.pendingSearch}}
-        {{#if this.showingAdvancedSearch}}
-          <button
-          type="button"
-             {{on "click" this.simpleSearch}}
-           class="btn btn-success">Simple Search</button>
-        {{else}}
-          <button
-          type="button"
-          {{on "click" this.advancedSearch}}
-           class="btn btn-success">Advanced Search</button>
-        {{/if}}
-      {{else}}
-        <button
-        type="button"
-          {{on "click" this.backToSearch}}
-         class="btn btn-success">Back To Search</button>
-      {{/if}}
-    </div>
   </div>
 
 </TopNav>
+
+<div class="league-table-filter" id="league-table-fields">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <IgmPowerSelect
+            @selection={{this.dealIdentifier}}
+            @options={{this.dealOptions.dealIdentifier}}
+            @label="Select Database"
+            @onChange={{fn (mut this.dealIdentifier)}}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

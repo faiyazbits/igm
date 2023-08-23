@@ -77,6 +77,7 @@ Router.map(function () {
   this.route('search');
   this.route('deal-search');
   this.route('volume-report-search');
+  this.route('league-table-search');
 
   this.route('league-tables');
 
