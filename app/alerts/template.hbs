@@ -1,0 +1,87 @@
+<!-- app/templates/alerts.hbs -->
+{{page-title "alerts"}}
+<div class="panel panel-alert">
+  <div class="panel-heading">
+    <h4 class="panel-title">Set your time zone for alerts</h4>
+  </div>
+  <div class="panel-body">
+    <IgmForm @for={{currentUser}} @submit={{this.saveTimeZone}}>
+      <div class="row">
+        <div class="col-md-3">
+          <IgmSelect
+            @content={{this.timeZones}}
+            @errors={{currentUser.errors.timeZone}}
+            @optionLabelPath="content"
+            @optionValuePath="content"
+            @selection={{currentUser.timeZone}}
+          />
+        </div>
+      </div>
+      <button class="btn btn-default" type="submit">Save</button>
+    </IgmForm>
+  </div>
+</div>
+
+{{#if currentUser.isAlertPaused}}
+  <button {{on 'click' (fn this.updateAlertPause false)}} style="background-color:rgb(188,185,26); margin-bottom: 14px" class="btn btn-default">UN-PAUSE ALL ALERTS</button>
+{{else}}
+  <button {{on 'click' (fn this.updateAlertPause true)}} style="background-color:rgb(0,34,68); margin-bottom: 14px" class="btn btn-default">PAUSE ALL ALERTS</button>
+{{/if}}
+
+{{#each alerts as |alert|}}
+  <div class="panel panel-alert">
+    <div class="panel-heading">
+      <div class="split">
+        <div class="split-left">
+          <h4 class="panel-title">{{alert.alertable.title}}</h4>
+        </div>
+
+        <div class="split-right">
+          <ul class="alert-notification-preferences-list">
+            <li>{{alert.alertType}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      Email range ({{alert.timeZone}}):
+      <ul>
+        {{#each alert.enabledTimeRanges as |timeRange|}}
+          {{#if timeRange.isAllDay}}
+            <li>All day</li>
+          {{else}}
+            <li>
+              {{timeRange.localStart}} - {{timeRange.localEnd}}
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+      <ul class="alert-destination-list">
+        {{#each alert.alertable.destinations as |destination|}}
+          <li>
+            <span class="label label-default">{{destination.displayName}}</span>
+          </li>
+        {{else}}
+          No destinations added.
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="panel-footer">
+      <div class="split">
+        <div class="split-left">
+          {{alert-popover alertable=alert.alertable iconClass='icon-edit' rightPlacement=true}}
+          <button {{on 'click' (fn this.deleteAlert alert)}} class="btn btn-default btn-xs">
+            <i class="icon-delete"></i>
+          </button>
+        </div>
+
+        <div class="split-right">
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <p>You have no alerts yet.</p>
+{{/each}}
