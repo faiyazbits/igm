@@ -1,1 +1,44 @@
-<h2>Yet to be implemented</h2>
+<TopNav>
+  <div class="search-bar">
+    <div class="search-bar-input-ds">
+
+      {{! template-lint-disable no-autofocus-attribute }}
+      <Input
+        @type="text"
+        id="league-table-search"
+        placeholder="Search League Table"
+        @value={{this.searchTerm}}
+        autofocus="true"
+      />
+    </div>
+
+    <div class="search-bar-actions">
+      <button
+        type="button"
+        {{on "click" this.searchLeagueTable}}
+        class="btn btn-success"
+      >Search</button>
+
+      <button
+        type="button"
+        {{on "click" this.resetSearch}}
+        class="btn btn-success"
+      >Reset</button>
+    </div>
+  </div>
+</TopNav>
+
+<div class="league-table-results">
+  {{#if this.pendingSearch}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="text-center">
+          <h2>Search League Table</h2>
+          <h4>Use the search bar above to filter results</h4>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    {{!-- Display league table results here --}}
+  {{/if}}
+</div>
